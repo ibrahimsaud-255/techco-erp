@@ -61,14 +61,19 @@ const SUPA_URL='...';   // رابط مشروع Supabase
 const SUPA_KEY='...';   // المفتاح العام (publishable / anon)
 ```
 
-**حالياً ما زال مربوطاً بقاعدة إبراهيم سعود القديمة** — لا تُدخل بيانات حقيقية للشركة قبل التحويل لمشروع Supabase جديد.
+✅ **تم التحويل لمشروع Supabase جديد خاص بالشركة** (`techco-erp`). النظام الآن موصول بقاعدة بيانات نظيفة منفصلة تماماً عن نظام إبراهيم سعود.
 
-### خطوات إنشاء مشروع Supabase جديد
-1. أنشئ مشروعاً جديداً في <https://supabase.com/dashboard>.
-2. من **SQL Editor** شغّل ملفات `supabase/*.sql` بالترتيب:
-   `security.sql` → `production_room.sql` → `analytics.sql` → `blog.sql` → `prompts.sql` → `content_ideas.sql` → `guests-read-policy.sql`.
-3. (اختياري) انشر الدوال في `supabase/functions/`.
-4. من **Project Settings → API** خذ `Project URL` والمفتاح العام، وحدّث `SUPA_URL` و `SUPA_KEY`.
+- كل الجداول والسياسات (RLS) والدوال والمخازن (`task-images`, `blog-images`) منشأة ومُختبَرة.
+- السكربت الموحّد المستخدَم محفوظ في `supabase/_apply_all.sql` (والجداول الأساسية في `supabase/00_base.sql`).
+
+### أول تسجيل دخول
+النظام يستخدم حسابات Supabase Auth، والحساب الجديد لا ينتقل من المشروع القديم. لأول مرة:
+1. افتح النظام → اضغط **«إنشاء حساب»** بالبريد `ibrahimsaud25@gmail.com` (= حساب المدير المحدّد في `ADMIN_EMAIL`) وكلمة مرور.
+2. أكّد البريد من رسالة Supabase ثم سجّل الدخول.
+3. لتغيير مدير النظام لاحقاً (أو إضافة شريكك): عدّل `ADMIN_EMAIL` في `app/index.html`.
+4. الدخول عبر Google/Apple يحتاج تفعيل المزوّد في إعدادات Supabase أولاً (البريد+كلمة المرور يعمل مباشرة).
+
+> دوال الفريق (الفريلانسرز) والعملاء تعمل عبر روابط/توكنات خاصة بلا حسابات.
 
 ---
 
