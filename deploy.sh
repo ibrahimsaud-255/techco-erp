@@ -1,32 +1,24 @@
 #!/usr/bin/env bash
-# نشر الموقع على ibrahimsaud.com
+# نشر نظام الشركة التقنية (مشروع static — بدون خطوة build)
 # الاستخدام:  ./deploy.sh "رسالة التحديث"
-# أو بدون رسالة:  ./deploy.sh   (يستخدم رسالة افتراضية بالتاريخ)
+set -e
+cd "$(dirname "$0")"
 
-set -e  # توقّف عند أي خطأ
+MSG="${1:-تحديث النظام $(date '+%Y-%m-%d %H:%M')}"
 
-cd "$(dirname "$0")"  # اعمل داخل مجلد المشروع
-
-# رسالة الكومِت (من أول وسيط، وإلا رسالة افتراضية)
-MSG="${1:-تحديث الموقع $(date '+%Y-%m-%d %H:%M')}"
-
-echo "▶ فحص سريع للبناء..."
-npm run build
+if ! git remote get-url origin >/dev/null 2>&1; then
+  echo "⚠ لم يُضبط مستودع بعيد بعد. أضِفه أولاً:"
+  echo "   git remote add origin <رابط مستودع GitHub الجديد>"
+  exit 1
+fi
 
 echo "▶ رفع التغييرات إلى GitHub..."
 git add -A
-# لا تسوِّ كومِت لو ما فيه تغييرات
 if git diff --cached --quiet; then
-  echo "لا توجد تغييرات جديدة لرفعها."
+  echo "لا توجد تغييرات جديدة."
 else
   git commit -m "$MSG"
 fi
-
-# زامن مع أي تغييرات بعيدة ثم ادفع
-git pull --rebase origin main
+git pull --rebase origin main 2>/dev/null || true
 git push origin main
-
-echo ""
-echo "✅ تم الدفع. GitHub Actions يبني وينشر الآن."
-echo "   تابع الحالة: https://github.com/ibrahimsaud-255/ibrahimsaud-site/actions"
-echo "   الموقع يتحدّث خلال 1–3 دقائق: https://ibrahimsaud.com"
+echo "✅ تم الدفع. حدّث الاستضافة (GitHub Pages / Netlify / Vercel) إن لزم."
