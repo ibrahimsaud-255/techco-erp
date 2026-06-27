@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<style id="thmanyah-font">
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Black.woff2") format("woff2");font-weight:800 900;font-display:swap}
+</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>بودكاست سَعي · تحضير الضيوف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+--bg:#000;
+--panel:#0b0b0c;
+--panel-2:#141416;
+--line:#26262a;
+--text:#ffffff;
+--muted:#9a9aa2;
+--accent:#e9c074;
+--accent-2:#d9a441;
+--green:#46c08a;
+--radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font-family:"Thmanyah Sans","Tajawal",system-ui,sans-serif;line-height:1.9}
+.app{max-width:760px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:20px 18px 40px}
+header{position:sticky;top:0;background:linear-gradient(180deg,#000 70%,transparent);padding-bottom:14px;z-index:5}
+.logo-wrap{display:flex;justify-content:center;margin:8px 0 16px}
+.logo-svg{height:64px;width:auto}
+.logo-img{height:80px;width:auto;display:block}
+.progress{margin-top:6px}
+.progress-top{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:8px}
+.progress-top b{color:var(--accent)}
+.bar{height:8px;background:var(--panel-2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent));border-radius:999px;transition:width .4s ease}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:18px 0}
+.page{display:none;animation:fade .35s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.5px;margin-bottom:6px}
+h1{font-size:26px;font-weight:900;margin:0 0 8px;line-height:1.4}
+h2{font-size:21px;font-weight:800;margin:0 0 6px}
+.lead{color:#e8e8ec;font-size:16px;margin:8px 0}
+.muted{color:var(--muted)}
+.pill{display:inline-block;background:rgba(233,192,116,.1);color:var(--accent);
+border:1px solid rgba(233,192,116,.3);padding:5px 13px;border-radius:999px;font-size:13px;margin:3px 5px 3px 0}
+.note{background:rgba(70,192,138,.08);border:1px solid rgba(70,192,138,.3);
+border-radius:12px;padding:14px 16px;margin:16px 0;color:#cdeede}
+.note b{color:var(--green)}
+label{display:block;margin:16px 0 6px;font-weight:600}
+.hint{color:var(--muted);font-size:13px;font-weight:400}
+input[type=text],input[type=email],input[type=tel],input[type=url],input[type=date],select,textarea{
+width:100%;background:var(--panel-2);border:1px solid var(--line);color:var(--text);
+border-radius:12px;padding:14px;font-family:inherit;font-size:15px}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+input::placeholder,textarea::placeholder{color:#6a6a72}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.row{grid-template-columns:1fr} h1{font-size:23px}}
+.req{color:var(--accent)}
+.check{display:flex;gap:11px;align-items:flex-start;margin:14px 0;font-weight:400}
+.check input{margin-top:6px;width:18px;height:18px;accent-color:var(--accent)}
+.commit{background:rgba(233,192,116,.07);border:1px dashed rgba(233,192,116,.45);border-radius:12px;padding:14px 16px;margin-top:16px}
+.hidden{display:none !important}
+.nav{display:flex;gap:12px;margin-top:26px}
+.btn{flex:1;border:none;border-radius:14px;padding:16px;font-family:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#1a1300}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);flex:0 0 110px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.err-msg{color:#ff8b80;font-size:14px;margin-top:10px;min-height:18px;text-align:center}
+.success{text-align:center;padding:30px 10px}
+.success .tick{width:74px;height:74px;border-radius:50%;background:rgba(70,192,138,.12);
+border:2px solid var(--green);color:var(--green);display:grid;place-items:center;font-size:38px;margin:0 auto 18px}
+footer{color:var(--muted);text-align:center;font-size:12.5px;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<div class="logo-wrap">
+<img class="logo-img" src="logo.png" alt="بودكاست سَعي">
+</div>
+<div class="progress" id="progress">
+<div class="progress-top">
+<span>الخطوة <b id="stepNow">1</b> من <span id="stepTotal">6</span></span>
+<span id="pct">0%</span>
+</div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+</div>
+</header>
+<main>
+<form id="guestForm" novalidate>
+<section class="page active" data-name="تعريف">
+<div class="eyebrow">قبل ما تبدأ</div>
+<h1>أهلاً فيك في بودكاست سَعي 🤍</h1>
+<p class="lead"><b>سَعي</b> بودكاست هدفه إن المستمع يطلع بفائدة حقيقية: معرفة متخصصة نبسّطها للناس، وقصة "سعي" خلف كل تجربة.</p>
+<p class="lead">أهم شي عندنا: <b>المستمع يستفيد</b>. الحلقة الناجحة هي اللي يخرج منها الشخص فاهم شيء جديد أو شايف الأمور بزاوية أوضح — مو اللي نعدّد فيها الإنجازات.</p>
+<div class="note"><b>كيف تطلع حلقتك من ذهب؟</b> ركّز على المعلومة والخبرة اللي تقدّمها للناس، والدرس اللي تعلّمته في رحلتك. إنجازاتك تهمّنا كوسيلة نوصل فيها للفائدة — مو كهدف. كل ما كان كلامك عملي وقابل للتطبيق، كانت الحلقة أقوى.</div>
+<div>
+<span class="pill">نبسّط المعقّد</span><span class="pill">فائدة عملية</span>
+<span class="pill">قصة سعي صادقة</span><span class="pill">حوار يكسر الحواجز</span>
+</div>
+<p class="muted" style="margin-top:14px">التحضير ٦ خطوات بسيطة، ياخذ منك دقائق. عبّيه بصدق وعفوية.</p>
+<div class="nav">
+<button type="button" class="btn btn-primary" data-next>ابدأ التحضير ←</button>
+</div>
+</section>
+<section class="page" data-name="تعريفك">
+<div class="eyebrow">الخطوة ١</div>
+<h2>نتعرّف عليك</h2>
+<p class="muted">معلومات نتواصل فيها معك ونعرّفك في الحلقة.</p>
+<div class="row">
+<div><label>الاسم الكامل <span class="req">*</span></label><input type="text" name="full_name" required></div>
+<div><label>كيف نناديك في الحلقة؟</label><input type="text" name="nickname" placeholder="أبو فلان / د. فلان"></div>
+</div>
+<div class="row">
+<div><label>البريد الإلكتروني <span class="req">*</span></label><input type="email" name="email" required></div>
+<div><label>الجوال (واتساب) <span class="req">*</span></label><input type="tel" name="phone" required placeholder="+9665…"></div>
+</div>
+<label>مجال تخصّصك أو خبرتك <span class="req">*</span></label>
+<input type="text" name="field" required placeholder="مثال: الأمن السيبراني / التسويق / المجال الصحي">
+<div class="err-msg" data-err></div>
+<div class="nav">
+<button type="button" class="btn btn-ghost" data-prev>السابق</button>
+<button type="button" class="btn btn-primary" data-next>التالي ←</button>
+</div>
+</section>
+<section class="page" data-name="الجوهر">
+<div class="eyebrow">الخطوة ٢ · أهم جزء</div>
+<h2>جوهر حلقتك</h2>
+<p class="muted">جاوب بتركيز على فائدة المستمع. لا تخاف من البساطة — البساطة قوة.</p>
+<label>في جملة وحدة: وش "السعي" أو الرحلة اللي تبي تشاركها؟ <span class="req">*</span></label>
+<textarea name="journey" required placeholder="رحلتي من … إلى …"></textarea>
+<label>المستمع وش بيطلع بفائدة بعد ما يسمع حلقتك؟ <span class="req">*</span> <span class="hint">(٢–٣ فوائد عملية)</span></label>
+<textarea name="value" required placeholder="١) … ٢) … ٣) …"></textarea>
+<label>معلومة أو مفهوم في مجالك يُفهم غلط أو ما يُنتبه له — وتحب تبسّطه؟</label>
+<textarea name="misconception" placeholder="كثير يظنون أن … لكن الصح …"></textarea>
+<label>موقف أو تحوّل في رحلتك علّمك درس ممكن غيرك يستفيد منه؟</label>
+<textarea name="turning_point"></textarea>
+<label>سؤال تتمنى الناس يسألونك إياه ونادراً ما يُسأل؟</label>
+<textarea name="dream_question"></textarea>
+<label>أشياء تفضّل ما نتطرّق لها؟ <span class="hint">(اختياري)</span></label>
+<input type="text" name="avoid">
+<div class="err-msg" data-err></div>
+<div class="nav">
+<button type="button" class="btn btn-ghost" data-prev>السابق</button>
+<button type="button" class="btn btn-primary" data-next>التالي ←</button>
+</div>
+</section>
+<section class="page" data-name="التواصل">
+<div class="eyebrow">الخطوة ٣ · الأخيرة</div>
+<h2>حسابات التواصل</h2>
+<p class="muted">تساعدنا نفهم محتواك وأسلوبك ونحضّر محاور أقرب لك.</p>
+<div class="check">
+<input type="checkbox" id="noSocial" name="no_social">
+<label for="noSocial" style="margin:0">ما عندي حسابات تواصل (تجاوز هذا القسم)</label>
+</div>
+<div id="socialBlock">
+<div class="row">
+<div><label>X / تويتر</label><input type="text" name="x" placeholder="@username أو رابط"></div>
+<div><label>إنستقرام</label><input type="text" name="instagram" placeholder="@username أو رابط"></div>
+</div>
+<div class="row">
+<div><label>لينكدإن</label><input type="url" name="linkedin" placeholder="رابط الحساب"></div>
+<div><label>يوتيوب</label><input type="text" name="youtube" placeholder="رابط القناة"></div>
+</div>
+<div class="row">
+<div><label>تيك توك</label><input type="text" name="tiktok" placeholder="@username"></div>
+<div><label>موقع / بودكاست</label><input type="url" name="website" placeholder="https://"></div>
+</div>
+<label>ألصق نبذة عنك أو روابط أبرز محتوى تقدّمه <span class="hint">(يحسّن التحليل كثير)</span></label>
+<textarea name="bio_links" placeholder="نبذة قصيرة + أهم منشور/مقطع/مقال يمثّلك"></textarea>
+</div>
+<div class="err-msg" data-err></div>
+<div class="nav">
+<button type="button" class="btn btn-ghost" data-prev>السابق</button>
+<button type="submit" class="btn btn-primary" id="submitBtn">أرسِل بياناتي ✓</button>
+</div>
+</section>
+<section class="page" data-name="تم" data-final>
+<div class="success">
+<div class="tick">✓</div>
+<h2>تم استلام بياناتك!</h2>
+<p class="lead">وصلك إيميل تأكيد، وبنتواصل معك قريباً لتحديد موعد التصوير حسب جدولك وجدول الأستديو. متحمّسين لحلقتك في سَعي 🤍</p>
+</div>
+</section>
+</form>
+</main>
+<footer>بياناتك تُستخدم فقط لتحضير حلقتك في بودكاست سَعي · شكراً لثقتك</footer>
+</div>
+<script>
+// إعدادات Supabase — استقبال طلبات الضيوف
+const SUPABASE_URL = "https://rrerwhhxrjyzmnnjsfev.supabase.co";
+const SUPABASE_KEY = "sb_publishable_T-ka4hy2LVRjUuf0wUH9yA_g4Emxm13";
+const SUPABASE_TABLE = "guest_registrations";
+const form = document.getElementById('guestForm');
+const pages = Array.from(form.querySelectorAll('.page'));
+const inputPages = pages.filter(p => !p.dataset.final);
+const totalSteps = inputPages.length - 1;
+document.getElementById('stepTotal').textContent = totalSteps;
+let idx = 0;
+const fill = document.getElementById('fill');
+const pct = document.getElementById('pct');
+const stepNow = document.getElementById('stepNow');
+const progress = document.getElementById('progress');
+function show(i){
+pages.forEach((p,k)=>p.classList.toggle('active', k===i));
+idx = i;
+const isFinal = !!pages[i].dataset.final;
+progress.style.display = isFinal ? 'none' : 'block';
+const displayStep = Math.max(0, i);
+const shown = Math.min(i, totalSteps);
+stepNow.textContent = Math.max(1, shown);
+const ratio = Math.min(i, totalSteps) / totalSteps;
+fill.style.width = (ratio*100) + '%';
+pct.textContent = Math.round(ratio*100) + '%';
+window.scrollTo({top:0, behavior:'smooth'});
+}
+function validatePage(p){
+const reqs = p.querySelectorAll('[required]');
+for(const el of reqs){
+const ok = el.type==='checkbox' ? el.checked : String(el.value).trim()!=='';
+if(!ok){
+const err = p.querySelector('[data-err]');
+if(err) err.textContent = el.type==='checkbox'
+? 'لازم توافق على رسالة الالتزام للمتابعة.'
+: 'فيه حقل مطلوب لسه فاضي 🙏';
+el.focus();
+return false;
+}
+if(el.type==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)){
+const err=p.querySelector('[data-err]'); if(err) err.textContent='تأكد من صيغة البريد.';
+el.focus(); return false;
+}
+}
+const err = p.querySelector('[data-err]'); if(err) err.textContent='';
+return true;
+}
+form.addEventListener('click', (e)=>{
+if(e.target.matches('[data-next]')){
+if(validatePage(pages[idx])) show(idx+1);
+}
+if(e.target.matches('[data-prev]')) show(idx-1);
+});
+const noSocial = document.getElementById('noSocial');
+noSocial.addEventListener('change',()=>document.getElementById('socialBlock').classList.toggle('hidden', noSocial.checked));
+form.addEventListener('submit', async (e)=>{
+e.preventDefault();
+if(idx !== inputPages.length-1){ if(validatePage(pages[idx])) show(idx+1); return; }
+if(!validatePage(pages[idx])) return;
+const btn = document.getElementById('submitBtn');
+btn.disabled = true; btn.textContent='جاري الإرسال…';
+const data = Object.fromEntries(new FormData(form).entries());
+['no_social'].forEach(k=>{ if(form.elements[k]) data[k]=form.elements[k].checked; });
+data.submitted_at = new Date().toISOString();
+try{
+// 1) حفظ بيانات الضيف في قاعدة البيانات
+const res = await fetch(SUPABASE_URL+'/rest/v1/'+SUPABASE_TABLE, {
+method:'POST',
+headers:{
+'apikey': SUPABASE_KEY,
+'Authorization': 'Bearer '+SUPABASE_KEY,
+'Content-Type': 'application/json',
+'Prefer': 'return=minimal'
+},
+body: JSON.stringify(data)
+});
+if(!res.ok) throw new Error('HTTP '+res.status);
+// 2) إرسال إشعارات الإيميل (تنبيه لإبراهيم + تأكيد للضيف) عبر دالة guest-notify
+try{
+await fetch(SUPABASE_URL+'/functions/v1/guest-notify', {
+method:'POST',
+headers:{
+'apikey': SUPABASE_KEY,
+'Authorization': 'Bearer '+SUPABASE_KEY,
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+});
+}catch(_){ /* لا نمنع نجاح التسجيل لو تعذّر إرسال الإيميل */ }
+show(pages.length-1);
+}catch(err){
+const e2=pages[idx].querySelector('[data-err]');
+if(e2) e2.textContent='صار خطأ بالإرسال، حاول مرة ثانية.';
+btn.disabled=false; btn.textContent='أرسِل بياناتي ✓';
+}
+});
+show(0);
+</script>
+</body>
+</html>

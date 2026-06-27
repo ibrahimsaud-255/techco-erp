@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<style id="thmanyah-font">
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Black.woff2") format("woff2");font-weight:800 900;font-display:swap}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>الإعلام والتسويق — محترفو الخصوصية</title>
+<meta name="theme-color" content="#0a0a0b">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#f5a623;--gold2:#ffc24d;--ink:#0a0a0b;--panel:#141416;--soft:#1c1c20;--line:#2c2c31;--cream:#f4f4f5;--mut:#9b9ba3}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--cream);font-family:'Thmanyah Sans','Tajawal',system-ui,sans-serif;height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased}
+  .glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% -10%,rgba(245,166,35,.13),transparent 55%)}
+  /* الشريط العلوي */
+  .top{position:fixed;top:0;inset-inline:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(10,10,11,.8);backdrop-filter:blur(8px);z-index:20}
+  .top a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:700}
+  .top .t{font-size:14px;font-weight:800;color:var(--gold2)}
+  .top .c{font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+  /* الشرائح */
+  .deck{position:fixed;inset:54px 0 64px;overflow:hidden}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px 24px;opacity:0;pointer-events:none;transform:translateY(18px);transition:opacity .45s,transform .45s;overflow-y:auto}
+  .slide.on{opacity:1;pointer-events:auto;transform:none}
+  .kick{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
+  .slide h2{font-size:30px;font-weight:900;line-height:1.3;max-width:780px}
+  .slide h2 .g{color:var(--gold)}
+  .slide .lead{color:var(--mut);font-size:17px;max-width:620px;margin-top:14px}
+  /* بطاقات بصرية */
+  .grid{display:grid;gap:14px;margin-top:26px;width:100%;max-width:840px}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(2,1fr)}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+  .tile .ic{font-size:30px}.tile b{display:block;font-size:15px;margin:8px 0 4px}.tile span{color:var(--mut);font-size:13px}
+  .cover-ic{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-size:46px;background:linear-gradient(150deg,rgba(245,166,35,.28),rgba(245,166,35,.05));border:1px solid var(--line);margin-bottom:8px}
+  /* موك بصري */
+  .reel-row{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:flex-start;margin-top:24px}
+  .phone{width:180px;height:316px;border-radius:26px;border:3px solid #333;background:linear-gradient(160deg,#23201a,#0e0e10);position:relative;overflow:hidden;flex:none}
+  .phone .play{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,166,35,.92);display:grid;place-items:center;color:#1a1205;font-size:22px}
+  .phone .cap{position:absolute;inset-inline:12px;bottom:16px;font-size:13px;font-weight:800;text-shadow:0 1px 6px #000;text-align:right}
+  .phone .tg{position:absolute;top:12px;right:12px;font-size:11px;font-weight:800;color:var(--gold2)}
+  .carousel{width:240px;background:#fff;color:#16181c;border-radius:14px;overflow:hidden;flex:none;text-align:right}
+  .carousel .ch{background:#0a66c2;color:#fff;padding:9px 13px;font-size:12px;font-weight:800}
+  .carousel .cb{padding:16px 14px;font-size:14px;font-weight:700;min-height:140px}
+  .carousel .cf{padding:9px 13px;border-top:1px solid #e3e3e3;font-size:11px;color:#666;display:flex;justify-content:space-between;align-items:center}
+  .dots3{display:flex;gap:4px}.dots3 i{width:6px;height:6px;border-radius:50%;background:#cfcfcf}.dots3 i.on{background:#0a66c2}
+  /* تسعير */
+  .tier{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+  .tier.pop{border-color:var(--gold);background:#191915}
+  .tier .nm{font-weight:900;font-size:16px}
+  .tier .pr{font-size:24px;font-weight:900;color:var(--gold);margin:8px 0}.tier .pr small{font-size:12px;color:var(--mut);font-weight:700}
+  .tier ul{list-style:none;display:grid;gap:6px;text-align:right}
+  .tier li{font-size:12.5px;color:#d7d7db;padding-right:18px;position:relative}.tier li::before{content:"✓";position:absolute;right:0;color:var(--gold)}
+  .pop-b{display:inline-block;font-size:10px;font-weight:800;background:var(--gold);color:#1a1205;border-radius:20px;padding:2px 9px;margin-bottom:6px}
+  .note{font-size:12px;color:var(--mut);margin-top:16px;max-width:640px}
+  /* التنقّل */
+  .nav{position:fixed;bottom:0;inset-inline:0;height:64px;display:flex;align-items:center;justify-content:center;gap:18px;border-top:1px solid var(--line);background:rgba(10,10,11,.8);backdrop-filter:blur(8px);z-index:20}
+  .nav button{background:var(--panel);border:1px solid var(--line);color:var(--cream);width:46px;height:46px;border-radius:50%;font-size:20px;cursor:pointer;font-family:inherit}
+  .nav button:disabled{opacity:.35}
+  .nav button:active{border-color:var(--gold)}
+  .pdots{display:flex;gap:7px}
+  .pdots i{width:9px;height:9px;border-radius:50%;background:var(--line);cursor:pointer;transition:.2s}
+  .pdots i.on{background:var(--gold);transform:scale(1.25)}
+  @media(max-width:760px){.slide h2{font-size:24px}.g3{grid-template-columns:1fr}.slide .lead{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<div class="top">
+  <a href="./">‹ النطاقات</a>
+  <div class="t">📣 الإعلام والتسويق</div>
+  <div class="c"><span id="cur">1</span>/<span id="tot">7</span></div>
+</div>
+
+<div class="deck" id="deck">
+
+  <section class="slide on">
+    <div class="cover-ic">📣</div>
+    <div class="kick">النطاق الأول</div>
+    <h2>الإعلام <span class="g">والتسويق</span></h2>
+    <p class="lead">نحوّل خبرتكم النادرة إلى حضور بصري يبني السلطة ويجلب الجهات.</p>
+  </section>
+
+  <section class="slide">
+    <div class="kick">المشكلة</div>
+    <h2>تخصّص قوي… <span class="g">بلا صوت</span></h2>
+    <div class="grid g3">
+      <div class="tile"><div class="ic">🎥</div><b>صفر فيديو</b><span>لا حضور بصري للشركة</span></div>
+      <div class="tile"><div class="ic">📂</div><b>أصول نائمة</b><span>ملفات وورش لم تُستثمر</span></div>
+      <div class="tile"><div class="ic">🔇</div><b>اسم خافت</b><span>حضور أقل من قوة التخصّص</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">الفكرة</div>
+    <h2>أربعة محرّكات <span class="g">للحضور</span></h2>
+    <div class="grid g4">
+      <div class="tile"><div class="ic">🎓</div><b>الشركة كمرجع</b><span>محتوى تعليمي متخصّص باسم الشركة</span></div>
+      <div class="tile"><div class="ic">♻️</div><b>إعادة تدوير الأصول</b><span>الـPDF والورش → مقاطع</span></div>
+      <div class="tile"><div class="ic">🎤</div><b>مقابلات شارع</b><span>تبسيط أهمية البيانات</span></div>
+      <div class="tile"><div class="ic">🇸🇦</div><b>تموضع وطني</b><span>«الوحيدة سعودياً»</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">القناة الصحيحة</div>
+    <h2>جمهوركم <span class="g">جهات حكومية</span></h2>
+    <div class="grid g2">
+      <div class="tile"><div class="ic">💼</div><b>لينكدإن</b><span>محتوى السلطة للقرار المؤسسي</span></div>
+      <div class="tile"><div class="ic">📱</div><b>ريلز قصيرة</b><span>للوعي العام والانتشار</span></div>
+    </div>
+    <p class="lead">التركيز على بناء الثقة المهنية، لا مجرد المشاهدات.</p>
+  </section>
+
+  <section class="slide">
+    <div class="kick">النموذج الأولي</div>
+    <h2>شكل <span class="g">المحتوى</span></h2>
+    <div class="reel-row">
+      <div class="phone"><div class="tg">إبراهيم سعود</div><div class="play">▶</div><div class="cap">«بياناتك الشخصية… مين يحميها فعلاً؟»</div></div>
+      <div class="carousel">
+        <div class="ch">محترفو الخصوصية · LinkedIn</div>
+        <div class="cb">٣ أخطاء تقع فيها الجهات في حماية البيانات — والحل في السلايد التالي ←</div>
+        <div class="cf"><span>تمرير ←</span><div class="dots3"><i class="on"></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+    <p class="note">نموذج توضيحي — الشكل النهائي يُصمَّم بهويتكم.</p>
+  </section>
+
+  <section class="slide">
+    <div class="kick">طريقة العمل</div>
+    <h2>جهة واحدة <span class="g">مسؤولة</span></h2>
+    <p class="lead">إنتاج متكامل تستلمونه جاهزاً — بنقطة تواصل واحدة.</p>
+    <div class="grid g3">
+      <div class="tile"><div class="ic">🤝</div><b>نقطة تواصل واحدة</b><span>تتعاملون معي مباشرة، وأنا المسؤول أمامكم عن كل تسليم</span></div>
+      <div class="tile"><div class="ic">🔒</div><b>خصوصية في التنفيذ</b><span>التصوير والمقابلات في مقرّكم بشخص واحد موثوق — لا طاقم غرباء</span></div>
+      <div class="tile"><div class="ic">✅</div><b>تستلمون جاهزاً</b><span>إنتاج كامل خلف الكواليس — بلا إدارة فريق أو توظيف من طرفكم</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">الباقات الشهرية</div>
+    <h2>مقترح <span class="g">قابل للضبط</span></h2>
+    <div class="grid g3">
+      <div class="tier"><div class="nm">أساسية</div><div class="pr">7,500<small> ر.س</small></div>
+        <ul><li>٦ مقاطع قصيرة</li><li>٤ منشورات لينكدإن</li><li>إدارة + تقرير</li></ul></div>
+      <div class="tier pop"><span class="pop-b">الأنسب</span><div class="nm">احترافية</div><div class="pr">14,000<small> ر.س</small></div>
+        <ul><li>١٠ مقاطع</li><li>٦ كاروسيلات</li><li>مقابلة + تغطية ورشة</li><li>محتوى تعليمي متخصّص</li></ul></div>
+      <div class="tier"><div class="nm">متكاملة</div><div class="pr">22,000<small> ر.س</small></div>
+        <ul><li>إنتاج موسّع + حملة</li><li>فيديو تعريفي ربعي</li><li>أولوية تنفيذ</li></ul></div>
+    </div>
+    <p class="note">+ رسوم اكتشاف لمرة واحدة (٥–٨ آلاف). عقد ٣ أشهر، ٥٠٪ مقدّم + شهرياً مقدّماً.</p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" onclick="go(-1)">›</button>
+  <div class="pdots" id="pdots"></div>
+  <button id="next" onclick="go(1)">‹</button>
+</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0; const N=slides.length;
+  document.getElementById('tot').textContent=N;
+  const pdots=document.getElementById('pdots');
+  slides.forEach((_,k)=>{const d=document.createElement('i');d.onclick=()=>set(k);pdots.appendChild(d)});
+  function set(n){
+    i=Math.max(0,Math.min(N-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    [...pdots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+    document.getElementById('cur').textContent=i+1;
+    document.getElementById('prev').disabled=i===0;
+    document.getElementById('next').disabled=i===N-1;
+  }
+  function go(d){set(i+d)}
+  set(0);
+  // لوحة المفاتيح (RTL: اليسار=التالي)
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(1);if(e.key==='ArrowRight')go(-1)});
+  // اللمس
+  let x0=null;
+  document.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  document.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)go(dx<0?1:-1);x0=null},{passive:true});
+</script>
+</body>
+</html>

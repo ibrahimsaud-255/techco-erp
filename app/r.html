@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<style id="thmanyah-font">
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Black.woff2") format("woff2");font-weight:800 900;font-display:swap}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>غرفة المشروع — إبراهيم سعود</title>
+<meta name="theme-color" content="#0a0a0b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="غرفة المشروع">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root{--gold:#f5a623;--gold2:#ffc24d;--line:#2c2c31;--panel:#141416;--panel2:#1d1d20;--ink:#0a0a0b;--mut:#9b9ba3;--good:#22c55e;--bad:#ef4444;--warn:#f59e0b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:#f4f4f5;font-family:'Thmanyah Sans','Tajawal',system-ui,sans-serif;min-height:100vh}
+  a{color:var(--gold2)}
+  .wrap{max-width:720px;margin:0 auto;padding:20px 16px 80px}
+  .head{text-align:center;margin-bottom:18px}
+  .head .ico{font-size:46px;line-height:1}
+  .head h1{margin:6px 0 2px;font-size:22px;font-weight:900}
+  .head h1 .g{color:var(--gold)}
+  .head .sub{color:var(--mut);font-size:14px}
+  input,textarea{width:100%;background:#000;border:1px solid var(--line);border-radius:11px;color:#fff;font-family:inherit;font-size:15px;padding:11px;margin-top:8px}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px}
+  .card.ok{border-color:rgba(34,197,94,.4)}
+  .ttl{font-size:17px;font-weight:900;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pill{display:inline-block;font-size:11px;font-weight:800;border-radius:20px;padding:3px 10px;white-space:nowrap}
+  .pill.stage{background:rgba(99,102,241,.16);color:#a5b4fc}
+  .pill.ok{background:rgba(34,197,94,.16);color:#86efac}
+  .pill.warn{background:rgba(245,158,11,.16);color:#fcd34d}
+  .pill.bill{background:rgba(239,68,68,.16);color:#fca5a5}
+  .pill.inc{background:rgba(245,166,35,.14);color:var(--gold2)}
+  .lab{font-size:12px;font-weight:800;color:#8a8a92;margin:14px 0 4px}
+  .ver{display:flex;align-items:center;gap:8px;background:#000;border:1px solid var(--line);border-radius:11px;padding:11px}
+  .ver a{flex:1;font-weight:800}
+  .btn{border:none;border-radius:11px;padding:11px 14px;font-family:inherit;font-weight:800;font-size:14px;cursor:pointer}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205}
+  .btn.ghost{background:transparent;color:#cfcfd6;border:1px solid var(--line)}
+  .btn.good{background:var(--good);color:#05230f}
+  .btn:disabled{opacity:.5;cursor:default}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .row .btn{flex:1;min-width:120px}
+  .rev{display:flex;gap:8px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .rev:last-child{border:none}
+  .rev .n{flex:0 0 24px;height:24px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:800}
+  .rev.done .bd{text-decoration:line-through;color:var(--mut)}
+  .cmt{font-size:14px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .cmt:last-child{border:none}
+  .cmt .who{font-size:11px;font-weight:800;color:var(--gold2)}
+  .cmt.client .who{color:#a5b4fc}
+  .msg{margin:10px 0;font-size:14px;min-height:18px;font-weight:700;text-align:center}
+  .ok-t{color:var(--good)}.err-t{color:var(--bad)}
+  .empty{text-align:center;color:#6b6b73;padding:50px 16px}
+  .note{font-size:12px;color:#6b6b73;text-align:center;margin-top:22px;line-height:1.7}
+  .spin{display:inline-block;width:15px;height:15px;border:2px solid #1a1205;border-top-color:transparent;border-radius:50%;animation:r .7s linear infinite;vertical-align:-2px;margin-left:6px}
+  @keyframes r{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap" id="root"><div class="empty">جارٍ التحميل…</div></div>
+
+<script>
+const SUPA_URL='https://rrerwhhxrjyzmnnjsfev.supabase.co';
+const SUPA_KEY='sb_publishable_T-ka4hy2LVRjUuf0wUH9yA_g4Emxm13';
+const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
+const P=new URLSearchParams(location.search);
+const CT=P.get('c')||'';      // توكن العميل
+const FT=P.get('ft')||'';     // توكن الفريلانسر
+const $=id=>document.getElementById(id);
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function badLink(){$('root').innerHTML='<div class="empty"><div style="font-size:42px">🔒</div><p>رابط غير صالح أو منتهٍ.</p></div>'}
+function fmt(d){try{return new Date(d).toLocaleDateString('ar',{day:'numeric',month:'short'})}catch(e){return''}}
+
+/* ============ غرفة العميل ============ */
+async function loadClient(){
+  const {data,error}=await sb.rpc('room_get',{p_token:CT});
+  if(error||!data){badLink();return;}
+  const inc=data.revisions_included||0;
+  const dels=data.deliverables||[];
+  const ready=dels.filter(d=>d.version_url).length, appr=dels.filter(d=>d.approved).length;
+  const pct=dels.length?Math.round(ready/dels.length*100):0;
+  document.title='غرفة '+(data.project_title||'المشروع');
+  $('root').innerHTML=`
+    <div class="head"><div class="ico">🎙️</div>
+      <h1>غرفة <span class="g">${esc(data.project_title||'المشروع')}</span></h1>
+      <div class="sub">${esc(data.client_name||'')} · تابِع مخرجاتك واعتمدها أو اطلب تعديلاً</div></div>
+    ${dels.length?`<div class="card"><div style="display:flex;justify-content:space-between;font-size:13px;color:var(--mut)"><span>تقدّم المشروع</span><span><b style="color:#f4f4f5">${ready}/${dels.length}</b> جاهز · ${appr} معتمد</span></div>
+      <div style="height:9px;background:#000;border:1px solid var(--line);border-radius:6px;margin-top:8px;overflow:hidden"><i style="display:block;height:100%;width:${pct}%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:.4s"></i></div></div>`:''}
+    ${dels.length?dels.map(d=>clientCard(d,inc)).join(''):'<div class="empty">ما فيه مخرجات بعد — بنرفعها لك هنا أول بأول.</div>'}
+    <div class="note">💡 أضف هذي الصفحة لشاشتك الرئيسية لمتابعة مشروعك بضغطة. كل اعتماد أو تعديل يوصل إبراهيم فوراً.</div>`;
+}
+function clientCard(d,inc){
+  const used=d.rev_total||0;
+  const counter = used<inc
+    ? `<span class="pill inc">التعديلات ${used}/${inc} ضمن الباقة</span>`
+    : `<span class="pill warn">استهلكت الباقة (${inc}) — التعديل القادم مدفوع</span>`;
+  return `<div class="card ${d.approved?'ok':''}">
+    <div class="ttl">🎞️ ${esc(d.title)} ${d.stage?`<span class="pill stage">${esc(d.stage)}</span>`:''} ${d.approved?'<span class="pill ok">✓ معتمد</span>':''}</div>
+    <div class="lab">النسخة الحالية</div>
+    ${d.version_url
+      ? `<div class="ver"><a href="${esc(d.version_url)}" target="_blank" rel="noopener">▶ افتح الفيديو</a></div>${d.version_note?`<div style="font-size:13px;color:var(--mut);margin-top:6px">${esc(d.version_note)}</div>`:''}`
+      : `<div style="color:var(--mut);font-size:14px">لم تُرفع نسخة بعد.</div>`}
+    <div style="margin-top:12px">${counter}</div>
+    ${(d.revisions||[]).length?`<div class="lab">سجل التعديلات</div>${d.revisions.map(revRow).join('')}`:''}
+    ${d.version_url&&!d.approved?`<div class="row">
+      <button class="btn good" onclick="cApprove('${d.id}',this)">✅ اعتمد النسخة</button>
+      <button class="btn ghost" onclick="toggleBox('rb_${d.id}')">✍️ اطلب تعديلاً</button></div>`:''}
+    <div id="rb_${d.id}" style="display:none;margin-top:10px">
+      <textarea id="rt_${d.id}" rows="2" placeholder="اكتب التعديل المطلوب بوضوح (مثال: صغّر الشعار في الثانية ١٦)"></textarea>
+      <div class="row"><button class="btn gold" onclick="cRevise('${d.id}',this)">إرسال التعديل</button></div>
+    </div>
+    <div class="lab">المحادثة</div>
+    <div id="cm_${d.id}">${(d.comments||[]).map(cmtRow).join('')||'<div style="color:var(--mut);font-size:13px">لا تعليقات بعد.</div>'}</div>
+    <input id="ci_${d.id}" placeholder="اكتب تعليقاً…" onkeydown="if(event.key==='Enter')cComment('${d.id}',this)">
+    <div class="msg" id="ms_${d.id}"></div>
+  </div>`;
+}
+function revRow(r){return `<div class="rev ${r.status==='done'?'done':''}"><div class="n">${r.num}</div><div class="bd" style="flex:1">${esc(r.body)} ${r.billable?'<span class="pill bill">مدفوع</span>':''} ${r.status==='done'?'<span class="pill ok">تم</span>':'<span class="pill stage">قيد التنفيذ</span>'}</div></div>`}
+function cmtRow(c){return `<div class="cmt ${c.author}"><span class="who">${c.author==='freelancer'?'🎬 المنتج':(c.author==='owner'?'👤 إبراهيم':'🧑‍💼 '+esc(c.author_name||'العميل'))}</span> · <span style="color:var(--mut);font-size:11px">${fmt(c.created_at)}</span><div>${esc(c.body)}</div></div>`}
+function toggleBox(id){const e=$(id);e.style.display=e.style.display==='none'?'block':'none'}
+async function cApprove(task,btn){btn.disabled=true;const {data}=await sb.rpc('room_approve',{p_token:CT,p_task:task});if(data&&data.ok){loadClient()}else{btn.disabled=false;alert('تعذّر، حاول مرة أخرى')}}
+async function cRevise(task,btn){const t=$('rt_'+task);const v=t.value.trim();if(!v){t.focus();return}btn.disabled=true;btn.innerHTML='إرسال<span class="spin"></span>';const {data}=await sb.rpc('room_add_revision',{p_token:CT,p_task:task,p_body:v});if(data&&data.ok){if(data.billable)alert('⚠️ هذا تعديل إضافي خارج الباقة (مدفوع). أرسلناه لإبراهيم.');loadClient()}else{btn.disabled=false;btn.textContent='إرسال التعديل';alert('تعذّر الإرسال')}}
+async function cComment(task,inp){const v=inp.value.trim();if(!v)return;inp.disabled=true;const {data}=await sb.rpc('room_comment',{p_token:CT,p_task:task,p_name:'',p_body:v});inp.disabled=false;if(data&&data.ok){inp.value='';loadClient()}else{$('ms_'+task).innerHTML='<span class="err-t">تعذّر إرسال التعليق</span>'}}
+
+/* ============ غرفة الفريلانسر ============ */
+async function loadFreelancer(){
+  const {data,error}=await sb.rpc('fl_room',{p_token:FT});
+  if(error||!data){badLink();return;}
+  const dels=data.deliverables||[];
+  document.title='مهام '+(data.name||'');
+  $('root').innerHTML=`
+    <div class="head"><div class="ico">${esc(data.icon||'🎬')}</div>
+      <h1>غرفة <span class="g">${esc(data.name||'')}</span></h1>
+      <div class="sub">سلّم النسخ، نفّذ التعديلات، وعلّم «تم»</div></div>
+    ${dels.length?dels.map(flCard).join(''):'<div class="empty">لا مهام مُسندة لك حالياً 🎉</div>'}
+    <div class="note">💡 أضف هذي الصفحة لشاشتك الرئيسية. كل تسليم أو رد يوصل إبراهيم فوراً.</div>`;
+}
+function flCard(d){
+  const pend=(d.revisions||[]).filter(r=>r.status==='pending');
+  const done=(d.revisions||[]).filter(r=>r.status==='done');
+  return `<div class="card">
+    <div class="ttl">🎞️ ${esc(d.title)} ${d.stage?`<span class="pill stage">${esc(d.stage)}</span>`:''} ${d.approved?'<span class="pill ok">✓ اعتمده العميل</span>':''}</div>
+    ${d.project_title?`<div style="color:var(--mut);font-size:13px;margin-top:2px">${esc(d.project_title)}</div>`:''}
+    <div class="lab">النسخة المسلّمة</div>
+    ${d.version_url?`<div class="ver"><a href="${esc(d.version_url)}" target="_blank" rel="noopener">▶ ${esc(d.version_url).slice(0,46)}…</a></div>`:`<div style="color:var(--mut);font-size:14px">لم تسلّم نسخة بعد.</div>`}
+    <div id="vb_${d.id}" style="margin-top:8px">
+      <input id="vu_${d.id}" placeholder="رابط النسخة (Drive / WeTransfer …)" value="${esc(d.version_url||'')}">
+      <input id="vn_${d.id}" placeholder="ملاحظة مع التسليم (اختياري)" value="${esc(d.version_note||'')}">
+      <div class="row"><button class="btn gold" onclick="flSubmit('${d.id}',this)">📤 سلّم هذه النسخة</button></div>
+    </div>
+    ${pend.length?`<div class="lab">تعديلات مطلوبة (${pend.length})</div>${pend.map(r=>flRevRow(r)).join('')}`:'<div class="lab">لا تعديلات معلّقة ✓</div>'}
+    ${done.length?`<div class="lab" style="opacity:.6">منجزة (${done.length})</div>${done.map(revRow).join('')}`:''}
+    <div class="lab">المحادثة</div>
+    <div>${(d.comments||[]).map(cmtRow).join('')||'<div style="color:var(--mut);font-size:13px">لا تعليقات.</div>'}</div>
+    <input id="fci_${d.id}" placeholder="اكتب رداً للعميل/إبراهيم…" onkeydown="if(event.key==='Enter')flComment('${d.id}',this)">
+    <div class="msg" id="fms_${d.id}"></div>
+  </div>`;
+}
+function flRevRow(r){return `<div class="rev"><div class="n">${r.num}</div><div class="bd" style="flex:1">${esc(r.body)} ${r.billable?'<span class="pill bill">إضافي</span>':''}</div><button class="btn good" style="padding:5px 10px;font-size:12px" onclick="flRevDone('${r.id}',this)">✓ تم</button></div>`}
+async function flSubmit(task,btn){const u=$('vu_'+task).value.trim();if(!u){$('vu_'+task).focus();return}btn.disabled=true;btn.innerHTML='تسليم<span class="spin"></span>';const {data}=await sb.rpc('fl_submit_version',{p_token:FT,p_task:task,p_url:u,p_note:$('vn_'+task).value.trim()});if(data&&data.ok){loadFreelancer()}else{btn.disabled=false;btn.textContent='📤 سلّم هذه النسخة';alert('تعذّر التسليم')}}
+async function flRevDone(rev,btn){btn.disabled=true;const {data}=await sb.rpc('fl_revision_done',{p_token:FT,p_rev:rev});if(data&&data.ok){loadFreelancer()}else{btn.disabled=false;alert('تعذّر')}}
+async function flComment(task,inp){const v=inp.value.trim();if(!v)return;inp.disabled=true;const {data}=await sb.rpc('fl_comment',{p_token:FT,p_task:task,p_body:v});inp.disabled=false;if(data&&data.ok){inp.value='';loadFreelancer()}else{$('fms_'+task).innerHTML='<span class="err-t">تعذّر الإرسال</span>'}}
+
+/* ============ الإقلاع ============ */
+if(CT)loadClient();
+else if(FT)loadFreelancer();
+else badLink();
+</script>
+</body>
+</html>

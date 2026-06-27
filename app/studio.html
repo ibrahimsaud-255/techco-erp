@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>رادار المحتوى — إبراهيم سعود</title>
+<meta name="theme-color" content="#0a0a0b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="رادار المحتوى">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+  @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+  @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Black.woff2") format("woff2");font-weight:800 900;font-display:swap}
+  @font-face{font-family:"Thmanyah Serif";src:url("/fonts/thmanyah/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Thmanyah Serif";src:url("/fonts/thmanyah/thmanyahserifdisplay-Black.woff2") format("woff2");font-weight:800 900;font-display:swap}
+  :root{
+    --gold:#f5a623;--gold2:#ffc24d;--ink:#f4f4f5;--muted:#9b9ba3;--dim:#75757d;
+    --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.16);
+    --glass:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.022));
+    --glass2:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    --blur:blur(22px) saturate(160%);
+    --radius:18px;--shadow:0 18px 48px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{
+    color:var(--ink);font-family:'Thmanyah Sans','Tajawal',system-ui,sans-serif;line-height:1.6;
+    background:#07070a;min-height:100vh;-webkit-font-smoothing:antialiased;
+  }
+  /* خلفية ماك زجاجية ثابتة */
+  .bg{position:fixed;inset:0;z-index:-2;background:
+    linear-gradient(rgba(7,7,10,.62),rgba(7,7,10,.84)),
+    url("./wallpapers/tahoe-dark.jpg") center/cover no-repeat fixed;}
+  .bg::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(1100px 560px at 84% -14%,rgba(245,166,35,.16),transparent 60%),
+    radial-gradient(900px 520px at 0% 108%,rgba(99,102,241,.10),transparent 55%);}
+  a{color:var(--gold2);text-decoration:none}
+  .wrap{max-width:780px;margin:0 auto;padding:18px 16px 90px}
+  .serif{font-family:'Thmanyah Serif','Thmanyah Sans',serif}
+  .hidden{display:none}
+  .err{color:#ef4444}
+  /* عناصر زجاجية مشتركة */
+  .glass{background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  /* الترويسة */
+  header{display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:40;margin:-18px -16px 18px;padding:14px 16px;background:rgba(10,10,13,.55);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid var(--line)}
+  header h2{margin:0;font-size:21px;font-weight:900;letter-spacing:-.01em}
+  header h2 .g{color:var(--gold)}
+  .topbar{display:flex;gap:8px;align-items:center}
+  .glass-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.08);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border:1px solid var(--line2);border-radius:12px;padding:8px 13px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.16);transition:.15s}
+  .glass-btn:hover{background:rgba(255,255,255,.13)}
+  /* لوحة التحكم */
+  .panel{padding:18px 16px;margin-bottom:18px}
+  .panel-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:var(--muted);margin:0 0 12px}
+  .seg{display:flex;gap:6px;padding:5px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:15px}
+  .seg-mode{flex-wrap:wrap}
+  .seg .tab{flex:1 1 0;min-width:74px;text-align:center;font-size:13px;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:11px;padding:10px 6px;cursor:pointer;background:none;transition:.16s;white-space:nowrap}
+  .seg .tab:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+  .seg .tab.on{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205;border-color:rgba(255,255,255,.25);box-shadow:0 6px 16px rgba(245,166,35,.32),inset 0 1px 0 rgba(255,255,255,.4)}
+  #adBrief{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+  input{width:100%;background:rgba(0,0,0,.32);border:1px solid var(--line2);border-radius:12px;color:#fff;font-family:inherit;font-size:15px;padding:12px 14px}
+  input::placeholder{color:var(--dim)}
+  input:focus{outline:none;border-color:var(--gold);background:rgba(0,0,0,.45)}
+  .gen{margin-top:14px;width:100%;border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:15px;font-family:inherit;font-weight:900;font-size:17px;color:#1a1205;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold2));box-shadow:0 12px 30px rgba(245,166,35,.34),inset 0 1px 0 rgba(255,255,255,.45);transition:.15s}
+  .gen:hover{filter:brightness(1.05)} .gen:active{transform:translateY(1px)} .gen:disabled{opacity:.65;cursor:default}
+  .note{color:var(--dim);font-size:12.5px;text-align:center;margin:11px 2px 0;line-height:1.7}
+  .msg{margin-top:10px;font-size:14px;min-height:0;font-weight:700;text-align:center}
+  .msg:empty{margin:0}
+  /* شريط التصفية */
+  .filterbar{margin-bottom:16px;position:sticky;top:62px;z-index:30}
+  /* بطاقة فكرة */
+  .card{background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px;transition:.18s}
+  .card:hover{border-color:var(--line2)}
+  .card.used{opacity:.5}
+  .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .badge{font-size:11px;font-weight:800;background:linear-gradient(135deg,rgba(245,166,35,.22),rgba(245,166,35,.08));color:var(--gold2);border:1px solid rgba(245,166,35,.3);border-radius:20px;padding:4px 11px}
+  .src{font-size:12px;color:var(--dim)}
+  a.src:hover{color:var(--gold2)}
+  .field{margin-top:14px}
+  .field .lab{font-size:11.5px;font-weight:800;color:var(--muted);display:flex;align-items:center;justify-content:space-between;gap:8px;text-transform:none;letter-spacing:.01em}
+  .field .val{margin-top:5px;font-size:15px;line-height:1.9;white-space:pre-wrap}
+  .hook{background:linear-gradient(135deg,rgba(245,166,35,.12),rgba(245,166,35,.03));border:1px solid rgba(245,166,35,.22);border-radius:14px;padding:12px 14px}
+  .hook .lab{color:var(--gold2)}
+  .hook .val{color:var(--gold2);font-weight:800;font-size:16px}
+  .script .val{background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{font-size:12px;background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:20px;padding:5px 11px;color:#dadade}
+  .copy{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.07);border:1px solid var(--line2);color:var(--muted);border-radius:9px;font-family:inherit;font-weight:700;font-size:11.5px;padding:4px 10px;cursor:pointer;transition:.14s}
+  .copy:hover{color:var(--ink);background:rgba(255,255,255,.13)}
+  .copy:active{color:var(--gold2)}
+  .actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  .actions button{flex:1 1 0;min-width:110px;background:rgba(255,255,255,.06);border:1px solid var(--line2);color:#dadade;border-radius:11px;font-family:inherit;font-weight:700;font-size:13px;padding:10px;cursor:pointer;transition:.14s}
+  .actions button:hover{background:rgba(255,255,255,.12);color:var(--ink)}
+  .actions button:active{border-color:var(--gold)}
+  .empty{text-align:center;color:var(--muted);padding:48px 20px;font-size:14.5px;line-height:1.8}
+  .empty .ic{font-size:34px;display:block;margin-bottom:10px;opacity:.7}
+  .month-head{display:flex;align-items:center;justify-content:space-between;margin:24px 2px 12px;font-size:15px;font-weight:900;color:var(--gold2);padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .month-head .cnt{font-size:12px;font-weight:800;color:var(--muted);background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:20px;padding:3px 11px}
+  .spin{display:inline-block;width:16px;height:16px;border:2px solid #1a1205;border-top-color:transparent;border-radius:50%;animation:r .7s linear infinite;vertical-align:-3px;margin-left:6px}
+  @keyframes r{to{transform:rotate(360deg)}}
+  /* أحجام أيقونات lucide داخل العناصر */
+  .tab svg,.glass-btn svg,.panel-title svg,.copy svg,.actions button svg{width:16px;height:16px;vertical-align:-3px;margin-left:5px}
+  .gen svg{width:18px;height:18px;vertical-align:-3px;margin-left:7px}
+  h2 svg{width:22px;height:22px;vertical-align:-4px;margin-left:6px;color:var(--gold)}
+  .panel-title svg{color:var(--gold2)}
+  .src svg{width:13px;height:13px;vertical-align:-2px;margin-left:3px}
+  .empty .ic svg{width:36px;height:36px}
+  @media(max-width:560px){
+    header h2{font-size:18px}
+    .seg .tab{min-width:0;flex-basis:auto;padding:9px 4px;font-size:12px}
+    .card{padding:15px}
+    .actions button{min-width:0}
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<!-- ============ التطبيق (بدون تسجيل دخول) ============ -->
+<div id="appShell">
+  <div class="wrap">
+    <header>
+      <h2 class="serif"><i data-lucide="radar"></i> رادار <span class="g">المحتوى</span></h2>
+      <div class="topbar">
+        <a class="glass-btn" href="./index.html">↩ اللوحة</a>
+      </div>
+    </header>
+
+    <!-- لوحة التوليد -->
+    <section class="panel glass">
+      <p class="panel-title"><i data-lucide="sliders-horizontal"></i> اختر نوع المحتوى وولّد</p>
+      <div class="seg seg-mode">
+        <button class="tab on" id="modeNews" onclick="setMode('news')"><i data-lucide="newspaper"></i> أخبار</button>
+        <button class="tab" id="modeMarketing" onclick="setMode('marketing')"><i data-lucide="trending-up"></i> تسويق</button>
+        <button class="tab" id="modeStory" onclick="setMode('story')"><i data-lucide="book-open"></i> قصص</button>
+        <button class="tab" id="modeAd" onclick="setMode('ad')"><i data-lucide="pen-line"></i> إعلان</button>
+      </div>
+
+      <div id="adBrief" class="hidden">
+        <input id="adClient" placeholder="المنتج أو الجهة (مثال: متجر فيه للحاسبات)">
+        <input id="adField" placeholder="المجال (مثال: متجر تقني / مطعم / تطبيق)">
+        <input id="adGoal" placeholder="هدف الإعلان أو الجمهور (مثال: زيادة مبيعات الجمعة البيضاء)">
+      </div>
+
+      <button class="gen" id="btnGen" onclick="generate()">ولّد أفكار اليوم</button>
+      <p class="note" id="genNote">يبحث في أهم أخبار التقنية والأعمال والتسويق والبودكاست، ويكتبها سكربتات جاهزة بلهجتك.</p>
+      <div class="msg err" id="gerr"></div>
+    </section>
+
+    <!-- شريط التصفية -->
+    <div class="seg filterbar">
+      <button class="tab on" data-tab="new" onclick="setTab('new')"><i data-lucide="sparkles"></i> جديدة</button>
+      <button class="tab" data-tab="used" onclick="setTab('used')"><i data-lucide="clapperboard"></i> مصوّرة</button>
+      <button class="tab" data-tab="unsuitable" onclick="setTab('unsuitable')"><i data-lucide="ban"></i> غير مناسبة</button>
+      <button class="tab" data-tab="all" onclick="setTab('all')"><i data-lucide="library"></i> الكل</button>
+    </div>
+
+    <div id="list"></div>
+  </div>
+</div>
+
+<script>
+const SUPA_URL='https://rrerwhhxrjyzmnnjsfev.supabase.co';
+const SUPA_KEY='sb_publishable_T-ka4hy2LVRjUuf0wUH9yA_g4Emxm13';
+const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
+let TAB='new', MODE='news', ITEMS=[];
+
+const MODE_CFG={
+  news:{ btn:'ولّد أخبار اليوم', note:'يقرأ أهم أخبار التقنية والأعمال والشركات الناشئة، ويطلّع ملخصاً وأهم النقاط والأرقام — تقرأها وتصوّر بفهمك.', loading:'جارٍ قراءة الأخبار وتلخيصها...' },
+  marketing:{ btn:'ولّد أفكار تسويق', note:'مبادئ من كتب التسويق المشهورة + تطبيقها على السوق المحلي — مرتبطة بخدمة إنتاج الإعلانات.', loading:'جارٍ توليد أفكار التسويق...' },
+  story:{ btn:'ولّد قصصاً', note:'قصص واقعية مؤصّلة بمصادر من العالم العربي والعالمي في مجالاتك — جاهزة للسرد أمام الكاميرا.', loading:'جارٍ اختيار القصص وكتابتها...' },
+  ad:{ btn:'ولّد نصوصاً إعلانية', note:'اكتب المنتج/الجهة والهدف فوق، ويبني لك ٣ نسخ إعلانية بإطارك: هوك يوقف التمرير ← محتوى (احتياج ثم حل) ← تفاعل. بلهجتك السعودية.', loading:'جارٍ كتابة النصوص الإعلانية...' },
+};
+
+const $=id=>document.getElementById(id);
+function gerr(t){$('gerr').textContent=t||''}
+function busy(id,b){const el=$(id);if(el)el.disabled=b}
+
+// ===== الوضع: أخبار / قصص =====
+function setMode(m){
+  MODE=m;gerr('');
+  $('modeNews').classList.toggle('on',m==='news');
+  $('modeMarketing').classList.toggle('on',m==='marketing');
+  $('modeStory').classList.toggle('on',m==='story');
+  $('modeAd').classList.toggle('on',m==='ad');
+  $('adBrief').classList.toggle('hidden',m!=='ad');
+  $('btnGen').textContent=MODE_CFG[m].btn;
+  $('genNote').textContent=MODE_CFG[m].note;
+  loadArchive();
+}
+
+// ===== التوليد =====
+async function generate(){
+  gerr('');
+  let payload={count:5,mode:MODE};
+  if(MODE==='ad'){
+    const client=$('adClient').value.trim();
+    if(!client){gerr('اكتب اسم المنتج أو الجهة أولاً.');return;}
+    payload={count:3,mode:'ad',brief:{client,field:$('adField').value.trim(),goal:$('adGoal').value.trim()}};
+  }
+  busy('btnGen',true);
+  $('btnGen').innerHTML=MODE_CFG[MODE].loading+'<span class="spin"></span>';
+  try{
+    const r=await fetch(SUPA_URL+'/functions/v1/content-radar',{
+      method:'POST',
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    const d=await r.json();
+    if(!r.ok){gerr(d.error||'تعذّر التوليد، حاول مرة أخرى.');}
+    else{TAB='new';syncTabs();await loadArchive();}
+  }catch(e){gerr('تعذّر الاتصال بالخادم.');}
+  busy('btnGen',false);
+  $('btnGen').textContent=MODE_CFG[MODE].btn;
+}
+
+// ===== الأرشيف والعرض =====
+async function loadArchive(){
+  let q=sb.from('content_ideas').select('*').eq('kind',MODE).order('created_at',{ascending:false}).limit(300);
+  if(TAB!=='all')q=q.eq('status',TAB);
+  const {data,error}=await q;
+  ITEMS=error?[]:(data||[]);
+  render();
+}
+function setTab(t){TAB=t;syncTabs();loadArchive()}
+function syncTabs(){document.querySelectorAll('.tab[data-tab]').forEach(b=>b.classList.toggle('on',b.dataset.tab===TAB))}
+
+async function setStatus(id,status){
+  await sb.from('content_ideas').update({status}).eq('id',id);
+  await loadArchive();
+}
+function refreshIcons(){try{if(window.lucide)lucide.createIcons()}catch(e){}}
+function copy(btn,text){navigator.clipboard.writeText(text).then(()=>{const o=btn.innerHTML;btn.textContent='نُسخ';setTimeout(()=>{btn.innerHTML=o;refreshIcons()},1200)})}
+
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+
+function card(x){
+  const foot=(x.footage||[]).map(f=>`<span class="chip">${esc(f)}</span>`).join('');
+  const tags=(x.hashtags||[]).map(h=>`<span class="chip">${esc(h)}</span>`).join('');
+  const used=x.status==='used'||x.status==='archived';
+  const unsuitable=x.status==='unsuitable';
+  const isStory=x.kind==='story';
+  const bodyLab=x.kind==='story'?'القصة':(x.kind==='marketing'?'الفكرة والمحتوى':(x.kind==='ad'?'النص الإعلاني (هوك ← محتوى ← تفاعل)':'الملخص وأهم النقاط'));
+  const hookLab=x.kind==='ad'?'٣ هوكات بديلة — اختبرها':'الخطّاف (أول ٣ ثواني)';
+  const fullCopy=`الهوك: ${x.hook}\n\n${bodyLab}:\n${x.script}\n\nعنوان الشاشة: ${x.screen_title}\n\nهاشتاقات: ${(x.hashtags||[]).join(' ')}`;
+  return `<div class="card ${used||unsuitable?'used':''}">
+    <div class="meta">
+      <span class="badge">${esc(x.topic||'')}</span>
+      ${x.source_pub?`<span class="src">${esc(x.source_pub)}</span>`:''}
+      ${x.source_url?`<a class="src" href="${esc(x.source_url)}" target="_blank" rel="noopener">المصدر ↗</a>`:''}
+    </div>
+    ${x.source_title?`<div class="src" style="font-weight:800;color:#cfcfd6">${esc(x.source_title)}</div>`:''}
+    ${x.virality?`<div class="src"><i data-lucide="zap"></i> ${esc(x.virality)}</div>`:''}
+    <div class="field hook"><div class="lab">${hookLab}</div><div class="val">${esc(x.hook)}</div></div>
+    <div class="field script"><div class="lab">${bodyLab} <button class="copy" onclick='copy(this,${JSON.stringify(x.script||"")})'>نسخ</button></div><div class="val">${esc(x.script)}</div></div>
+    <div class="field"><div class="lab">عنوان على الشاشة <button class="copy" onclick='copy(this,${JSON.stringify(x.screen_title||"")})'>نسخ</button></div><div class="val">${esc(x.screen_title)}</div></div>
+    ${foot?`<div class="field"><div class="lab">كلمات بحث للقطات الفوقية (B-roll)</div><div class="chips">${foot}</div></div>`:''}
+    ${tags?`<div class="field"><div class="lab">هاشتاقات</div><div class="chips">${tags}</div></div>`:''}
+    ${x.service_tie?`<div class="field"><div class="lab">الربط بخدمتك: ${esc(x.service_tie)}</div><div class="val">${esc(x.cta||'')}</div></div>`:''}
+    <div class="actions">
+      <button onclick='copy(this,${JSON.stringify(fullCopy)})'><i data-lucide="clipboard-copy"></i> انسخ الكل</button>
+      ${used || unsuitable
+        ? `<button onclick="setStatus('${x.id}','new')"><i data-lucide="rotate-ccw"></i> رجّعها جديدة</button>`
+        : `<button onclick="setStatus('${x.id}','used')"><i data-lucide="clapperboard"></i> صوّرتها</button>
+           <button onclick="setStatus('${x.id}','unsuitable')"><i data-lucide="ban"></i> غير مناسب</button>`}
+    </div>
+  </div>`;
+}
+const MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+function render(){
+  const list=$('list');
+  if(!ITEMS.length){
+    const w=MODE==='story'?'قصص':(MODE==='marketing'?'أفكار تسويقية':(MODE==='ad'?'نصوص إعلانية':'أفكار'));
+    const msg={new:'ما فيه '+w+' جديدة — اضغط زر التوليد فوق.',used:'ما صوّرت شي بعد في هذا القسم.',unsuitable:'ما فيه شي في «غير مناسبة».',all:'الأرشيف فاضي.'}[TAB];
+    const eic={new:'sparkles',used:'clapperboard',unsuitable:'ban',all:'inbox'}[TAB];
+    list.innerHTML=`<div class="empty glass" style="padding:48px 20px"><span class="ic"><i data-lucide="${eic}"></i></span>${msg}</div>`;refreshIcons();return;
+  }
+  // تجميع حسب الشهر والسنة الميلادية (البيانات مرتّبة من الأحدث)
+  const groups=[];
+  for(const x of ITEMS){
+    const d=new Date(x.created_at), key=d.getFullYear()+'-'+d.getMonth();
+    let g=groups[groups.length-1];
+    if(!g||g.key!==key){g={key,label:MONTHS[d.getMonth()]+' '+d.getFullYear(),items:[]};groups.push(g);}
+    g.items.push(x);
+  }
+  list.innerHTML=groups.map(g=>
+    `<div class="month-head">${g.label}<span class="cnt">${g.items.length}</span></div>`+
+    g.items.map(card).join('')
+  ).join('');
+  refreshIcons();
+}
+
+// ===== ربط الخلفية بإعداد النظام (مشترك عبر localStorage نفس الأصل) =====
+const WALL_PRESETS={
+  none:'#07070a',
+  aurora:'radial-gradient(1200px 620px at 82% -12%, rgba(245,166,35,.22), transparent 60%), radial-gradient(900px 520px at 0% 100%, rgba(99,102,241,.14), transparent 55%), #0a0a0b',
+  noir:'radial-gradient(1000px 720px at 50% -5%, #18181c, #0a0a0b 72%)',
+  sand:'linear-gradient(160deg, #15110a 0%, #0a0a0b 60%)',
+  mesh:'radial-gradient(620px 420px at 14% 18%, rgba(245,166,35,.13), transparent 60%), radial-gradient(720px 520px at 86% 82%, rgba(45,212,191,.11), transparent 60%), #0a0a0b',
+  royal:'radial-gradient(900px 600px at 100% 0%, rgba(168,85,247,.18), transparent 55%), #0a0a0b',
+};
+function applySystemWallpaper(){
+  const bg=document.querySelector('.bg');if(!bg)return;
+  let s=null;try{s=JSON.parse(localStorage.getItem('ibsaud_erp_v1')||'null')}catch(e){}
+  const w=s&&s.settings&&s.settings.wallpaper;
+  if(!w)return; // ما فيه إعداد محفوظ → نُبقي الخلفية الافتراضية من الـ CSS
+  const OV='linear-gradient(rgba(7,7,10,.60),rgba(7,7,10,.82))';
+  if(w.type==='url'&&w.url){bg.style.background=`${OV}, url("${w.url}") center/cover no-repeat fixed`;}
+  else if(w.type==='image'){let val=w.value;if(!val&&w.id&&s.settings.wallpapers){const f=s.settings.wallpapers.find(x=>x.id===w.id);val=f&&f.value;}if(val)bg.style.background=`${OV}, url("${val}") center/cover no-repeat fixed`;}
+  else if(w.type==='preset'){bg.style.background=WALL_PRESETS[w.key]||'#07070a';bg.style.backgroundAttachment='fixed';}
+  else if(w.type==='none'){bg.style.background='#07070a';}
+}
+// تحديث فوري لو تغيّرت الخلفية من النظام في تبويب آخر، أو عند العودة للصفحة
+window.addEventListener('storage',e=>{if(e.key==='ibsaud_erp_v1')applySystemWallpaper()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)applySystemWallpaper()});
+
+// الإقلاع — يفتح مباشرة بلا تسجيل دخول
+applySystemWallpaper();
+setMode('news');
+refreshIcons();
+</script>
+</body>
+</html>
