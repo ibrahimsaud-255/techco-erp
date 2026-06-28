@@ -25,14 +25,13 @@ python3 -m http.server 8000
 
 | المجلد/الملف | الوصف |
 |---|---|
-| `index.html` | صفحة تحويل للنظام (`/app/`) |
-| `app/index.html` | **النظام الداخلي الكامل** (CRM، فوترة، منتجات، مدفوعات، تحليلات، تقويم، مدونة) |
-| `app/studio.html` · `c.html` · `r.html` | صفحات مساندة للنظام |
+| `index.html` | **الصفحة التعريفية «قريباً»** لـ sa3ypodcast.com + زر دخول للنظام |
+| `app/index.html` | **النظام الداخلي الكامل** (CRM، فوترة، منتجات، مدفوعات، تحليلات، تقويم) — على `/app/` |
+| `app/c.html` · `app/r.html` | صفحتا غرفة العميل/الفريلانسر (وصول بالتوكن) |
 | `app/wallpapers/` | خلفيات الواجهة |
 | `admin/index.html` | **لوحة التحكم المركزية** (Super-Admin) — للشركاء فقط |
-| `blog/` `prompts/` `identity/` `ppros/` `register/` | صفحات مرتبطة من النظام |
-| `fonts/` | خط الواجهة |
-| `supabase/` | ملفات قاعدة البيانات (SQL): `00_base` الأساس · `_apply_all` الموحّد · `10_tenancy` طبقة العملاء + الدوال |
+| `fonts/` | خط الواجهة (Thmanyah) |
+| `supabase/` | ملفات قاعدة البيانات (SQL): `00_base` · `_apply_all` · `10_tenancy` · `30_tenant_isolation` · `40_remove_content_apps` |
 | `docs/الأساس-المعماري.md` | وثيقة الرؤية والمعمارية وخارطة الطريق |
 | `logo.png` | الشعار (مؤقت — استبدله بشعار الشركة) |
 | `deploy.sh` · `DEPLOY.md` | النشر |

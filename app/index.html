@@ -698,11 +698,9 @@ const FULL_APPS=[
   {id:'appointments',name:'المواعيد',icon:'calendar-clock'},
   {id:'calendar',name:'التقويم',icon:'calendar-days'},
   {id:'projects',name:'المشروع',icon:'clapperboard'},
-  {id:'blog',name:'المدونة',icon:'newspaper'},
-  {id:'guests',name:'ضيوف سَعي',icon:'mic'},
 ];
 const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings};
-const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'radar',name:'رادار المحتوى',icon:'radar',href:'./studio.html'},{id:'team',name:'الفريق',icon:'users'}];
+const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'team',name:'الفريق',icon:'users'}];
 
 /* ===== LAUNCHPAD (شبكة التطبيقات + خلفية لكل أيقونة) ===== */
 const FULL_LAUNCH=[
@@ -717,12 +715,7 @@ const FULL_LAUNCH=[
   {id:'appointments',name:'المواعيد',icon:'calendar-clock',c:'#a855f7,#7c3aed'},
   {id:'calendar',name:'التقويم',icon:'calendar-days',c:'#ef4444,#dc2626'},
   {id:'projects',name:'المشروع',icon:'clapperboard',c:'#f43f5e,#e11d48'},
-  {id:'blog',name:'المدونة',icon:'newspaper',c:'#0ea5e9,#0369a1'},
-  {id:'guests',name:'ضيوف سَعي',icon:'mic',c:'#10b981,#059669'},
   {id:'team',name:'الفريق',icon:'users',c:'#64748b,#475569'},
-  {id:'radar',name:'رادار المحتوى',icon:'radar',href:'./studio.html',c:'#06b6d4,#0891b2'},
-  {id:'prompts',name:'مكتبة البرومتات',icon:'library',href:'../prompts/',c:'#eab308,#a16207'},
-  {id:'identity',name:'الهوية البصرية',icon:'palette',href:'../identity/',c:'#d946ef,#a21caf'},
 ];
 let APPS=FULL_APPS, NAV=FULL_NAV, LAUNCH=FULL_LAUNCH;
 function appOn(id){return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
@@ -917,17 +910,6 @@ function renderHome(){
       <div class="stat"><span class="ic"><i data-lucide="list-checks"></i></span><div class="v">${S.crm.length}</div><div class="l">مهام</div></div>
     </div>
     <div class="grid">
-      <div class="card"><h3><i data-lucide="presentation"></i> عروضي وأدواتي</h3>
-        <div style="display:flex;flex-direction:column;gap:9px">
-          <a href="../ppros/" target="_blank" style="color:var(--gold2);font-weight:700"><span class="inl"><i data-lucide="monitor-play"></i></span> عرض محترفو الخصوصية (تقديمي)</a>
-          <a href="../ppros/media.html" target="_blank" style="color:var(--muted);font-size:13px"><span class="inl"><i data-lucide="corner-down-left"></i></span> الإعلام والتسويق</a>
-          <a href="../ppros/ai.html" target="_blank" style="color:var(--muted);font-size:13px"><span class="inl"><i data-lucide="corner-down-left"></i></span> الذكاء الاصطناعي الداخلي</a>
-          <a href="../ppros/edu.html" target="_blank" style="color:var(--muted);font-size:13px"><span class="inl"><i data-lucide="corner-down-left"></i></span> المنصة التعليمية</a>
-          <a href="./studio.html" style="color:var(--gold2);font-weight:700;border-top:1px solid var(--line);padding-top:9px"><span class="inl"><i data-lucide="clapperboard"></i></span> مولّد المحتوى والنصوص الإعلانية</a>
-          <a href="../prompts/" target="_blank" style="color:var(--gold2);font-weight:700;border-top:1px solid var(--line);padding-top:9px"><i data-lucide="library" style="width:15px;height:15px;display:inline-block;vertical-align:-2px"></i> مكتبة البرومتات (احفظ وانسخ)</a>
-          <a href="../identity/" target="_blank" style="color:var(--gold2);font-weight:700;border-top:1px solid var(--line);padding-top:9px"><i data-lucide="palette" style="width:15px;height:15px;display:inline-block;vertical-align:-2px"></i> دليل الهوية البصرية</a>
-        </div>
-      </div>
       <div class="card"><h3>آخر الفواتير</h3>${miniList(S.invoices.slice(-5).reverse(),i=>`${esc(i.client)} — ${money(invTotal(i))} ${pill(i.status)}`,'لا فواتير')}</div>
       <div class="card"><h3>مواعيد قادمة</h3>${miniList(upcoming.slice(0,5),a=>`${esc(a.title)} — ${a.datetime.replace('T',' ')}`,'لا مواعيد')}</div>
       <div class="card"><h3>مهام معلّقة</h3>${miniList(S.projects.flatMap(p=>(p.tasks||[]).filter(t=>!t.done).map(t=>esc(t.title)+(t.assignee?' · '+esc(t.assignee):''))).slice(0,6),x=>x,'لا مهام')}</div>
