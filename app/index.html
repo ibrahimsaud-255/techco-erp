@@ -518,6 +518,7 @@ const SUPA_URL='https://hdzzulhszeemxfhtgqmd.supabase.co';
 const SUPA_KEY='sb_publishable_GG7Gdn_GIvNXAtKF2hJLqQ_rznycnDM';
 const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
 let STATE_ID=null, USER=null, saveTimer=null;
+let TENANTS=[], CURRENT_TENANT=null, ENABLED_APPS=null;
 
 /* ===== STATE ===== */
 const KEY='techco_erp_v1';
@@ -592,16 +593,29 @@ function showReset(){document.getElementById('loginView').classList.add('hidden'
 function pwStrength(){const v=document.getElementById('np1').value;let s=0;if(v.length>=8)s++;if(v.length>=12)s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;if(/[A-Z]/.test(v)&&/[a-z]/.test(v))s++;const bar=document.getElementById('pwBar');const col=s<=1?'var(--bad)':s<=2?'var(--warn)':s<=3?'var(--gold)':'var(--good)';bar.style.width=Math.min(100,s*22)+'%';bar.style.background=col;document.getElementById('pwHint').textContent=v.length<8?'قصيرة جدًا — 8 أحرف على الأقل.':s<=2?'ضعيفة — أضف أرقامًا ورموزًا وحروفًا كبيرة.':s<=3?'متوسطة — يمكن تقويتها أكثر.':'قوية'}
 async function doSetNewPassword(){const p1=document.getElementById('np1').value;const p2=document.getElementById('np2').value;rerr('');if(p1.length<8){rerr('كلمة المرور يجب أن تكون 8 أحرف على الأقل.');return}if(p1!==p2){rerr('كلمتا المرور غير متطابقتين.');return}busy('btnReset',true);rmsg('جارٍ الحفظ...');const {data,error}=await sb.auth.updateUser({password:p1});busy('btnReset',false);if(error){rmsg('');rerr('تعذّر الحفظ: '+authMsg(error.message)+' — قد يكون الرابط منتهيًا، اطلب رابطًا جديدًا.');return}rmsg('تم تحديث كلمة المرور');RECOVERY_MODE=false;history.replaceState(null,'',location.origin+location.pathname);document.getElementById('resetView').classList.add('hidden');await enterApp(data.user)}
 const ADMIN_EMAIL='ibrahimsaud25@gmail.com';
-async function enterApp(user){if(USER&&user&&USER.id===user.id)return;if(!user.email||user.email.toLowerCase()!==ADMIN_EMAIL){await sb.auth.signOut();lmsg('');lerr('هذا النظام مخصّص لحساب المدير فقط ('+ADMIN_EMAIL+'). الفريلانسرز يدخلون عبر روابطهم الخاصة.');return}USER=user;lmsg('جارٍ تحميل بياناتك...');try{await loadCloud();await loadFreelancers();migrateData();save()}catch(e){lerr('تعذّر تحميل البيانات: '+e.message);lmsg('');return}lmsg('');document.getElementById('loginView').classList.add('hidden');document.getElementById('appShell').classList.remove('hidden');renderNav();initSidebarShell();applyBranding();const dt=document.getElementById('ctDate');if(dt)dt.textContent=new Date().toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'});go('home')}
+async function enterApp(user){if(USER&&user&&USER.id===user.id)return;lmsg('جارٍ تجهيز مساحة العمل...');try{
+    const {data:mt,error:te}=await sb.rpc('my_tenants');if(te)throw te;
+    TENANTS=mt||[];
+    if(!TENANTS.length){await sb.auth.signOut();lmsg('');lerr('حسابك غير مرتبط بأي مساحة عمل بعد. تواصل مع مدير المنصّة.');return}
+    const saved=localStorage.getItem('current_tenant');
+    CURRENT_TENANT=((TENANTS.find(t=>t.tenant_id===saved))||TENANTS[0]).tenant_id;
+    localStorage.setItem('current_tenant',CURRENT_TENANT);
+    const {data:ta}=await sb.from('tenant_apps').select('app_key,enabled').eq('tenant_id',CURRENT_TENANT);
+    ENABLED_APPS=new Set((ta||[]).filter(r=>r.enabled).map(r=>r.app_key));
+    applyTenantApps();
+    USER=user;lmsg('جارٍ تحميل بياناتك...');
+    await loadCloud();await loadFreelancers();migrateData();save();
+  }catch(e){lerr('تعذّر التحميل: '+(e.message||e));lmsg('');return}
+  lmsg('');document.getElementById('loginView').classList.add('hidden');document.getElementById('appShell').classList.remove('hidden');buildTenantSwitcher();renderNav();initSidebarShell();applyBranding();const dt=document.getElementById('ctDate');if(dt)dt.textContent=new Date().toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'});go('home')}
 async function logout(){await sb.auth.signOut();USER=null;STATE_ID=null;document.getElementById('appShell').classList.add('hidden');document.getElementById('loginView').classList.remove('hidden')}
 async function oauth(provider){lerr('');lmsg('جارٍ التحويل إلى '+(provider==='google'?'Google':'Apple')+'…');const {error}=await sb.auth.signInWithOAuth({provider,options:{redirectTo:location.origin+location.pathname}});if(error){lmsg('');lerr('تعذّر: '+error.message+' — تأكد من تفعيل المزوّد في Supabase.')}}
-async function loadCloud(){const {data:rows,error}=await sb.from('app_state').select('*').limit(1);if(error)throw error;if(rows&&rows.length){STATE_ID=rows[0].id;const d=rows[0].data||{};S=deepMerge(JSON.parse(JSON.stringify(def)),d);if(!S.crmStages||!S.crmStages.length)S.crmStages=JSON.parse(JSON.stringify(def.crmStages));if(!S.projectStages||!S.projectStages.length)S.projectStages=JSON.parse(JSON.stringify(def.projectStages));(S.crm||[]).forEach(o=>{if(!o.stageKey)o.stageKey=o.stage||S.crmStages[0].key});(S.projects||[]).forEach(p=>{if(!p.stageKey)p.stageKey=S.projectStages[0].key})}else{const {freelancers,...rest}=S;const {data:ins,error:e2}=await sb.from('app_state').insert({data:rest,owner:USER.id}).select('id').single();if(e2)throw e2;STATE_ID=ins.id}}
-async function loadFreelancers(){const {data}=await sb.from('freelancers').select('*').order('created_at');S.freelancers=data||[]}
+async function loadCloud(){const {data:rows,error}=await sb.from('app_state').select('*').eq('tenant_id',CURRENT_TENANT).limit(1);if(error)throw error;if(rows&&rows.length){STATE_ID=rows[0].id;const d=rows[0].data||{};S=deepMerge(JSON.parse(JSON.stringify(def)),d);if(!S.crmStages||!S.crmStages.length)S.crmStages=JSON.parse(JSON.stringify(def.crmStages));if(!S.projectStages||!S.projectStages.length)S.projectStages=JSON.parse(JSON.stringify(def.projectStages));(S.crm||[]).forEach(o=>{if(!o.stageKey)o.stageKey=o.stage||S.crmStages[0].key});(S.projects||[]).forEach(p=>{if(!p.stageKey)p.stageKey=S.projectStages[0].key})}else{const {freelancers,...rest}=S;const {data:ins,error:e2}=await sb.from('app_state').insert({data:rest,owner:USER.id,tenant_id:CURRENT_TENANT}).select('id').single();if(e2)throw e2;STATE_ID=ins.id}}
+async function loadFreelancers(){const {data}=await sb.from('freelancers').select('*').eq('tenant_id',CURRENT_TENANT).order('created_at');S.freelancers=data||[]}
 function flName(id){const f=(S.freelancers||[]).find(x=>x.id===id);return f?f.name:''}
 function flLink(token){return location.origin+location.pathname+'?ft='+token}
 
 /* ===== TASK SYNC (for freelancer links) ===== */
-async function syncTasks(){if(!USER)return;try{const rows=[];S.projects.forEach(p=>{(p.tasks||[]).forEach(t=>{if(t.assignee&&t.id){rows.push({owner:USER.id,client_id:t.id,project_id:p.id,project_title:p.title,title:t.title,stage:(S.projectStages.find(s=>s.key===p.stageKey)||{}).label||'',freelancer_id:t.assignee})}})});if(rows.length)await sb.from('tasks').upsert(rows,{onConflict:'owner,client_id'});const keep=rows.map(r=>r.client_id);const {data:ex}=await sb.from('tasks').select('id,client_id');const toDel=(ex||[]).filter(r=>!keep.includes(r.client_id)).map(r=>r.id);if(toDel.length)await sb.from('tasks').delete().in('id',toDel)}catch(e){console.warn('syncTasks',e)}}
+async function syncTasks(){if(!USER)return;try{const rows=[];S.projects.forEach(p=>{(p.tasks||[]).forEach(t=>{if(t.assignee&&t.id){rows.push({owner:USER.id,tenant_id:CURRENT_TENANT,client_id:t.id,project_id:p.id,project_title:p.title,title:t.title,stage:(S.projectStages.find(s=>s.key===p.stageKey)||{}).label||'',freelancer_id:t.assignee})}})});if(rows.length)await sb.from('tasks').upsert(rows,{onConflict:'tenant_id,client_id'});const keep=rows.map(r=>r.client_id);const {data:ex}=await sb.from('tasks').select('id,client_id').eq('tenant_id',CURRENT_TENANT);const toDel=(ex||[]).filter(r=>!keep.includes(r.client_id)).map(r=>r.id);if(toDel.length)await sb.from('tasks').delete().in('id',toDel)}catch(e){console.warn('syncTasks',e)}}
 
 /* ===== TEAM (freelancers) ===== */
 function renderTeam(){
@@ -621,7 +635,7 @@ function flAdd(){openModal('فريلانسر جديد',`
   <div class="field"><label>الأيقونة (تصير أيقونة تطبيقه)</label><input id="f_icon" value="clapperboard" readonly style="text-align:center"></div></div>
   <div style="margin:-4px 0 12px;display:flex;gap:6px;flex-wrap:wrap">${ICON_CHOICES.map(n=>`<button type="button" class="icon-pick" data-n="${n}" onclick="pickFlIcon('${n}')"><i data-lucide="${n}"></i></button>`).join('')}</div>
   <div class="field"><label>البريد (للإشعارات لاحقاً)</label><input id="f_email" type="email"></div>`,
-  async()=>{const name=document.getElementById('f_name').value.trim();const icon=document.getElementById('f_icon').value.trim()||'clapperboard';const email=document.getElementById('f_email').value.trim();if(!name){alert('أدخل الاسم');return}const {data,error}=await sb.from('freelancers').insert({name,icon,email,owner:USER.id}).select().single();if(error){alert('خطأ: '+error.message);return}S.freelancers.push(data);closeModal();renderTeam()});pickFlIcon('clapperboard')}
+  async()=>{const name=document.getElementById('f_name').value.trim();const icon=document.getElementById('f_icon').value.trim()||'clapperboard';const email=document.getElementById('f_email').value.trim();if(!name){alert('أدخل الاسم');return}const {data,error}=await sb.from('freelancers').insert({name,icon,email,owner:USER.id,tenant_id:CURRENT_TENANT}).select().single();if(error){alert('خطأ: '+error.message);return}S.freelancers.push(data);closeModal();renderTeam()});pickFlIcon('clapperboard')}
 async function flDel(id){if(!confirm('حذف الفريلانسر؟'))return;await sb.from('freelancers').delete().eq('id',id);S.freelancers=S.freelancers.filter(f=>f.id!==id);renderTeam()}
 
 /* ===== عنتر — المساعد ===== */
@@ -673,7 +687,7 @@ async function flToggle(token,id,done){await sb.rpc('set_task_done',{p_token:tok
 function setFreelancerAppIcon(emoji,name){try{const c=document.createElement('canvas');c.width=c.height=180;const x=c.getContext('2d');x.fillStyle='#0a0a0b';x.fillRect(0,0,180,180);x.fillStyle='#f5a623';x.font='900 104px "Thmanyah Sans",system-ui,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText((name||'م').trim().charAt(0),90,98);const url=c.toDataURL('image/png');let l=document.querySelector('link[rel="apple-touch-icon"]');if(!l){l=document.createElement('link');l.rel='apple-touch-icon';document.head.appendChild(l)}l.href=url;let t=document.querySelector('meta[name="apple-mobile-web-app-title"]');if(t)t.content=name||'مهامي';document.title=name?('مهام '+name):'مهامي'}catch(e){}}
 
 /* ===== APPS / ROUTER ===== */
-const APPS=[
+const FULL_APPS=[
   {id:'dashboards',name:'لوحات البيانات',icon:'layout-dashboard'},
   {id:'sales',name:'المبيعات',icon:'trending-up'},
   {id:'invoicing',name:'الفوترة',icon:'receipt-text'},
@@ -688,10 +702,10 @@ const APPS=[
   {id:'guests',name:'ضيوف سَعي',icon:'mic'},
 ];
 const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings};
-const NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...APPS,{id:'radar',name:'رادار المحتوى',icon:'radar',href:'./studio.html'},{id:'team',name:'الفريق',icon:'users'}];
+const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'radar',name:'رادار المحتوى',icon:'radar',href:'./studio.html'},{id:'team',name:'الفريق',icon:'users'}];
 
 /* ===== LAUNCHPAD (شبكة التطبيقات + خلفية لكل أيقونة) ===== */
-const LAUNCH=[
+const FULL_LAUNCH=[
   {id:'antar',name:'عنتر',icon:'sparkles',c:'#8b5cf6,#6366f1'},
   {id:'dashboards',name:'لوحات البيانات',icon:'layout-dashboard',c:'#3b82f6,#2563eb'},
   {id:'sales',name:'المبيعات',icon:'trending-up',c:'#22c55e,#16a34a'},
@@ -710,6 +724,10 @@ const LAUNCH=[
   {id:'prompts',name:'مكتبة البرومتات',icon:'library',href:'../prompts/',c:'#eab308,#a16207'},
   {id:'identity',name:'الهوية البصرية',icon:'palette',href:'../identity/',c:'#d946ef,#a21caf'},
 ];
+let APPS=FULL_APPS, NAV=FULL_NAV, LAUNCH=FULL_LAUNCH;
+function appOn(id){return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
+function applyTenantApps(){APPS=FULL_APPS.filter(a=>appOn(a.id));NAV=FULL_NAV.filter(a=>appOn(a.id));LAUNCH=FULL_LAUNCH.filter(a=>appOn(a.id));}
+function buildTenantSwitcher(){let el=document.getElementById('tenantSwitch');if(!el){el=document.createElement('select');el.id='tenantSwitch';el.title='تبديل مساحة العمل';el.style.cssText='position:fixed;top:10px;left:10px;z-index:99999;background:rgba(20,20,24,.85);color:#e9eaee;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:6px 10px;font-size:13px;backdrop-filter:blur(8px)';el.onchange=()=>{localStorage.setItem('current_tenant',el.value);location.reload();};document.body.appendChild(el);}el.innerHTML=(TENANTS||[]).map(t=>`<option value="${t.tenant_id}"${t.tenant_id===CURRENT_TENANT?' selected':''}>${t.name}</option>`).join('');el.style.display=(TENANTS&&TENANTS.length>1)?'block':'none';}
 function hexA(h,al){h=String(h).trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${al})`}
 function gGrad(c,al){return c.split(',').map(x=>hexA(x,al)).join(',')}
 function lpTile(a){
@@ -1216,9 +1234,9 @@ function roomLink(kind,token){return RBASE+'?'+(kind==='client'?'c':'ft')+'='+to
 function copyTxt(t){navigator.clipboard.writeText(t).then(()=>alert('تم النسخ:\n'+t)).catch(()=>prompt('انسخ:',t))}
 async function loadRoomPanel(p){
   const el=document.getElementById('roomPanel');if(!el)return;
-  const {data:rooms}=await sb.from('project_rooms').select('*').eq('project_id',p.id).limit(1);
+  const {data:rooms}=await sb.from('project_rooms').select('*').eq('project_id',p.id).eq('tenant_id',CURRENT_TENANT).limit(1);
   const room=rooms&&rooms[0];
-  const {data:tasks}=await sb.from('tasks').select('*').eq('project_id',p.id);
+  const {data:tasks}=await sb.from('tasks').select('*').eq('project_id',p.id).eq('tenant_id',CURRENT_TENANT);
   const ids=(tasks||[]).map(t=>t.id);let revs=[];
   if(ids.length){const {data:rv}=await sb.from('revisions').select('task_id,num,billable,status').in('task_id',ids);revs=rv||[]}
   if(document.getElementById('roomPanel')){document.getElementById('roomPanel').innerHTML=roomPanelHTML(p,room,tasks||[],revs);refreshIcons();}
@@ -1282,12 +1300,12 @@ function setDeliverable(pid,taskId){
 }
 async function roomEnable(pid){const p=S.projects.find(x=>x.id===pid);if(!p)return;
   await syncTasks();
-  const {error}=await sb.from('project_rooms').insert({project_id:p.id,project_title:p.title,client_name:resolveClientName(p),revisions_included:2,owner:USER.id});
+  const {error}=await sb.from('project_rooms').insert({project_id:p.id,project_title:p.title,client_name:resolveClientName(p),revisions_included:2,owner:USER.id,tenant_id:CURRENT_TENANT});
   if(error){alert('تعذّر التفعيل: '+error.message);return}
   loadRoomPanel(p);
 }
 function roomSettings(pid){const p=S.projects.find(x=>x.id===pid);if(!p)return;
-  sb.from('project_rooms').select('*').eq('project_id',p.id).limit(1).then(({data})=>{const r=data&&data[0];if(!r)return;
+  sb.from('project_rooms').select('*').eq('project_id',p.id).eq('tenant_id',CURRENT_TENANT).limit(1).then(({data})=>{const r=data&&data[0];if(!r)return;
     openModal('إعدادات غرفة العميل',`
       <div class="field"><label>اسم العميل</label><input id="rs_name" value="${esc(r.client_name||'')}"></div>
       <div class="row2"><div class="field"><label>جوال العميل (واتساب)</label><input id="rs_phone" value="${esc(r.client_phone||'')}" placeholder="9665xxxxxxxx"></div>
