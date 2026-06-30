@@ -519,7 +519,7 @@ const SUPA_KEY='sb_publishable_GG7Gdn_GIvNXAtKF2hJLqQ_rznycnDM';
 const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
 let STATE_ID=null, USER=null, saveTimer=null;
 let TENANTS=[], CURRENT_TENANT=null, ENABLED_APPS=null;
-let CURRENT_ROLE=null, CAN_EDIT=true, IS_TADMIN=false;
+let CURRENT_ROLE=null, CAN_EDIT=true, IS_TADMIN=false, IS_PLATFORM=false;
 
 /* ===== STATE ===== */
 const KEY='techco_erp_v1';
@@ -625,6 +625,20 @@ async function umInvite(){const em=(document.getElementById('umEmail').value||''
 async function umSetRole(uid,role){const{error}=await sb.rpc('set_member_role',{p_tenant:CURRENT_TENANT,p_user:uid,p_role:role});if(error)alert('خطأ: '+error.message);umLoad();}
 async function umRemove(uid,em){if(!confirm('إزالة '+em+'؟'))return;await sb.rpc('remove_member',{p_tenant:CURRENT_TENANT,p_user:uid});umLoad();}
 async function umRevoke(em){await sb.rpc('revoke_invite',{p_tenant:CURRENT_TENANT,p_email:em});umLoad();}
+/* ===== العملاء المحتملون (Leads) ===== */
+function renderLeads(){
+  if(!IS_PLATFORM){document.getElementById('main').innerHTML='<div class="page-head"><h1>العملاء المحتملون</h1></div>'+emptyBox('lock','هذه الصفحة لمدراء المنصّة فقط.');return}
+  document.getElementById('main').innerHTML=`<div class="page-head"><h1>العملاء المحتملون (Leads)</h1></div>
+    <div class="badge-note"><i data-lucide="share-2"></i> <div>كل من يسجّل في صفحة التجربة <b>${location.origin}/try/</b> تُحفظ بياناته هنا تلقائياً.</div></div>
+    <div id="ldBox" style="margin-top:8px">جارٍ التحميل…</div>`;
+  refreshIcons(); ldLoad();
+}
+async function ldLoad(){
+  const {data}=await sb.from('leads').select('*').order('created_at',{ascending:false});
+  const box=document.getElementById('ldBox'); if(!box)return; const rows=data||[];
+  box.innerHTML=rows.length?`<table><thead><tr><th>التاريخ</th><th>الاسم</th><th>الشركة</th><th>الجوال</th><th>البريد</th><th>يحتاج</th></tr></thead><tbody>${rows.map(l=>`<tr><td style="white-space:nowrap">${(l.created_at||'').slice(0,10)}</td><td>${esc(l.full_name||'')}</td><td>${esc(l.company||'')}</td><td>${esc(l.phone||'')}</td><td>${esc(l.email||'')}</td><td>${esc(l.needs||'')}</td></tr>`).join('')}</tbody></table>`:emptyBox('inbox','لا يوجد عملاء محتملون بعد. شارك رابط التجربة ‎/try/‎ ليجرّبوا.');
+  refreshIcons();
+}
 async function enterApp(user){if(USER&&user&&USER.id===user.id)return;lmsg('جارٍ تجهيز مساحة العمل...');try{
     const {data:mt,error:te}=await sb.rpc('my_tenants');if(te)throw te;
     TENANTS=mt||[];
@@ -638,6 +652,7 @@ async function enterApp(user){if(USER&&user&&USER.id===user.id)return;lmsg('جا
     CURRENT_ROLE=_role||'member';
     IS_TADMIN=['owner','admin','platform_admin'].includes(CURRENT_ROLE);
     CAN_EDIT=['owner','admin','member','platform_admin'].includes(CURRENT_ROLE);
+    IS_PLATFORM=(CURRENT_ROLE==='platform_admin');
     applyTenantApps();
     USER=user;lmsg('جارٍ تحميل بياناتك...');
     await loadCloud();await loadFreelancers();migrateData();save();
@@ -735,8 +750,8 @@ const FULL_APPS=[
   {id:'calendar',name:'التقويم',icon:'calendar-days'},
   {id:'projects',name:'المشروع',icon:'clapperboard'},
 ];
-const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers};
-const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'team',name:'الفريق',icon:'users'},{id:'users',name:'المستخدمون',icon:'user-cog'}];
+const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers,leads:renderLeads};
+const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'team',name:'الفريق',icon:'users'},{id:'users',name:'المستخدمون',icon:'user-cog'},{id:'leads',name:'العملاء المحتملون',icon:'inbox'}];
 
 /* ===== LAUNCHPAD (شبكة التطبيقات + خلفية لكل أيقونة) ===== */
 const FULL_LAUNCH=[
@@ -753,9 +768,10 @@ const FULL_LAUNCH=[
   {id:'projects',name:'المشروع',icon:'clapperboard',c:'#f43f5e,#e11d48'},
   {id:'team',name:'الفريق',icon:'users',c:'#64748b,#475569'},
   {id:'users',name:'المستخدمون',icon:'user-cog',c:'#475569,#334155'},
+  {id:'leads',name:'العملاء المحتملون',icon:'inbox',c:'#0ea5a0,#0d9488'},
 ];
 let APPS=FULL_APPS, NAV=FULL_NAV, LAUNCH=FULL_LAUNCH;
-function appOn(id){if(id==='users')return IS_TADMIN;return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
+function appOn(id){if(id==='users')return IS_TADMIN;if(id==='leads')return IS_PLATFORM;return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
 function applyTenantApps(){APPS=FULL_APPS.filter(a=>appOn(a.id));NAV=FULL_NAV.filter(a=>appOn(a.id));LAUNCH=FULL_LAUNCH.filter(a=>appOn(a.id));}
 function buildTenantSwitcher(){let el=document.getElementById('tenantSwitch');if(!el){el=document.createElement('select');el.id='tenantSwitch';el.title='تبديل مساحة العمل';el.style.cssText='position:fixed;top:10px;left:10px;z-index:99999;background:rgba(20,20,24,.85);color:#e9eaee;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:6px 10px;font-size:13px;backdrop-filter:blur(8px)';el.onchange=()=>{localStorage.setItem('current_tenant',el.value);location.reload();};document.body.appendChild(el);}el.innerHTML=(TENANTS||[]).map(t=>`<option value="${t.tenant_id}"${t.tenant_id===CURRENT_TENANT?' selected':''}>${t.name}</option>`).join('');el.style.display=(TENANTS&&TENANTS.length>1)?'block':'none';}
 function hexA(h,al){h=String(h).trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${al})`}
