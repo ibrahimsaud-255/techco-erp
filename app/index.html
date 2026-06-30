@@ -750,8 +750,8 @@ const FULL_APPS=[
   {id:'calendar',name:'التقويم',icon:'calendar-days'},
   {id:'projects',name:'المشروع',icon:'clapperboard'},
 ];
-const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers,leads:renderLeads};
-const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'team',name:'الفريق',icon:'users'},{id:'users',name:'المستخدمون',icon:'user-cog'},{id:'leads',name:'العملاء المحتملون',icon:'inbox'}];
+const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers,leads:renderLeads,reports:renderReports};
+const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'reports',name:'التقارير والتصدير',icon:'bar-chart-3'},{id:'team',name:'الفريق',icon:'users'},{id:'users',name:'المستخدمون',icon:'user-cog'},{id:'leads',name:'العملاء المحتملون',icon:'inbox'}];
 
 /* ===== LAUNCHPAD (شبكة التطبيقات + خلفية لكل أيقونة) ===== */
 const FULL_LAUNCH=[
@@ -766,12 +766,13 @@ const FULL_LAUNCH=[
   {id:'appointments',name:'المواعيد',icon:'calendar-clock',c:'#a855f7,#7c3aed'},
   {id:'calendar',name:'التقويم',icon:'calendar-days',c:'#ef4444,#dc2626'},
   {id:'projects',name:'المشروع',icon:'clapperboard',c:'#f43f5e,#e11d48'},
+  {id:'reports',name:'التقارير والتصدير',icon:'bar-chart-3',c:'#0ea5e9,#0369a1'},
   {id:'team',name:'الفريق',icon:'users',c:'#64748b,#475569'},
   {id:'users',name:'المستخدمون',icon:'user-cog',c:'#475569,#334155'},
   {id:'leads',name:'العملاء المحتملون',icon:'inbox',c:'#0ea5a0,#0d9488'},
 ];
 let APPS=FULL_APPS, NAV=FULL_NAV, LAUNCH=FULL_LAUNCH;
-function appOn(id){if(id==='users')return IS_TADMIN;if(id==='leads')return IS_PLATFORM;return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
+function appOn(id){if(id==='users')return IS_TADMIN;if(id==='leads')return IS_PLATFORM;return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings','reports'].includes(id);}
 function applyTenantApps(){APPS=FULL_APPS.filter(a=>appOn(a.id));NAV=FULL_NAV.filter(a=>appOn(a.id));LAUNCH=FULL_LAUNCH.filter(a=>appOn(a.id));}
 function buildTenantSwitcher(){let el=document.getElementById('tenantSwitch');if(!el){el=document.createElement('select');el.id='tenantSwitch';el.title='تبديل مساحة العمل';el.style.cssText='position:fixed;top:10px;left:10px;z-index:99999;background:rgba(20,20,24,.85);color:#e9eaee;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:6px 10px;font-size:13px;backdrop-filter:blur(8px)';el.onchange=()=>{localStorage.setItem('current_tenant',el.value);location.reload();};document.body.appendChild(el);}el.innerHTML=(TENANTS||[]).map(t=>`<option value="${t.tenant_id}"${t.tenant_id===CURRENT_TENANT?' selected':''}>${t.name}</option>`).join('');el.style.display=(TENANTS&&TENANTS.length>1)?'block':'none';}
 function hexA(h,al){h=String(h).trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${al})`}
@@ -936,6 +937,61 @@ function refreshIcons(){try{if(window.lucide)lucide.createIcons()}catch(e){}}
 let CUR='home';
 function go(view){CUR=view;document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active',a.dataset.v===view));const t=document.getElementById('ctTitle');if(t)t.textContent=navName(view);(RENDER[view]||renderHome)();refreshIcons();const sb=document.getElementById('sidebar');if(sb)sb.classList.remove('open')}
 function rerender(){(RENDER[CUR]||renderHome)()}
+/* ===== التقارير + استيراد/تصدير CSV ===== */
+let RPT_PERIOD='month';
+function csvEsc(v){v=(v==null?'':String(v));return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+function toCSV(rows,cols){const head=cols.map(c=>csvEsc(c.label)).join(',');const body=(rows||[]).map(r=>cols.map(c=>csvEsc(typeof c.get==='function'?c.get(r):r[c.key])).join(',')).join('\n');return head+'\n'+body;}
+function downloadCSV(name,csv){const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}
+function parseCSV(text){text=String(text).replace(/\r\n?/g,'\n');const rows=[];let field='',row=[],q=false;for(let i=0;i<text.length;i++){const c=text[i];if(q){if(c==='"'){if(text[i+1]==='"'){field+='"';i++}else q=false}else field+=c}else{if(c==='"')q=true;else if(c===','){row.push(field);field=''}else if(c==='\n'){row.push(field);rows.push(row);row=[];field=''}else field+=c}}if(field!==''||row.length){row.push(field);rows.push(row)}return rows.filter(r=>r.some(x=>String(x).trim()!==''));}
+function expContacts(){downloadCSV('العملاء.csv',toCSV(S.contacts,[{label:'الاسم',key:'name'},{label:'الشركة',key:'company'},{label:'الجوال',key:'phone'},{label:'البريد',key:'email'},{label:'المدينة',key:'city'},{label:'الرقم الضريبي',key:'vat'}]));}
+function expProducts(){downloadCSV('المنتجات.csv',toCSV(S.products,[{label:'الاسم',key:'name'},{label:'السعر',key:'price'},{label:'الوحدة',key:'unit'},{label:'الوصف',key:'desc'}]));}
+function expInvoices(){downloadCSV('الفواتير.csv',toCSV(S.invoices,[{label:'رقم',key:'number'},{label:'العميل',key:'client'},{label:'التاريخ',key:'date'},{label:'الإجمالي',get:i=>invTotal(i).toFixed(2)},{label:'الحالة',get:i=>i.status==='paid'?'مدفوعة':'غير مدفوعة'}]));}
+function expSales(){downloadCSV('عروض-الأسعار.csv',toCSV(S.sales,[{label:'رقم',key:'number'},{label:'العميل',key:'client'},{label:'التاريخ',key:'date'},{label:'الإجمالي',get:i=>invTotal(i).toFixed(2)}]));}
+function _hidx(head,names){return head.findIndex(h=>names.some(n=>h.includes(n)));}
+function impContacts(ev){const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const rows=parseCSV(rd.result);if(rows.length<2){alert('الملف فارغ أو بلا بيانات');return}const head=rows[0].map(h=>String(h).trim());const iN=_hidx(head,['اسم','name']),iC=_hidx(head,['شرك','company']),iP=_hidx(head,['جوال','هاتف','phone']),iE=_hidx(head,['بريد','email','mail']),iCity=_hidx(head,['مدين','city']);let n=0;rows.slice(1).forEach(r=>{const name=String(r[iN]||'').trim();if(!name)return;S.contacts.push({id:uid(),name,type:'عميل',phone:String(r[iP]||'').trim(),email:String(r[iE]||'').trim(),company:String(r[iC]||'').trim(),vat:'',address:'',city:String(r[iCity]||'').trim(),website:'',logo:'',notes:''});n++});save();alert('تم استيراد '+n+' عميلاً');renderReports();}catch(e){alert('تعذّر قراءة الملف')}ev.target.value='';};rd.readAsText(f,'utf-8');}
+function impProducts(ev){const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const rows=parseCSV(rd.result);if(rows.length<2){alert('الملف فارغ أو بلا بيانات');return}const head=rows[0].map(h=>String(h).trim());const iN=_hidx(head,['اسم','name']),iPr=_hidx(head,['سعر','price']),iU=_hidx(head,['وحد','unit']),iD=_hidx(head,['وصف','desc']);let n=0;rows.slice(1).forEach(r=>{const name=String(r[iN]||'').trim();if(!name)return;S.products.push({id:uid(),name,price:Number(String(r[iPr]||'0').replace(/[^0-9.]/g,''))||0,unit:String(r[iU]||'').trim(),desc:String(r[iD]||'').trim()});n++});save();alert('تم استيراد '+n+' منتجاً');renderReports();}catch(e){alert('تعذّر قراءة الملف')}ev.target.value='';};rd.readAsText(f,'utf-8');}
+function renderReports(){
+  document.getElementById('main').innerHTML=`<div class="page-head"><h1>التقارير والتصدير</h1></div>
+   <div id="rptKpis"></div>
+   <div class="card" style="margin-top:12px"><h3><i data-lucide="download"></i> تصدير البيانات (CSV)</h3>
+     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+       <button class="btn" onclick="expContacts()">العملاء</button>
+       <button class="btn" onclick="expProducts()">المنتجات</button>
+       <button class="btn" onclick="expInvoices()">الفواتير</button>
+       <button class="btn" onclick="expSales()">عروض الأسعار</button>
+     </div></div>
+   ${CAN_EDIT?`<div class="card" style="margin-top:12px"><h3><i data-lucide="upload"></i> استيراد البيانات (CSV)</h3>
+     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
+       <label class="btn" style="cursor:pointer">استيراد عملاء<input type="file" accept=".csv,text/csv" style="display:none" onchange="impContacts(event)"></label>
+       <label class="btn" style="cursor:pointer">استيراد منتجات<input type="file" accept=".csv,text/csv" style="display:none" onchange="impProducts(event)"></label>
+     </div>
+     <div class="muted" style="font-size:12px;margin-top:8px">الأعمدة المتوقّعة — للعملاء: <b>الاسم، الشركة، الجوال، البريد، المدينة</b> · للمنتجات: <b>الاسم، السعر، الوحدة، الوصف</b> (السطر الأول عناوين).</div></div>`:''}`;
+  rptKpis(); refreshIcons();
+}
+function rptFilter(){const sel=document.getElementById('rptPeriod');if(sel)RPT_PERIOD=sel.value;rptKpis();}
+function rptKpis(){
+  const box=document.getElementById('rptKpis'); if(!box)return;
+  const now=new Date(),y=now.getFullYear(),mo=now.getMonth();
+  const inP=d=>{if(!d)return false;const dt=new Date(d);if(isNaN(dt))return false;if(RPT_PERIOD==='all')return true;if(RPT_PERIOD==='year')return dt.getFullYear()===y;if(RPT_PERIOD==='month')return dt.getFullYear()===y&&dt.getMonth()===mo;if(RPT_PERIOD==='last'){const lm=mo===0?11:mo-1,ly=mo===0?y-1:y;return dt.getFullYear()===ly&&dt.getMonth()===lm}return true;};
+  const inv=S.invoices.filter(i=>inP(i.date));
+  const total=inv.reduce((a,i)=>a+invTotal(i),0);
+  const paid=inv.filter(i=>i.status==='paid').reduce((a,i)=>a+invTotal(i),0);
+  const due=inv.filter(i=>i.status!=='paid').reduce((a,i)=>a+invTotal(i),0);
+  box.innerHTML=`<div class="field" style="max-width:240px"><label>الفترة</label><select id="rptPeriod" onchange="rptFilter()">
+    <option value="month"${RPT_PERIOD==='month'?' selected':''}>هذا الشهر</option>
+    <option value="last"${RPT_PERIOD==='last'?' selected':''}>الشهر الماضي</option>
+    <option value="year"${RPT_PERIOD==='year'?' selected':''}>هذه السنة</option>
+    <option value="all"${RPT_PERIOD==='all'?' selected':''}>كل الفترات</option></select></div>
+   <div class="stats" style="margin-top:8px">
+     <div class="stat"><span class="ic"><i data-lucide="receipt-text"></i></span><div class="v">${inv.length}</div><div class="l">عدد الفواتير</div></div>
+     <div class="stat"><span class="ic"><i data-lucide="wallet"></i></span><div class="v">${money(paid)}</div><div class="l">المحصّل</div></div>
+     <div class="stat"><span class="ic"><i data-lucide="hourglass"></i></span><div class="v">${money(due)}</div><div class="l">المستحق</div></div>
+     <div class="stat"><span class="ic"><i data-lucide="bar-chart-3"></i></span><div class="v">${money(total)}</div><div class="l">إجمالي القيمة</div></div>
+     <div class="stat"><span class="ic"><i data-lucide="contact"></i></span><div class="v">${S.contacts.length}</div><div class="l">العملاء</div></div>
+     <div class="stat"><span class="ic"><i data-lucide="package"></i></span><div class="v">${S.products.length}</div><div class="l">المنتجات</div></div>
+   </div>`;
+  refreshIcons();
+}
 
 /* ===== HOME (branded) ===== */
 function renderHome(){
