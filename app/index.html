@@ -519,6 +519,7 @@ const SUPA_KEY='sb_publishable_GG7Gdn_GIvNXAtKF2hJLqQ_rznycnDM';
 const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
 let STATE_ID=null, USER=null, saveTimer=null;
 let TENANTS=[], CURRENT_TENANT=null, ENABLED_APPS=null;
+let CURRENT_ROLE=null, CAN_EDIT=true, IS_TADMIN=false;
 
 /* ===== STATE ===== */
 const KEY='techco_erp_v1';
@@ -567,7 +568,7 @@ function load(){let s;try{const r=localStorage.getItem(KEY);s=r?deepMerge(JSON.p
 function deepMerge(a,b){for(const k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k])){a[k]=deepMerge(a[k]||{},b[k])}else a[k]=b[k]}return a}
 function save(){localStorage.setItem(KEY,JSON.stringify(S));scheduleCloudSave()}
 function scheduleCloudSave(){if(!USER)return;clearTimeout(saveTimer);saveTimer=setTimeout(saveCloud,800)}
-async function saveCloud(){if(!USER||!STATE_ID)return;try{const{freelancers,...rest}=S;await sb.from('app_state').update({data:rest,updated_at:new Date().toISOString()}).eq('id',STATE_ID);const d=document.getElementById('syncDot');if(d){d.style.color='var(--good)';d.title='تمت المزامنة';}}catch(e){const d=document.getElementById('syncDot');if(d){d.style.color='var(--bad)';d.title='تعذّرت المزامنة'}}}
+async function saveCloud(){if(!USER||!STATE_ID||!CAN_EDIT)return;try{const{freelancers,...rest}=S;await sb.from('app_state').update({data:rest,updated_at:new Date().toISOString()}).eq('id',STATE_ID);const d=document.getElementById('syncDot');if(d){d.style.color='var(--good)';d.title='تمت المزامنة';}}catch(e){const d=document.getElementById('syncDot');if(d){d.style.color='var(--bad)';d.title='تعذّرت المزامنة'}}}
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const money=n=>Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+S.settings.currency;
 const USD_RATE=3.75; // ريال لكل دولار
@@ -593,6 +594,37 @@ function showReset(){document.getElementById('loginView').classList.add('hidden'
 function pwStrength(){const v=document.getElementById('np1').value;let s=0;if(v.length>=8)s++;if(v.length>=12)s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;if(/[A-Z]/.test(v)&&/[a-z]/.test(v))s++;const bar=document.getElementById('pwBar');const col=s<=1?'var(--bad)':s<=2?'var(--warn)':s<=3?'var(--gold)':'var(--good)';bar.style.width=Math.min(100,s*22)+'%';bar.style.background=col;document.getElementById('pwHint').textContent=v.length<8?'قصيرة جدًا — 8 أحرف على الأقل.':s<=2?'ضعيفة — أضف أرقامًا ورموزًا وحروفًا كبيرة.':s<=3?'متوسطة — يمكن تقويتها أكثر.':'قوية'}
 async function doSetNewPassword(){const p1=document.getElementById('np1').value;const p2=document.getElementById('np2').value;rerr('');if(p1.length<8){rerr('كلمة المرور يجب أن تكون 8 أحرف على الأقل.');return}if(p1!==p2){rerr('كلمتا المرور غير متطابقتين.');return}busy('btnReset',true);rmsg('جارٍ الحفظ...');const {data,error}=await sb.auth.updateUser({password:p1});busy('btnReset',false);if(error){rmsg('');rerr('تعذّر الحفظ: '+authMsg(error.message)+' — قد يكون الرابط منتهيًا، اطلب رابطًا جديدًا.');return}rmsg('تم تحديث كلمة المرور');RECOVERY_MODE=false;history.replaceState(null,'',location.origin+location.pathname);document.getElementById('resetView').classList.add('hidden');await enterApp(data.user)}
 const ADMIN_EMAIL='ibrahimsaud25@gmail.com';
+/* ===== المستخدمون والصلاحيات ===== */
+const ROLE_AR={owner:'مالك',admin:'مدير',member:'موظف',viewer:'مشاهد',platform_admin:'مدير منصّة'};
+let UM={members:[],invites:[]};
+function roleBanner(){let el=document.getElementById('roBanner');if(CAN_EDIT){if(el)el.remove();return}if(!el){el=document.createElement('div');el.id='roBanner';el.style.cssText='position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:99999;background:#fdf3e3;color:#92400e;border:1px solid #f5c97a;border-radius:10px;padding:6px 14px;font-size:13px;font-weight:600';el.textContent='وضع المشاهدة فقط — لا يمكنك التعديل';document.body.appendChild(el);}}
+function renderUsers(){
+  if(!IS_TADMIN){document.getElementById('main').innerHTML='<div class="page-head"><h1>المستخدمون</h1></div>'+emptyBox('lock','هذه الصفحة لمدراء مساحة العمل فقط.');return}
+  document.getElementById('main').innerHTML=`<div class="page-head"><h1>المستخدمون والصلاحيات</h1></div>
+    <div class="badge-note"><i data-lucide="user-plus"></i> <div>أضف عضواً ببريده ودوره. لو ما له حساب، تُسجَّل دعوة وينضمّ تلقائياً أول ما يسجّل بنفس البريد.</div></div>
+    <div class="set-grid"><div class="field" style="flex:2"><label>البريد الإلكتروني</label><input id="umEmail" type="email" placeholder="name@example.com"></div>
+    <div class="field"><label>الدور</label><select id="umRole"><option value="member">موظف</option><option value="admin">مدير</option><option value="viewer">مشاهد</option><option value="owner">مالك</option></select></div>
+    <div class="field" style="align-self:end"><button class="btn btn-gold" onclick="umInvite()">+ إضافة</button></div></div>
+    <div id="umBox" style="margin-top:8px">جارٍ التحميل…</div>`;
+  refreshIcons(); umLoad();
+}
+async function umLoad(){
+  const [m,iv]=await Promise.all([sb.rpc('tenant_members',{p_tenant:CURRENT_TENANT}),sb.rpc('list_invites',{p_tenant:CURRENT_TENANT})]);
+  UM.members=m.data||[]; UM.invites=iv.data||[]; umBoxRender();
+}
+function umRoleSelect(uid,cur){if(cur==='platform_admin')return '<span class="pill">مدير منصّة</span>';const opts=['owner','admin','member','viewer'].map(r=>`<option value="${r}"${r===cur?' selected':''}>${ROLE_AR[r]}</option>`).join('');return `<select onchange="umSetRole('${uid}',this.value)">${opts}</select>`;}
+function umBoxRender(){
+  const box=document.getElementById('umBox'); if(!box)return;
+  const rows=UM.members.map(u=>`<tr><td>${esc(u.email)}</td><td>${umRoleSelect(u.user_id,u.role)}</td><td>${u.role==='platform_admin'?'':`<button class="link-btn del" onclick="umRemove('${u.user_id}','${esc(u.email)}')">إزالة</button>`}</td></tr>`).join('');
+  const inv=UM.invites.map(i=>`<tr><td>${esc(i.email)} <span class="pill">دعوة معلّقة</span></td><td>${ROLE_AR[i.role]||i.role}</td><td><button class="link-btn del" onclick="umRevoke('${esc(i.email)}')">إلغاء</button></td></tr>`).join('');
+  box.innerHTML=`<table><thead><tr><th>العضو</th><th>الدور</th><th></th></tr></thead><tbody>${rows}${inv||''}</tbody></table>
+   <div class="badge-note" style="margin-top:10px"><i data-lucide="info"></i> <div><b>الأدوار:</b> المالك/المدير يديرون كل شيء والمستخدمين · الموظف يعدّل البيانات · <b>المشاهد للقراءة فقط</b>.</div></div>`;
+  refreshIcons();
+}
+async function umInvite(){const em=(document.getElementById('umEmail').value||'').trim().toLowerCase();const role=document.getElementById('umRole').value;if(!em){alert('اكتب البريد');return}const{data,error}=await sb.rpc('invite_member',{p_tenant:CURRENT_TENANT,p_email:em,p_role:role});if(error){alert('خطأ: '+error.message);return}if(data&&data.error){alert('غير مصرّح');return}document.getElementById('umEmail').value='';alert(data&&data.status==='added'?'تمت إضافة العضو.':'تم تسجيل الدعوة — ينضمّ تلقائياً عند تسجيله بنفس البريد.');umLoad();}
+async function umSetRole(uid,role){const{error}=await sb.rpc('set_member_role',{p_tenant:CURRENT_TENANT,p_user:uid,p_role:role});if(error)alert('خطأ: '+error.message);umLoad();}
+async function umRemove(uid,em){if(!confirm('إزالة '+em+'؟'))return;await sb.rpc('remove_member',{p_tenant:CURRENT_TENANT,p_user:uid});umLoad();}
+async function umRevoke(em){await sb.rpc('revoke_invite',{p_tenant:CURRENT_TENANT,p_email:em});umLoad();}
 async function enterApp(user){if(USER&&user&&USER.id===user.id)return;lmsg('جارٍ تجهيز مساحة العمل...');try{
     const {data:mt,error:te}=await sb.rpc('my_tenants');if(te)throw te;
     TENANTS=mt||[];
@@ -602,11 +634,15 @@ async function enterApp(user){if(USER&&user&&USER.id===user.id)return;lmsg('جا
     localStorage.setItem('current_tenant',CURRENT_TENANT);
     const {data:ta}=await sb.from('tenant_apps').select('app_key,enabled').eq('tenant_id',CURRENT_TENANT);
     ENABLED_APPS=new Set((ta||[]).filter(r=>r.enabled).map(r=>r.app_key));
+    const {data:_role}=await sb.rpc('my_role',{p_tenant:CURRENT_TENANT});
+    CURRENT_ROLE=_role||'member';
+    IS_TADMIN=['owner','admin','platform_admin'].includes(CURRENT_ROLE);
+    CAN_EDIT=['owner','admin','member','platform_admin'].includes(CURRENT_ROLE);
     applyTenantApps();
     USER=user;lmsg('جارٍ تحميل بياناتك...');
     await loadCloud();await loadFreelancers();migrateData();save();
   }catch(e){lerr('تعذّر التحميل: '+(e.message||e));lmsg('');return}
-  lmsg('');document.getElementById('loginView').classList.add('hidden');document.getElementById('appShell').classList.remove('hidden');buildTenantSwitcher();renderNav();initSidebarShell();applyBranding();const dt=document.getElementById('ctDate');if(dt)dt.textContent=new Date().toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'});go('home')}
+  lmsg('');document.getElementById('loginView').classList.add('hidden');document.getElementById('appShell').classList.remove('hidden');buildTenantSwitcher();roleBanner();renderNav();initSidebarShell();applyBranding();const dt=document.getElementById('ctDate');if(dt)dt.textContent=new Date().toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'});go('home')}
 async function logout(){await sb.auth.signOut();USER=null;STATE_ID=null;document.getElementById('appShell').classList.add('hidden');document.getElementById('loginView').classList.remove('hidden')}
 async function oauth(provider){lerr('');lmsg('جارٍ التحويل إلى '+(provider==='google'?'Google':'Apple')+'…');const {error}=await sb.auth.signInWithOAuth({provider,options:{redirectTo:location.origin+location.pathname}});if(error){lmsg('');lerr('تعذّر: '+error.message+' — تأكد من تفعيل المزوّد في Supabase.')}}
 async function loadCloud(){const {data:rows,error}=await sb.from('app_state').select('*').eq('tenant_id',CURRENT_TENANT).limit(1);if(error)throw error;if(rows&&rows.length){STATE_ID=rows[0].id;const d=rows[0].data||{};S=deepMerge(JSON.parse(JSON.stringify(def)),d);if(!S.crmStages||!S.crmStages.length)S.crmStages=JSON.parse(JSON.stringify(def.crmStages));if(!S.projectStages||!S.projectStages.length)S.projectStages=JSON.parse(JSON.stringify(def.projectStages));(S.crm||[]).forEach(o=>{if(!o.stageKey)o.stageKey=o.stage||S.crmStages[0].key});(S.projects||[]).forEach(p=>{if(!p.stageKey)p.stageKey=S.projectStages[0].key})}else{const {freelancers,...rest}=S;const {data:ins,error:e2}=await sb.from('app_state').insert({data:rest,owner:USER.id,tenant_id:CURRENT_TENANT}).select('id').single();if(e2)throw e2;STATE_ID=ins.id}}
@@ -699,8 +735,8 @@ const FULL_APPS=[
   {id:'calendar',name:'التقويم',icon:'calendar-days'},
   {id:'projects',name:'المشروع',icon:'clapperboard'},
 ];
-const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings};
-const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'team',name:'الفريق',icon:'users'}];
+const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers};
+const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'team',name:'الفريق',icon:'users'},{id:'users',name:'المستخدمون',icon:'user-cog'}];
 
 /* ===== LAUNCHPAD (شبكة التطبيقات + خلفية لكل أيقونة) ===== */
 const FULL_LAUNCH=[
@@ -716,9 +752,10 @@ const FULL_LAUNCH=[
   {id:'calendar',name:'التقويم',icon:'calendar-days',c:'#ef4444,#dc2626'},
   {id:'projects',name:'المشروع',icon:'clapperboard',c:'#f43f5e,#e11d48'},
   {id:'team',name:'الفريق',icon:'users',c:'#64748b,#475569'},
+  {id:'users',name:'المستخدمون',icon:'user-cog',c:'#475569,#334155'},
 ];
 let APPS=FULL_APPS, NAV=FULL_NAV, LAUNCH=FULL_LAUNCH;
-function appOn(id){return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
+function appOn(id){if(id==='users')return IS_TADMIN;return !ENABLED_APPS||ENABLED_APPS.has(id)||['home','desktop','settings'].includes(id);}
 function applyTenantApps(){APPS=FULL_APPS.filter(a=>appOn(a.id));NAV=FULL_NAV.filter(a=>appOn(a.id));LAUNCH=FULL_LAUNCH.filter(a=>appOn(a.id));}
 function buildTenantSwitcher(){let el=document.getElementById('tenantSwitch');if(!el){el=document.createElement('select');el.id='tenantSwitch';el.title='تبديل مساحة العمل';el.style.cssText='position:fixed;top:10px;left:10px;z-index:99999;background:rgba(20,20,24,.85);color:#e9eaee;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:6px 10px;font-size:13px;backdrop-filter:blur(8px)';el.onchange=()=>{localStorage.setItem('current_tenant',el.value);location.reload();};document.body.appendChild(el);}el.innerHTML=(TENANTS||[]).map(t=>`<option value="${t.tenant_id}"${t.tenant_id===CURRENT_TENANT?' selected':''}>${t.name}</option>`).join('');el.style.display=(TENANTS&&TENANTS.length>1)?'block':'none';}
 function hexA(h,al){h=String(h).trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${al})`}
