@@ -109,6 +109,8 @@ const $=id=>document.getElementById(id);
 let CATALOG=[], TENANTS=[], TAPPS={}; // TAPPS[tenant_id][app_key]=enabled
 
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+// تنظيف أي قيمة تُعرض داخل HTML — أسماء عملاء التجربة تُشتق من إيميلات خارجية
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function lmsg(m,ok){const e=$('lmsg');e.textContent=m||'';e.className='msg '+(ok?'ok':'err')}
 
 // ---------- auth ----------
@@ -156,22 +158,22 @@ function render(){
   const wrap=$('tenants'); wrap.innerHTML='';
   TENANTS.forEach(t=>{
     const card=document.createElement('div'); card.className='tenant glass';
-    const planPill=t.plan==='internal'?'<span class="pill int">داخلي</span>':'<span class="pill">'+ (t.plan||'') +'</span>';
+    const planPill=t.plan==='internal'?'<span class="pill int">داخلي</span>':'<span class="pill">'+esc(t.plan||'')+'</span>';
     let apps='';
     CATALOG.forEach(a=>{
       const on=!!(TAPPS[t.id]&&TAPPS[t.id][a.app_key]);
       apps+=`<div class="app">
         <div>
-          <div class="nm">${a.name} ${a.is_core?'<span class="cat badge-core">• أساسي</span>':'<span class="cat">• '+(a.category||'')+'</span>'}</div>
-          <div class="ds">${a.description||''}</div>
+          <div class="nm">${esc(a.name)} ${a.is_core?'<span class="cat badge-core">• أساسي</span>':'<span class="cat">• '+esc(a.category||'')+'</span>'}</div>
+          <div class="ds">${esc(a.description||'')}</div>
         </div>
         <label class="sw"><input type="checkbox" ${on?'checked':''}
-            onchange="toggleApp('${t.id}','${a.app_key}',this.checked)"><span class="track"></span><span class="knob"></span></label>
+            onchange="toggleApp('${esc(t.id)}','${esc(a.app_key)}',this.checked)"><span class="track"></span><span class="knob"></span></label>
       </div>`;
     });
     const count=CATALOG.filter(a=>TAPPS[t.id]&&TAPPS[t.id][a.app_key]).length;
-    card.innerHTML=`<h2>${t.name} ${planPill} <span class="pill">${count} تطبيق مفعّل</span></h2>
-      <div class="muted" style="font-size:12px;margin-top:2px">${t.slug}</div>
+    card.innerHTML=`<h2>${esc(t.name)} ${planPill} <span class="pill">${count} تطبيق مفعّل</span></h2>
+      <div class="muted" style="font-size:12px;margin-top:2px">${esc(t.slug)}</div>
       <div class="apps">${apps}</div>`;
     wrap.appendChild(card);
   });
