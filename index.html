@@ -112,13 +112,17 @@
   .feat li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
   .feat svg{width:17px;height:17px;stroke:var(--ok);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
 
-  /* شبكة التطبيقات */
-  .apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px}
-  .app{display:flex;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;font-size:13.5px;font-weight:500;transition:.2s}
-  .app:hover{background:var(--glass2);transform:translateY(-2px)}
-  .app svg{width:19px;height:19px;stroke:#9db4ff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-  .app.content svg{stroke:#a7f3d0}
-  .apps-note{margin-top:18px;text-align:center;color:var(--muted);font-size:13.5px}
+  /* شبكة التطبيقات — بنفس شكل Launchpad داخل النظام */
+  .apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px}
+  .app{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--bd);
+    border-radius:18px;padding:18px 10px 14px;transition:.22s;text-align:center}
+  .app:hover{background:var(--glass2);transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+  .app .lp-ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+    border:1px solid rgba(255,255,255,.18);box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+  .app .lp-ic svg{width:27px;height:27px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .app .nm{font-size:12.5px;font-weight:500;line-height:1.45}
+  .app.content .nm{color:#c8f5e3}
+  .apps-note{margin-top:20px;text-align:center;color:var(--muted);font-size:13.5px}
 
   /* كيف نعمل */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:step}
@@ -233,28 +237,7 @@
     <section id="apps" class="wrap">
       <h2 class="sec-title">التطبيقات الجاهزة</h2>
       <p class="sec-sub">كل ميزة عندنا «تطبيق» مستقل — نفعّل لك ما يخدم عملك فقط، فتبقى واجهتك نظيفة وسهلة. وأي تطبيق جديد نبنيه لعميل، ينضم للكتالوج.</p>
-      <div class="apps">
-        <div class="app"><svg viewBox="0 0 24 24"><path d="m3 9 9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9Z"/><path d="M9 21V12h6v9"/></svg>الرئيسية</div>
-        <div class="app"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>المكتب</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="m12 3 1.9 4.6 4.6 1.9-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3Z"/></svg>عنتر — مساعد ذكي</div>
-        <div class="app"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17v-5M12 17V7M16 17v-8"/></svg>لوحات البيانات</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>المبيعات</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="M4 3h16v18l-3-2-3 2-2-2-2 2-3-2-3 2V3Z"/><path d="M8 8h8M8 12h8"/></svg>الفوترة</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="m7.5 4.3 9 5.2M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"/></svg>المنتجات</div>
-        <div class="app"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>الاشتراكات والمصروفات</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg>المهام — CRM</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>العملاء</div>
-        <div class="app"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>المواعيد</div>
-        <div class="app"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>التقويم</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="m8 20 4-4 4 4"/></svg>المشروع والإنتاج</div>
-        <div class="app"><svg viewBox="0 0 24 24"><path d="M18 21a6 6 0 0 0-12 0"/><circle cx="12" cy="9" r="4"/></svg>الفريق</div>
-        <div class="app"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>الإعدادات</div>
-        <div class="app content"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg>رادار المحتوى</div>
-        <div class="app content"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"/></svg>المدونة</div>
-        <div class="app content"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4"/></svg>ضيوف البودكاست</div>
-        <div class="app content"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>مكتبة البرومتات</div>
-        <div class="app content"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17 2 7 12l-4 9 9-4L22 7l-5-5Z"/></svg>الهوية البصرية</div>
-      </div>
+      <div class="apps" id="appsGrid"></div>
       <p class="apps-note">تحتاج تطبيقاً غير موجود؟ <a href="#contact" style="color:#9db4ff;text-decoration:none">نبنيه لك</a> — ويصبح جزءاً من نظامك.</p>
     </section>
 
@@ -366,9 +349,45 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>
     // ═══ الهوية: غيّر الاسم هنا فقط عند اعتماد اسم الشركة ═══
     const BRAND = 'الشركة التقنية';
+
+    // ═══ شبكة التطبيقات — نفس أيقونات وألوان Launchpad داخل النظام ═══
+    const SITE_APPS = [
+      {name:'الرئيسية',            icon:'home',             c:'#5b8cff,#2f56d6'},
+      {name:'المكتب',              icon:'layout-grid',      c:'#94a3b8,#64748b'},
+      {name:'عنتر — مساعد ذكي',    icon:'sparkles',         c:'#8b5cf6,#6366f1'},
+      {name:'لوحات البيانات',      icon:'layout-dashboard', c:'#3b82f6,#2563eb'},
+      {name:'المبيعات',            icon:'trending-up',      c:'#22c55e,#16a34a'},
+      {name:'الفوترة',             icon:'receipt-text',     c:'#f5a623,#d97706'},
+      {name:'المنتجات',            icon:'package',          c:'#14b8a6,#0d9488'},
+      {name:'الاشتراكات',          icon:'credit-card',      c:'#ec4899,#db2777'},
+      {name:'المهام — CRM',        icon:'list-checks',      c:'#f59e0b,#b45309'},
+      {name:'العملاء',             icon:'contact',          c:'#0ea5e9,#0284c7'},
+      {name:'المواعيد',            icon:'calendar-clock',   c:'#a855f7,#7c3aed'},
+      {name:'التقويم',             icon:'calendar-days',    c:'#ef4444,#dc2626'},
+      {name:'المشروع والإنتاج',    icon:'clapperboard',     c:'#f43f5e,#e11d48'},
+      {name:'التقارير والتصدير',   icon:'bar-chart-3',      c:'#0ea5e9,#0369a1'},
+      {name:'الفريق',              icon:'users',            c:'#64748b,#475569'},
+      {name:'الإعدادات',           icon:'settings',         c:'#475569,#334155'},
+      {name:'رادار المحتوى',       icon:'radar',            c:'#10b981,#059669', content:true},
+      {name:'المدونة',             icon:'pen-line',         c:'#84cc16,#4d7c0f', content:true},
+      {name:'ضيوف البودكاست',      icon:'mic',              c:'#34d399,#0f766e', content:true},
+      {name:'مكتبة البرومتات',     icon:'book-open',        c:'#2dd4bf,#0d9488', content:true},
+      {name:'الهوية البصرية',      icon:'palette',          c:'#4ade80,#15803d', content:true},
+    ];
+    function hexA(h,al){h=h.trim().replace('#','');const n=parseInt(h,16);
+      return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${al})`}
+    document.getElementById('appsGrid').innerHTML = SITE_APPS.map(a=>{
+      const g=a.c.split(',').map(x=>hexA(x,.85)).join(',');
+      return `<div class="app${a.content?' content':''}">
+        <span class="lp-ic" style="background:linear-gradient(140deg,${g})"><i data-lucide="${a.icon}"></i></span>
+        <span class="nm">${a.name}</span>
+      </div>`;
+    }).join('');
+    if (window.lucide) lucide.createIcons();
     document.querySelectorAll('.brand').forEach(e => e.textContent = BRAND);
     document.getElementById('yr').textContent = new Date().getFullYear();
     // إغلاق قائمة الجوال عند اختيار رابط
