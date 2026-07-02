@@ -1,12 +1,2 @@
+.claude/
 .DS_Store
-*.bak
-.fuse_hidden*
-node_modules/
-.env
-.env.*
-supabase/.temp/
-
-# وثيقة هيكلة داخلية — لا تُنشر
-هيكلة-النظام.pdf
-_preview/
-*.pdf

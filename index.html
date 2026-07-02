@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>قريباً — نبني أنظمة الأعمال</title>
-<meta name="description" content="شركة تقنية تصمّم وتطوّر أنظمة إدارة أعمال مخصّصة للشركات بواجهات أنيقة وتجربة سهلة. قريباً.">
+<!-- ═══════════════════════════════════════════════════════════
+     تغيير الهوية لاحقاً: عدّل const BRAND أسفل الصفحة + سطر <title>
+     واستبدل logo.png — كل شيء آخر يتحدّث تلقائياً.
+     ═══════════════════════════════════════════════════════════ -->
+<title>الشركة التقنية — أنظمة إدارة أعمال مخصّصة</title>
+<meta name="description" content="نبني أنظمة إدارة أعمال (ERP) عربية مخصّصة للشركات والجهات والأفراد — أساس واحد متكامل، تطبيقات تُفعّل حسب الحاجة، وهوية خاصة لكل عميل.">
 <link rel="icon" href="./logo.png">
 <style>
   @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Light.woff2") format("woff2");font-weight:300;font-display:swap}
@@ -16,104 +20,360 @@
   @font-face{font-family:"Thmanyah Serif";src:url("/fonts/thmanyah/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
 
   :root{--bg:#08080a;--tx:#eef0f4;--muted:#9aa1ad;--bd:rgba(255,255,255,.12);
-    --glass:rgba(255,255,255,.05);--accent:#5b8cff;--accent2:#9b6bff;}
+    --glass:rgba(255,255,255,.05);--glass2:rgba(255,255,255,.08);--accent:#5b8cff;--accent2:#9b6bff;--ok:#34d399}
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   html,body{margin:0;min-height:100%}
   body{background:var(--bg);color:var(--tx);font-family:"Thmanyah Sans",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
-    overflow-x:hidden;position:relative;line-height:1.7}
+    overflow-x:hidden;position:relative;line-height:1.75}
+  ::selection{background:rgba(91,140,255,.35)}
+
   /* خلفية متوهّجة */
   .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
-  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 18s ease-in-out infinite}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 18s ease-in-out infinite}
   .orb.a{width:520px;height:520px;background:#2a4bdb;top:-160px;right:-120px}
   .orb.b{width:480px;height:480px;background:#7a3ad6;bottom:-180px;left:-120px;animation-delay:-6s}
-  .orb.c{width:360px;height:360px;background:#0e7c86;top:40%;left:55%;animation-delay:-11s;opacity:.4}
+  .orb.c{width:360px;height:360px;background:#0e7c86;top:40%;left:55%;animation-delay:-11s;opacity:.35}
   @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
-  .grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at 50% 35%,#000 0%,transparent 75%)}
+  .gridbg{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at 50% 25%,#000 0%,transparent 75%)}
 
-  .wrap{max-width:1080px;margin:0 auto;padding:48px 22px 56px;text-align:center}
+  /* شريط التنقل */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    background:rgba(8,8,10,.6);border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav-in{max-width:1120px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:20px}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tx);font-weight:700;font-size:16px}
+  .nav-logo img{width:34px;height:34px;border-radius:9px;object-fit:cover;border:1px solid var(--bd)}
+  .nav-links{display:flex;gap:4px;margin-inline-start:auto;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:7px 12px;border-radius:10px;transition:.2s}
+  .nav-links a:hover{color:var(--tx);background:var(--glass)}
+  .nav-cta{color:#fff!important;background:linear-gradient(120deg,#5b8cff,#9b6bff)!important;font-weight:500}
+  .burger{display:none;margin-inline-start:auto;background:var(--glass);border:1px solid var(--bd);border-radius:10px;color:var(--tx);padding:8px 10px;cursor:pointer;font-size:16px;line-height:1}
+  @media(max-width:820px){
+    .nav-links{display:none;position:absolute;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;
+      background:rgba(8,8,10,.95);backdrop-filter:blur(18px);padding:10px 16px 16px;border-bottom:1px solid var(--bd)}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 14px;font-size:15px}
+    .burger{display:block}
+  }
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  section{padding:72px 0}
+  .sec-title{font-family:"Thmanyah Serif","Thmanyah Sans",serif;font-weight:900;font-size:clamp(24px,4vw,36px);margin:0 0 10px;text-align:center}
+  .sec-sub{color:var(--muted);text-align:center;max-width:640px;margin:0 auto 44px;font-size:15.5px}
+
+  /* البطل */
+  .hero{text-align:center;padding:84px 0 64px}
   .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
     border:1px solid var(--bd);background:var(--glass);backdrop-filter:blur(10px);
-    padding:7px 16px;border-radius:999px;margin-bottom:30px}
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399;animation:pulse 2s infinite}
+    padding:7px 16px;border-radius:999px;margin-bottom:28px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 12px var(--ok);animation:pulse 2s infinite}
   @keyframes pulse{50%{opacity:.4}}
-
-  .logo{width:96px;height:96px;border-radius:24px;object-fit:cover;margin:0 auto 26px;display:block;
-    border:1px solid var(--bd);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-  h1{font-family:"Thmanyah Serif","Thmanyah Sans",serif;font-weight:900;line-height:1.25;margin:0 0 18px;
+  h1{font-family:"Thmanyah Serif","Thmanyah Sans",serif;font-weight:900;line-height:1.3;margin:0 0 18px;
     font-size:clamp(30px,6vw,58px);
     background:linear-gradient(120deg,#fff 30%,#9db4ff 70%,#c4a6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{font-size:clamp(16px,2.4vw,20px);color:var(--muted);max-width:620px;margin:0 auto 38px}
+  .sub{font-size:clamp(16px,2.4vw,19px);color:var(--muted);max-width:660px;margin:0 auto 38px}
   .sub b{color:var(--tx);font-weight:500}
-
   .cta{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:500;font-size:15px;
     border:1px solid var(--bd);background:var(--glass);backdrop-filter:blur(10px);
-    padding:13px 24px;border-radius:14px;transition:.25s}
+    padding:13px 26px;border-radius:14px;transition:.25s}
   .cta:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .cta.primary{background:linear-gradient(120deg,#5b8cff,#9b6bff);border-color:transparent}
+  .cta.primary:hover{filter:brightness(1.12)}
   .cta svg{width:18px;height:18px}
+  .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:64px auto 0;max-width:920px;text-align:start}
-  .card{background:var(--glass);border:1px solid var(--bd);border-radius:18px;padding:22px;backdrop-filter:blur(12px);transition:.25s}
+  .stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:52px}
+  .stat{background:var(--glass);border:1px solid var(--bd);border-radius:16px;padding:16px 26px;backdrop-filter:blur(10px);min-width:150px}
+  .stat b{display:block;font-size:26px;font-weight:900;background:linear-gradient(120deg,#9db4ff,#c4a6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  /* بطاقات عامة */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;text-align:start}
+  .card{background:var(--glass);border:1px solid var(--bd);border-radius:18px;padding:24px;backdrop-filter:blur(12px);transition:.25s}
   .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
   .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:14px;
     background:linear-gradient(140deg,rgba(91,140,255,.28),rgba(155,107,255,.28));border:1px solid var(--bd)}
-  .ic svg{width:24px;height:24px;stroke:#cdd7ff;fill:none;stroke-width:1.7}
-  .card h3{margin:0 0 6px;font-size:16px;font-weight:700}
+  .ic svg{width:24px;height:24px;stroke:#cdd7ff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{margin:0 0 6px;font-size:16.5px;font-weight:700}
   .card p{margin:0;font-size:13.5px;color:var(--muted)}
 
-  footer{margin-top:64px;color:var(--muted);font-size:13px}
+  /* المنتجات */
+  .products{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+  @media(max-width:860px){.products{grid-template-columns:1fr}}
+  .product{background:var(--glass);border:1px solid var(--bd);border-radius:22px;padding:32px;backdrop-filter:blur(14px);position:relative;overflow:hidden}
+  .product::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 20% 0%,rgba(91,140,255,.14),transparent 60%);pointer-events:none}
+  .product.alt::before{background:radial-gradient(600px 200px at 20% 0%,rgba(52,211,153,.12),transparent 60%)}
+  .badge{display:inline-block;font-size:11.5px;padding:4px 12px;border-radius:999px;border:1px solid var(--bd);background:var(--glass2);color:var(--muted);margin-bottom:14px}
+  .badge.hot{color:#cdd7ff;border-color:rgba(91,140,255,.5)}
+  .badge.soon{color:#a7f3d0;border-color:rgba(52,211,153,.4)}
+  .product h3{font-family:"Thmanyah Serif","Thmanyah Sans",serif;font-weight:900;font-size:24px;margin:0 0 10px}
+  .product p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+  .feat{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px}
+  .feat li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+  .feat svg{width:17px;height:17px;stroke:var(--ok);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
+
+  /* شبكة التطبيقات */
+  .apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px}
+  .app{display:flex;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;font-size:13.5px;font-weight:500;transition:.2s}
+  .app:hover{background:var(--glass2);transform:translateY(-2px)}
+  .app svg{width:19px;height:19px;stroke:#9db4ff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .app.content svg{stroke:#a7f3d0}
+  .apps-note{margin-top:18px;text-align:center;color:var(--muted);font-size:13.5px}
+
+  /* كيف نعمل */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:step}
+  .step{background:var(--glass);border:1px solid var(--bd);border-radius:18px;padding:24px;position:relative;backdrop-filter:blur(12px)}
+  .step::before{counter-increment:step;content:counter(step,arabic-indic);position:absolute;top:18px;left:20px;
+    font-family:"Thmanyah Serif",serif;font-weight:900;font-size:34px;opacity:.16}
+  .step h3{margin:0 0 8px;font-size:16px;font-weight:700}
+  .step p{margin:0;font-size:13.5px;color:var(--muted)}
+
+  /* الأسئلة */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+  details{background:var(--glass);border:1px solid var(--bd);border-radius:14px;padding:0 20px;backdrop-filter:blur(10px)}
+  summary{cursor:pointer;font-weight:500;font-size:15px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:20px;color:var(--muted);transition:.2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin:0 0 16px;color:var(--muted);font-size:14px}
+
+  /* تواصل */
+  .contact-box{max-width:640px;margin:0 auto;text-align:center;background:var(--glass);border:1px solid var(--bd);border-radius:22px;padding:40px 28px;backdrop-filter:blur(14px)}
+  .contact-box h2{font-family:"Thmanyah Serif",serif;font-weight:900;font-size:26px;margin:0 0 10px}
+  .contact-box p{color:var(--muted);margin:0 0 26px;font-size:14.5px}
+
+  footer{border-top:1px solid rgba(255,255,255,.07);margin-top:40px;padding:34px 0;color:var(--muted);font-size:13px}
+  .foot-in{max-width:1120px;margin:0 auto;padding:0 22px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
   footer a{color:#9db4ff;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .legal{font-size:12px;opacity:.85}
 </style>
 </head>
 <body>
   <div class="bg"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
-  <div class="grid"></div>
+  <div class="gridbg"></div>
 
-  <main class="wrap">
-    <span class="pill"><span class="dot"></span> قريباً</span>
-    <img class="logo" src="./logo.png" alt="الشعار" onerror="this.style.display='none'">
-
-    <h1>نصمّم ونبني أنظمة الأعمال</h1>
-    <p class="sub">شركة تقنية تطوّر <b>أنظمة إدارة أعمال مخصّصة</b> للشركات — بواجهات أنيقة وتجربة سهلة، تُبنى على أساس واحد متكامل ونخصّصه لكل عميل.</p>
-
-    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
-      <a class="cta" href="./try/" style="background:linear-gradient(120deg,#5b8cff,#9b6bff);border-color:transparent">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
-        جرّب النظام مجاناً
-      </a>
-      <a class="cta" href="./app/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
-        الدخول إلى النظام
-      </a>
+  <nav>
+    <div class="nav-in">
+      <a class="nav-logo" href="#"><img src="./logo.png" alt="الشعار" onerror="this.style.display='none'"><span class="brand">الشركة التقنية</span></a>
+      <button class="burger" aria-label="القائمة" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+      <div class="nav-links">
+        <a href="#products">المنتجات</a>
+        <a href="#apps">التطبيقات</a>
+        <a href="#how">كيف نعمل</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#faq">الأسئلة</a>
+        <a href="#contact">تواصل</a>
+        <a href="./app/">دخول النظام</a>
+        <a class="nav-cta" href="./try/">جرّب مجاناً</a>
+      </div>
     </div>
+  </nav>
 
-    <section class="cards">
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 16l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <h3>أنظمة ERP مخصّصة</h3>
-        <p>إدارة المبيعات والفوترة والعملاء والمشاريع في نظام واحد مفصّل على عملك.</p>
+  <main>
+    <!-- البطل -->
+    <header class="hero wrap">
+      <span class="pill"><span class="dot"></span> نستقبل عملاء جدد الآن</span>
+      <h1>نظام إدارة أعمالك،<br>مفصّل عليك بالضبط</h1>
+      <p class="sub">نبني <b>أنظمة إدارة أعمال (ERP) عربية</b> للشركات والجهات والأفراد — أساس واحد متكامل، نفعّل لك التطبيقات التي تحتاجها فقط، ونصنع لك تطبيقات جديدة عند الطلب، بهويتك واسمك.</p>
+      <div class="ctas">
+        <a class="cta primary" href="./try/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
+          جرّب النظام مجاناً
+        </a>
+        <a class="cta" href="#products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+          استكشف المنتجات
+        </a>
       </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h3>لوحات تحكم وتطبيقات</h3>
-        <p>تطبيقات جاهزة نفعّلها لك حسب احتياجك، وتطبيقات جديدة نصنعها عند الطلب.</p>
+      <div class="stats">
+        <div class="stat"><b>+15</b><span>تطبيق أعمال جاهز</span></div>
+        <div class="stat"><b>100%</b><span>عربي RTL بالكامل</span></div>
+        <div class="stat"><b>معزولة</b><span>بيانات كل عميل آمنة</span></div>
+        <div class="stat"><b>بهويتك</b><span>شعارك واسمك ودومينك</span></div>
       </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3Z"/><path d="M19 14l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2Z"/></svg></div>
-        <h3>تخصيص وواجهات أنيقة</h3>
-        <p>هوية وتجربة استخدام جميلة وسهلة — أهم ما يميّز ما نبنيه.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></div>
-        <h3>منصّات رقمية</h3>
-        <p>نطوّر منصّات تعليمية ومحتوى متكاملة — مثل منصّة «حروف ودروس» من أعمالنا.</p>
+    </header>
+
+    <!-- المنتجات -->
+    <section id="products" class="wrap">
+      <h2 class="sec-title">منتجاتنا</h2>
+      <p class="sec-sub">منتجان يكملان بعضهما: منصّة أنظمة أعمال نخصّصها لكل عميل، ومنصّة تعليمية من صناعتنا تثبت جودة ما نبني.</p>
+      <div class="products">
+        <div class="product">
+          <span class="badge hot">المنتج الرئيسي · متاح الآن</span>
+          <h3>منصّة الأنظمة الموحّدة — ERP</h3>
+          <p>نظام إدارة أعمال متكامل يعمل من المتصفح مباشرة: المبيعات، الفوترة، العملاء، المشاريع، الفريق، التقويم — كل شيء في مكان واحد، ونفعّل لك ما تحتاجه فقط.</p>
+          <ul class="feat">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>فوترة مع ضريبة القيمة المضافة وطباعة PDF ورمز QR</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>غرفة مشروع لعملائك: يتابعون التسليمات ويطلبون التعديلات برابط خاص — بدون حسابات</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>مهام Kanban وعروض أسعار واشتراكات ومصروفات وتقارير</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>بياناتك معزولة تماماً بسياسات أمان على مستوى قاعدة البيانات</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>تطبيقات مخصّصة جديدة تُبنى حسب طلبك وتُضاف لنظامك</li>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cta primary" href="./try/">جرّبه الآن مجاناً</a>
+            <a class="cta" href="#contact">اطلب نظامك الخاص</a>
+          </div>
+        </div>
+        <div class="product alt">
+          <span class="badge soon">من أعمالنا · تعليم</span>
+          <h3>منصّة حروف ودروس</h3>
+          <p>منصّة تعليمية تفاعلية من صناعة مؤسستنا — تجربة تعلّم عربية سلسة بتصميم عصري، ودليل حيّ على مستوى المنتجات التي نبنيها.</p>
+          <ul class="feat">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>محتوى تعليمي تفاعلي بالعربية</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>تجربة استخدام مصمّمة للجوال أولاً</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>تطوير مستمر — نسخة محدّثة قادمة قريباً</li>
+          </ul>
+          <a class="cta" href="#contact">اعرف أكثر</a>
+        </div>
       </div>
     </section>
 
-    <footer>
-      للتواصل: <a href="mailto:ibrahimsaud25@gmail.com">ibrahimsaud25@gmail.com</a>
-      &nbsp;·&nbsp; <span id="yr"></span>
-    </footer>
+    <!-- التطبيقات -->
+    <section id="apps" class="wrap">
+      <h2 class="sec-title">التطبيقات الجاهزة</h2>
+      <p class="sec-sub">كل ميزة عندنا «تطبيق» مستقل — نفعّل لك ما يخدم عملك فقط، فتبقى واجهتك نظيفة وسهلة. وأي تطبيق جديد نبنيه لعميل، ينضم للكتالوج.</p>
+      <div class="apps">
+        <div class="app"><svg viewBox="0 0 24 24"><path d="m3 9 9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9Z"/><path d="M9 21V12h6v9"/></svg>الرئيسية</div>
+        <div class="app"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>المكتب</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="m12 3 1.9 4.6 4.6 1.9-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3Z"/></svg>عنتر — مساعد ذكي</div>
+        <div class="app"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17v-5M12 17V7M16 17v-8"/></svg>لوحات البيانات</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>المبيعات</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="M4 3h16v18l-3-2-3 2-2-2-2 2-3-2-3 2V3Z"/><path d="M8 8h8M8 12h8"/></svg>الفوترة</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="m7.5 4.3 9 5.2M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"/></svg>المنتجات</div>
+        <div class="app"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>الاشتراكات والمصروفات</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg>المهام — CRM</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>العملاء</div>
+        <div class="app"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>المواعيد</div>
+        <div class="app"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>التقويم</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="m8 20 4-4 4 4"/></svg>المشروع والإنتاج</div>
+        <div class="app"><svg viewBox="0 0 24 24"><path d="M18 21a6 6 0 0 0-12 0"/><circle cx="12" cy="9" r="4"/></svg>الفريق</div>
+        <div class="app"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>الإعدادات</div>
+        <div class="app content"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg>رادار المحتوى</div>
+        <div class="app content"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"/></svg>المدونة</div>
+        <div class="app content"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4"/></svg>ضيوف البودكاست</div>
+        <div class="app content"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>مكتبة البرومتات</div>
+        <div class="app content"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17 2 7 12l-4 9 9-4L22 7l-5-5Z"/></svg>الهوية البصرية</div>
+      </div>
+      <p class="apps-note">تحتاج تطبيقاً غير موجود؟ <a href="#contact" style="color:#9db4ff;text-decoration:none">نبنيه لك</a> — ويصبح جزءاً من نظامك.</p>
+    </section>
+
+    <!-- كيف نعمل -->
+    <section id="how" class="wrap">
+      <h2 class="sec-title">كيف نعمل؟</h2>
+      <p class="sec-sub">نموذجنا بسيط: أساس واحد قوي، وتخصيص كامل لكل عميل — فتحصل على نظام ناضج من اليوم الأول، لا مشروعاً يُبنى من الصفر.</p>
+      <div class="steps">
+        <div class="step"><h3>نفهم عملك</h3><p>جلسة قصيرة نحدّد فيها احتياجك: ما الذي تديره يومياً، ومن يستخدم النظام، وما الذي يضيع وقتك.</p></div>
+        <div class="step"><h3>نفعّل ونخصّص</h3><p>نفعّل لك التطبيقات المناسبة من الكتالوج، ونضبط هويتك: الشعار، الألوان، الاسم، وحتى الدومين الخاص بك.</p></div>
+        <div class="step"><h3>نبني ما ينقصك</h3><p>تحتاج ميزة خاصة بمجالك؟ نصمّمها ونبنيها كتطبيق جديد داخل نظامك — بسرعة وبدون تعقيد.</p></div>
+        <div class="step"><h3>نطوّر باستمرار</h3><p>أي تحسين على المنصّة يصلك تلقائياً. نظامك يكبر مع عملك، وبياناتك تبقى معزولة وآمنة دائماً.</p></div>
+      </div>
+    </section>
+
+    <!-- خدماتنا -->
+    <section id="services" class="wrap">
+      <h2 class="sec-title">خدماتنا</h2>
+      <p class="sec-sub">من نظام جاهز تدخل عليه اليوم، إلى نظام كامل بهوية شركتك واسمها.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 16l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <h3>أنظمة ERP مخصّصة</h3>
+          <p>نظام إدارة أعمال متكامل يُفصّل على نشاطك — للشركات والجهات والأفراد، مهما كان مجالك.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="m12 3 1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3Z"/><path d="M19 14l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2Z"/></svg></div>
+          <h3>هوية خاصة بك — White-label</h3>
+          <p>النظام يحمل شعارك وألوانك واسمك ودومينك، وكأنه بُني عندك من الصفر.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <h3>تطبيقات حسب الطلب</h3>
+          <p>ميزة يحتاجها عملك ولا يوفّرها أحد؟ نبنيها لك كتطبيق مستقل داخل نظامك.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+          <h3>استضافة وأمان وصيانة</h3>
+          <p>نتولّى التشغيل والتحديثات والنسخ الاحتياطي — وبيانات كل عميل معزولة تماماً عن غيره.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section id="faq" class="wrap">
+      <h2 class="sec-title">أسئلة شائعة</h2>
+      <p class="sec-sub">أكثر ما يسألنا عنه العملاء قبل البدء.</p>
+      <div class="faq">
+        <details>
+          <summary>هل بياناتي آمنة؟ ومن يستطيع الوصول لها؟</summary>
+          <p>بيانات كل عميل معزولة بالكامل عن بقية العملاء بسياسات أمان على مستوى قاعدة البيانات نفسها (Row-Level Security)، ولا يصل إليها إلا مستخدمو حسابك الذين تحدّدهم أنت. التفاصيل كاملة في <a href="./privacy.html" style="color:#9db4ff">سياسة الخصوصية</a>.</p>
+        </details>
+        <details>
+          <summary>هل أستطيع تجربة النظام قبل الالتزام؟</summary>
+          <p>نعم — <a href="./try/" style="color:#9db4ff">التجربة مجانية</a> وتفتح لك نسخة ببيانات تجريبية جاهزة لترى النظام ممتلئاً بالحياة، لا صفحة فارغة.</p>
+        </details>
+        <details>
+          <summary>عملي مختلف — هل يناسبني النظام؟</summary>
+          <p>هذه فكرتنا الأساسية: الأساس واحد، لكن كل عميل يحصل على التطبيقات التي تخدم نشاطه فقط، وإذا احتجت ميزة خاصة بمجالك نبنيها لك كتطبيق جديد داخل نظامك.</p>
+        </details>
+        <details>
+          <summary>كم يستغرق تجهيز نظامي؟</summary>
+          <p>التفعيل الأساسي بهويتك يجهز خلال أيام قليلة. التطبيقات المخصّصة تعتمد على حجمها، ونتفق على مدتها وسعرها قبل البدء.</p>
+        </details>
+        <details>
+          <summary>كيف تُحسب الأسعار؟</summary>
+          <p>حسب التطبيقات المفعّلة وحجم التخصيص وعدد المستخدمين. تواصل معنا وسنرسل لك عرض سعر واضحاً بدون مفاجآت.</p>
+        </details>
+        <details>
+          <summary>هل النظام يعمل على الجوال؟</summary>
+          <p>نعم، يعمل من المتصفح على أي جهاز — جوال أو آيباد أو كمبيوتر — بدون تثبيت أي تطبيق.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- تواصل -->
+    <section id="contact" class="wrap">
+      <div class="contact-box">
+        <h2>جاهز تنظّم عملك؟</h2>
+        <p>كلّمنا وأخبرنا عن نشاطك، وسنقترح عليك التطبيقات المناسبة ونجهّز لك عرضاً واضحاً — أو جرّب النظام بنفسك الآن.</p>
+        <div class="ctas">
+          <a class="cta primary" href="mailto:ibrahimsaud25@gmail.com?subject=طلب%20نظام%20إدارة%20أعمال">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            راسلنا بالبريد
+          </a>
+          <a class="cta" href="https://wa.me/966504895213" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.6 8.6 0 0 1-3.9-.9L3 20l1-5.4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 11.5 2.3 8.4 8.4 0 0 1 21 11.5Z"/></svg>
+            واتساب
+          </a>
+          <a class="cta" href="./try/">جرّب مجاناً</a>
+        </div>
+      </div>
+    </section>
   </main>
-  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+  <footer>
+    <div class="foot-in">
+      <div>
+        <b class="brand" style="color:var(--tx)">الشركة التقنية</b> — نبني أنظمة الأعمال.
+        <div class="legal">مشروع تقني تابع لمؤسسة حروف و دروس · سجل تجاري رقم 7054189027 · المملكة العربية السعودية</div>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+        <a href="./privacy.html">سياسة الخصوصية</a>
+        <a href="./terms.html">شروط الاستخدام</a>
+        <a href="./try/">التجربة المجانية</a>
+        <a href="./app/">دخول النظام</a>
+        <span>© <span id="yr"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ═══ الهوية: غيّر الاسم هنا فقط عند اعتماد اسم الشركة ═══
+    const BRAND = 'الشركة التقنية';
+    document.querySelectorAll('.brand').forEach(e => e.textContent = BRAND);
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    // إغلاق قائمة الجوال عند اختيار رابط
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open')));
+  </script>
 </body>
 </html>
