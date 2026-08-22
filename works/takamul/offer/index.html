@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>العرض الفني لتطوير الموقع الإلكتروني — شركة التكامل المتحدة للخدمات اللوجستية</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<style>
+@font-face{font-family:"Thmanyah Sans";src:url("assets/fonts/thmanyahsans-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("assets/fonts/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("assets/fonts/thmanyahsans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("assets/fonts/thmanyahsans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url("assets/fonts/thmanyahsans-Black.woff2") format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"Thmanyah Display";src:url("assets/fonts/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --navy-900:#0d2440;--navy-800:#12365e;--navy-700:#1e4d82;--navy-600:#285d9a;
+  --navy-050:#eef3f9;--navy-025:#f6f9fc;--gold:#ffc50c;
+  --ink:#12181f;--body:#4a5560;--muted:#7c8894;--line:#e3e9f0;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:#eef1f5;color:var(--body);
+  font-family:"Thmanyah Sans",system-ui,sans-serif;font-size:14.6px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;color:var(--ink);line-height:1.35;font-weight:700}
+h1,h2{font-family:"Thmanyah Display","Thmanyah Sans",serif;letter-spacing:-.01em}
+p{margin:0 0 .85em}
+ul{margin:0;padding:0;list-style:none}
+img{max-width:100%;display:block;height:auto}
+a{color:var(--navy-700);text-decoration:none}
+
+.sheet{
+  width:210mm;min-height:297mm;margin:16px auto;background:#fff;
+  padding:16mm 16mm;position:relative;box-shadow:0 12px 40px rgba(13,36,64,.14);
+}
+.sheet--cover{padding:0;overflow:hidden;display:flex;flex-direction:column}
+
+/* ---------- cover ---------- */
+.cover-top{
+  background:linear-gradient(140deg,var(--navy-900),var(--navy-700));
+  color:#fff;padding:22mm 18mm 20mm;position:relative;overflow:hidden;flex:1
+}
+.cover-top::before{
+  content:"";position:absolute;inset:0;opacity:.16;
+  background-image:radial-gradient(circle at 1px 1px,#fff 1px,transparent 0);background-size:22px 22px
+}
+.cover-top>*{position:relative;z-index:2}
+.cover-top img{width:210px;margin-bottom:32mm}
+.cover-kicker{
+  display:flex;align-items:center;gap:12px;color:var(--gold);
+  font-size:14px;font-weight:700;margin-bottom:14px
+}
+.cover-kicker::before{content:"";width:36px;height:2px;background:var(--gold);border-radius:2px}
+.cover-top h1{color:#fff;font-size:34px;line-height:1.3;margin-bottom:14px;max-width:15ch}
+.cover-top p{color:rgba(255,255,255,.82);font-size:16px;max-width:44ch;margin:0}
+.cover-meta{
+  background:#fff;padding:14mm 18mm;display:grid;grid-template-columns:repeat(3,1fr);gap:10mm;
+  border-top:4px solid var(--gold)
+}
+.cover-meta dt{font-size:12.5px;color:var(--muted);margin-bottom:4px}
+.cover-meta dd{margin:0;font-size:15.5px;font-weight:700;color:var(--ink)}
+.cover-to{background:var(--navy-025);padding:10mm 18mm;border-top:1px solid var(--line)}
+.cover-to b{color:var(--ink)}
+
+/* ---------- sections ---------- */
+.eyebrow{
+  display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;
+  color:var(--navy-600);letter-spacing:.06em;margin-bottom:10px
+}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--gold);border-radius:2px}
+h2{font-size:21px;margin-bottom:12px}
+h3{font-size:15.5px;margin:16px 0 7px;color:var(--navy-700)}
+.lead{font-size:15px;color:var(--body);margin-bottom:16px;line-height:1.75}
+
+.rule{height:1px;background:var(--line);margin:18px 0}
+
+.audit{border-top:1px solid var(--line)}
+.audit li{
+  display:grid;grid-template-columns:26px 1fr 1fr;gap:14px;align-items:start;
+  padding:9px 0;border-bottom:1px solid var(--line);font-size:13.6px;line-height:1.65
+}
+.audit li span:first-child{color:#c0392b;font-weight:900;font-size:15px;text-align:center}
+.audit li b{color:var(--ink);font-weight:700}
+.audit li i{font-style:normal;color:var(--navy-700);font-weight:500}
+.audit-head{
+  display:grid;grid-template-columns:26px 1fr 1fr;gap:14px;padding:0 0 8px;
+  font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em
+}
+
+.checks li{position:relative;padding-inline-start:22px;margin-bottom:6px;font-size:13.9px;line-height:1.7}
+.checks li::before{
+  content:"";position:absolute;inset-inline-start:0;inset-block-start:.78em;width:10px;height:5.5px;
+  border-inline-start:2px solid var(--navy-600);border-block-end:2px solid var(--navy-600);transform:rotate(-45deg)
+}
+.checks li b{color:var(--ink)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+.statbox{border:1px solid var(--line);border-radius:12px;padding:13px;text-align:center;background:var(--navy-025)}
+.statbox b{display:block;font-size:26px;font-weight:900;color:var(--navy-700);line-height:1.1;letter-spacing:-.02em;direction:ltr}
+.statbox span{font-size:13px;color:var(--muted);line-height:1.5;display:block}
+
+table{width:100%;border-collapse:collapse;font-size:13.7px}
+th,td{padding:8px 11px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+th{background:var(--navy-025);color:var(--ink);font-weight:700;font-size:13px}
+td b{color:var(--ink)}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.plan{border:1px solid var(--line);border-radius:14px;padding:13px 18px;display:flex;flex-direction:column;background:#fff}
+.plan--solo{border:2px solid var(--navy-700);box-shadow:0 8px 24px rgba(30,77,130,.13)}
+.plan--best{border:2px solid var(--navy-700);box-shadow:0 8px 24px rgba(30,77,130,.13);position:relative}
+.plan--best::after{
+  content:"الأنسب لكم";position:absolute;inset-block-start:-11px;inset-inline-start:50%;transform:translateX(50%);
+  background:var(--gold);color:var(--navy-900);font-size:11.5px;font-weight:900;padding:4px 14px;border-radius:100px
+}
+.plan h3{margin:0 0 4px;font-size:16px;color:var(--ink)}
+.plan .sub{font-size:12.5px;color:var(--muted);margin-bottom:14px;min-height:34px}
+.plan .price{font-size:30px;font-weight:900;color:var(--navy-700);line-height:1;letter-spacing:-.02em;direction:ltr;text-align:start}
+.plan .price small{font-size:13px;font-weight:500;color:var(--muted)}
+.plan ul{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.plan li{font-size:13.4px;line-height:1.7;padding-inline-start:19px;position:relative;margin-bottom:7px}
+.plan li::before{
+  content:"";position:absolute;inset-inline-start:0;inset-block-start:.72em;width:8px;height:4.5px;
+  border-inline-start:2px solid var(--navy-600);border-block-end:2px solid var(--navy-600);transform:rotate(-45deg)
+}
+.plan li.off{color:#aab3bd}
+.plan li.off::before{border-color:#cfd6dd}
+
+.note{background:var(--navy-025);border-inline-start:3px solid var(--gold);border-radius:0 10px 10px 0;padding:16px 18px;font-size:14.2px}
+.note p:last-child{margin:0}
+
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:34px}
+.sign div{border-top:1px solid var(--ink);padding-top:10px;font-size:13.5px;color:var(--muted)}
+
+.contact-band{
+  background:linear-gradient(140deg,var(--navy-800),var(--navy-600));color:#fff;
+  border-radius:16px;padding:26px 28px;margin-top:24px
+}
+.contact-band h3{color:#fff;margin:0 0 12px;font-size:18px}
+.contact-band p{color:rgba(255,255,255,.85);margin:0 0 16px;font-size:14.5px}
+.contact-band dl{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0}
+.contact-band dt{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:3px}
+.contact-band dd{margin:0;font-size:14.6px;font-weight:700;color:#fff;direction:ltr;text-align:start}
+
+.foot{
+  position:absolute;inset-inline:18mm;inset-block-end:10mm;display:flex;justify-content:space-between;
+  font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px
+}
+
+[dir="ltr"]{white-space:nowrap}
+.contact-band dd[dir],.plan .price{white-space:normal}
+.hl{background:linear-gradient(transparent 62%,rgba(255,197,12,.42) 0);font-weight:700;color:var(--ink)}
+
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  html,body{width:210mm}
+  .sheet{width:210mm;height:297mm;min-height:0;margin:0;box-shadow:none;padding:15mm 15mm 12mm;page-break-after:always;overflow:hidden}
+  .sheet:last-child{page-break-after:auto}
+  .no-print{display:none}
+}
+@media screen and (max-width:820px){
+  .sheet{width:auto;padding:24px 18px}
+  .cover-top{padding:34px 22px}
+  .cover-meta,.cover-to{padding:20px 22px}
+  .cover-meta,.grid2,.grid3,.plans,.contact-band dl,.sign{grid-template-columns:1fr}
+  .cover-top img{margin-bottom:40px}
+  .audit li,.audit-head{grid-template-columns:20px 1fr}
+  .audit li i{grid-column:2}
+  .foot{position:static;inset:auto;margin-top:24px}
+}
+.tip{max-width:210mm;margin:16px auto 0;font-size:13.5px;color:#5a6570;background:#fff8dd;border:1px solid #f0e0a0;border-radius:10px;padding:14px 18px}
+</style>
+</head>
+<body>
+
+<div class="tip no-print">
+  <b>ملاحظة لك (لن تُطبع):</b> العرض جاهز ببيانات مؤسسة حروف و دروس. اطبع الصفحة عبر <b>Cmd + P</b> واختر «حفظ كـ PDF» لإرساله للعميل.
+</div>
+
+<!-- ============ الغلاف ============ -->
+<section class="sheet sheet--cover">
+  <div class="cover-top">
+    <img src="assets/img/logo-white.png" alt="شركة التكامل المتحدة للخدمات اللوجستية">
+    <div class="cover-kicker">عرض فني</div>
+    <h1>تطوير وإطلاق الموقع الإلكتروني الجديد</h1>
+    <p>تجديد كامل لموقعكم الحالي: موقع عربي احترافي متجاوب، على دومينكم واستضافتكم الحاليين، مبنيّ على هويتكم ومُهيّأ لمحركات البحث — <b style="color:#fff">جاهز ومُنجز بنسبة 100%، وقابل للمعاينة الحيّة قبل أي التزام مالي.</b></p>
+  </div>
+  <dl class="cover-meta">
+    <div><dt>رقم العرض</dt><dd>UIL-TEC-2026-01</dd></div>
+    <div><dt>تاريخ الإصدار</dt><dd>يوليو 2026</dd></div>
+    <div><dt>صلاحية العرض</dt><dd>30 يوماً من تاريخه</dd></div>
+  </dl>
+  <div class="cover-to">
+    <p style="margin:0">مُقدَّم إلى: <b>شركة التكامل المتحدة للخدمات اللوجستية</b> — الرياض، طريق الملك فهد، مبنى الصالحية.</p>
+    <p style="margin:6px 0 0">عناية: <b>الإدارة التنفيذية / إدارة التسويق</b></p>
+    <p style="margin:10px 0 0;font-size:14px;color:#5a6570">مُقدَّم من: <b style="color:#12181f">مؤسسة حروف و دروس</b> — الرقم الوطني الموحد <span dir="ltr">7054189027</span></p>
+  </div>
+</section>
+
+<!-- ============ 1. الوضع الحالي والحل ============ -->
+<section class="sheet">
+  <div class="eyebrow">القسم الأول</div>
+  <h2>ما رصدناه في موقعكم الحالي</h2>
+  <p class="lead">فحص فني لموقع <span dir="ltr">ilogistics.com.sa</span> — وقائع مرصودة في الكود، لا ملاحظات عامة.</p>
+
+  <ul class="audit">
+    <li><span>✕</span><b>عنوان الصفحة (Title) مكرّر حرفياً على كل الصفحات ولا يوجد وصف ميتا</b>
+        <i>جوجل لا يميّز بين صفحة «الجرد» وصفحة «التدقيق» — فتتنافس صفحاتكم وتخسر جميعها.</i></li>
+    <li><span>✕</span><b>لا خريطة موقع ولا <span dir="ltr">robots.txt</span> ولا بيانات منظّمة (Schema)</b>
+        <i>أرشفة متأخرة أو ناقصة، ولا ظهور لبياناتكم في النتائج الغنية ولا في محركات الذكاء الاصطناعي.</i></li>
+    <li><span>✕</span><b>رابط مكسور في القائمة الرئيسية: «قطاعات العملاء والشراكات»</b>
+        <i>الزائر يصل لصفحة خطأ من القائمة الرئيسية مباشرة.</i></li>
+    <li><span>✕</span><b>التذييل يعرض «© 2022» و«تحت الإنشاء والتطوير»</b>
+        <i>انطباع فوري بأن الشركة متوقفة — أخطر رسالة يلتقطها عميل محتمل.</i></li>
+    <li><span>✕</span><b>شرائح الصفحة العربية مكتوبة بالإنجليزية، وصور غير مضغوطة (≈841 كيلوبايت للصورة)</b>
+        <i>بطء على الجوال، وهو عامل ترتيب مباشر في جوجل.</i></li>
+    <li><span>✕</span><b>لا مدونة ولا محتوى متجدّد</b>
+        <i>لا مصدر لزيارات مجانية من البحث — أكبر فرصة ضائعة.</i></li>
+  </ul>
+
+  <div class="rule"></div>
+
+  <h2 style="font-size:22px">الحل: موقع جديد مُنجز فعلاً</h2>
+  <p class="lead" style="margin-bottom:14px">ليس مقترحاً نظرياً — <b>الموقع مبنيّ ومكتمل 100%</b> بمحتواكم بعد إعادة تحريره، وبهويتكم، وبخط <b>«ثمانية»</b>. تصفّحوه قبل أي قرار.</p>
+
+  <div class="grid3" style="margin-bottom:22px">
+    <div class="statbox"><b>86</b><span>صفحة بلغتين</span></div>
+    <div class="statbox"><b>8</b><span>صفحات خدمات</span></div>
+    <div class="statbox"><b>10</b><span>مقالات مدونة</span></div>
+  </div>
+
+  <table>
+    <tr><th style="width:30%">القسم</th><th>الصفحات</th></tr>
+    <tr><td><b>الرئيسية والشركة</b></td><td>الرئيسية · من نحن · قوتنا · المنهجية · النتائج المتوقعة</td></tr>
+    <tr><td><b>الخدمات</b></td><td>8 صفحات مفصّلة — صفحة لكل خدمة</td></tr>
+    <tr><td><b>العملاء والإنجازات</b></td><td>القطاعات · من يحتاج خدماتنا · الإنجازات + 6 صفحات مشاريع مستقلة</td></tr>
+    <tr><td><b>الأحداث والمدونة</b></td><td>5 صفحات فعاليات بمعارض صور · 10 مقالات متخصصة بصفحات مستقلة</td></tr>
+    <tr><td><b>أخرى</b></td><td>وظائف · اتصل بنا (نموذج واتساب) · صفحة 404</td></tr>
+  </table>
+
+  <div class="foot"><span>العرض الفني لتطوير الموقع — التكامل المتحدة</span><span>صفحة ٢</span></div>
+</section>
+
+<!-- ============ 2. نطاق العمل والسعر ============ -->
+<section class="sheet">
+  <div class="eyebrow">القسم الثاني</div>
+  <h2>نطاق العمل والمخرجات</h2>
+  <p class="lead">جميع البنود أدناه مُنجزة ومسلَّمة، وتُنشَر على دومينكم واستضافتكم الحاليين.</p>
+
+  <table>
+    <tr><th style="width:34%">البند</th><th>المخرَج</th></tr>
+    <tr><td><b>الموقع كاملاً</b></td><td>43 صفحة عربية متجاوبة (RTL) بهويتكم وخط «ثمانية»، مع إعادة تحرير كل النصوص بصياغة تسويقية.</td></tr>
+    <tr><td><b>النسخة الإنجليزية</b></td><td>الموقع كاملاً بالإنجليزية على مسار <span dir="ltr">/en/</span> مع مبدّل لغة، ووسوم <span dir="ltr">hreflang</span> صحيحة تمنع تعارض النسختين في نتائج البحث.</td></tr>
+    <tr><td><b>صفحات متخصصة</b></td><td>8 صفحات خدمات مفصّلة · 11 صفحة مشاريع وفعاليات بمعارض صور · 10 مقالات مدونة مكتوبة ومُهيّأة للبحث.</td></tr>
+    <tr><td><b>التهيئة والأداء</b></td><td>عنوان ووصف فريد لكل صفحة · بيانات منظّمة Schema · <span dir="ltr">sitemap</span> · <span dir="ltr">canonical</span> · <span dir="ltr">Open Graph</span> · موقع ثابت بلا قواعد بيانات (سرعة وأمان أعلى) · ضغط الصور ومتوافق مع معايير الوصول.</td></tr>
+    <tr><td><b>لوحة تحكم عربية</b></td><td>لإدارة المدونة والأخبار والمشاريع وشعارات العملاء وبيانات التواصل — بمحرر نصوص مرئي دون مبرمج · ونموذج تواصل مرتبط بواتساب يصل جوال المبيعات مباشرة.</td></tr>
+    <tr><td><b>النشر وتحويلات 301</b></td><td>نسخة احتياطية من الموقع الحالي، ثم النشر على دومينكم والتحقق من <span dir="ltr">SSL</span> ورفع خريطة الموقع لجوجل — مع خريطة تحويل كاملة من روابطكم الحالية إلى الجديدة <b>لحماية أرشفتكم في جوجل</b>.</td></tr>
+    <tr><td><b>التدريب والتسليم</b></td><td>جلسة تدريب + دليل استخدام + ملفات المصدر وبيانات الدخول.</td></tr>
+  </table>
+
+  <div class="rule"></div>
+
+  <h3>الجدول الزمني</h3>
+  <table>
+    <tr><th style="width:24%">المرحلة</th><th style="width:52%">التفصيل</th><th>المدة</th></tr>
+    <tr><td><b>المعاينة</b></td><td>تصفّح الموقع كاملاً وإبداء الملاحظات — دون أي التزام مالي.</td><td>فوري</td></tr>
+    <tr><td><b>الاعتماد</b></td><td>توقيع العرض وسداد الدفعة الأولى.</td><td>يوم عمل</td></tr>
+    <tr><td><b>التعديلات</b></td><td>تنفيذ الملاحظات ضمن جولتَي التعديل.</td><td>3 – 5 أيام</td></tr>
+    <tr><td><b>الإطلاق والتسليم</b></td><td>نسخة احتياطية، النشر، تحويلات 301، خريطة الموقع، ثم التدريب وتسليم الملفات.</td><td>يوما عمل</td></tr>
+  </table>
+  <p style="font-size:13.6px;margin-top:6px"><b>من الاعتماد حتى الإطلاق: خمسة أيام عمل</b> — عدا فترات انتظار ردّكم.</p>
+
+
+  <div class="note" style="margin-top:18px">
+    <p style="margin:0"><b>العرض المالي:</b> يصدر في مستند منفصل مرفق بهذا العرض الفني،
+    ويشمل تفصيل البنود وشروط السداد.</p>
+  </div>
+
+  <div class="foot"><span>العرض الفني لتطوير الموقع — التكامل المتحدة</span><span>صفحة ٣</span></div>
+</section>
+
+<!-- ============ 3. الشروط ============ -->
+<section class="sheet">
+  <div class="eyebrow">القسم الثالث</div>
+  <h2>الشروط والأحكام</h2>
+
+  <div class="grid2" style="margin-top:18px">
+    <div>
+      <h3>السداد</h3>
+      <ul class="checks">
+        <li><b>70%</b> عند التوقيع — الموقع مُنجز ومتاح للمعاينة قبل السداد، وغير مستردة بعد بدء العمل.</li>
+        <li><b>30%</b> عند الإطلاق وقبل تسليم ملفات المصدر.</li>
+        <li>تحويل بنكي بفاتورة نظامية. المبالغ في العرض المالي المرفق.</li>
+      </ul>
+
+      <h3>التعديلات</h3>
+      <ul class="checks">
+        <li><b>جولتا تعديل</b> ضمن الهيكل المعتمد، وملاحظات كل جولة دفعةً واحدة.</li>
+        <li>ما زاد أو خرج عن النطاق يُسعَّر منفصلاً بموافقة كتابية.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>التزامات العميل</h3>
+      <ul class="checks">
+        <li>بيانات الدخول للاستضافة والدومين، ونافذة زمنية للنشر.</li>
+        <li>الرد على الملاحظات خلال 3 أيام عمل — وإلا يُمدَّد الجدول.</li>
+      </ul>
+
+      <h3>الملكية والضمان</h3>
+      <ul class="checks">
+        <li>ملكية كاملة للموقع وملفات المصدر <b>بعد سداد كامل المبلغ</b>.</li>
+        <li><b>ضمان فني 30 يوماً</b> لأي خلل برمجي بعد الإطلاق.</li>
+        <li>سريان العرض 30 يوماً، ويُعدّ توقيعه عقداً ملزماً.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2px">ما لا يشمله العرض</h3>
+  <p style="font-size:13.6px;opacity:.9;margin-bottom:0">
+    التصوير الميداني وشراء صور مرخّصة · الميزانيات الإعلانية · إعادة تصميم الهوية أو الشعار ·
+    صفحات خارج الهيكل أعلاه · ضمان ترتيب محدد في نتائج البحث (يشمل العرض البنية التقنية الصحيحة،
+    أما الترتيب فيتأثر بالمنافسة واستمرارية النشر).
+  </p>
+
+  <div class="rule" style="margin:12px 0"></div>
+
+  <h2 style="font-size:19px;margin-bottom:4px">الاعتماد والتواصل</h2>
+  <p style="font-size:14.2px;margin-bottom:10px">للموافقة، وقّعوا أدناه وأعيدوا إرساله مع العرض المالي، أو ردّوا عبر واتساب.</p>
+
+  <p style="font-size:14px;margin-top:14px">
+    ☐ &nbsp; أوافق على نطاق العمل والشروط الفنية الواردة في هذا العرض، وأعتمد البدء بالتنفيذ.
+  </p>
+
+  <div class="sign">
+    <div>الاسم والصفة — عن شركة التكامل المتحدة<br><span style="font-size:12px">التوقيع والختم والتاريخ</span></div>
+    <div style="position:relative">عن مؤسسة حروف و دروس — إبراهيم سعود</div>
+  </div>
+
+  <div class="contact" style="margin-top:12px;padding:18px 22px">
+    <h3>مُقدِّم العرض</h3>
+    <p style="margin-bottom:.5em">مؤسسة حروف و دروس — سجل تجاري نشط برقم <span dir="ltr">7054189027</span>. التواصل المباشر مع <b style="color:#fff">إبراهيم سعود</b> دون وسطاء.</p>
+    <dl>
+      <div><dt>الجهة</dt><dd style="direction:rtl;font-size:13.6px">مؤسسة حروف و دروس</dd></div>
+      <div><dt>الجوال / واتساب</dt><dd>0543983230</dd></div>
+      <div><dt>البريد الإلكتروني</dt><dd>ibrahimsaud25@gmail.com</dd></div>
+    </dl>
+  </div>
+
+  <p style="font-size:13.4px;margin:12px 0 0"><b>رابط معاينة الموقع:</b> <span dir="ltr">https://ibrahimsaud.com/ilogistics/</span></p>
+
+  <div class="foot"><span>العرض الفني لتطوير الموقع — التكامل المتحدة</span><span>صفحة ٤</span></div>
+</section>
+
+<!-- ============ 4. الاعتماد ============ -->
+
+
+
+</body>
+</html>

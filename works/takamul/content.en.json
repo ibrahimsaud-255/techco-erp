@@ -1,0 +1,795 @@
+{
+  "settings": {
+    "site_url": "https://ibrahimsaud.com/ilogistics",
+    "brand": "United Integrated Logistics",
+    "brand_short": "United Integrated",
+    "phone_main": "920023411",
+    "phone_mob": "+966500010288",
+    "wa_number": "966500010288",
+    "email": "info@ilogistics.com.sa",
+    "email_hr": "careers@ilogistics.com.sa",
+    "address": "King Fahd Road, Al Salhia Building, 7th Floor, Riyadh, Saudi Arabia",
+    "noindex": true
+  },
+  "services": [
+    {
+      "slug": "consulting",
+      "icon": "consult",
+      "title": "Warehouse Logistics Consultancy Services",
+      "nav": "Consultancy Services",
+      "short": "Professional expertise that turns warehouse challenges into opportunities for growth, delivered by a team of experts in diagnosing problems and designing solutions.",
+      "seo_title": "Warehouse Consultancy Services in Saudi Arabia",
+      "seo_desc": "Specialist warehouse consultancy: cut operating costs, raise efficiency, optimise layout and WMS use. Saudi expert team with hands-on field experience.",
+      "body_html": "\n<h2>Integrated Logistics Consultancy for Warehouse Operations</h2>\n<p>United Integrated Logistics provides a broad range of consultancy services covering every aspect of warehouse operations. These services are delivered by a team of professional experts with deep experience in diagnosing problems and designing solutions.</p>\n<blockquote><p>Our remit is to address the challenges you face, whether they concern rising costs, declining efficiency, or the need for a fundamental step change in performance.</p></blockquote>\n<h3>Our areas of consultancy expertise</h3>\n<ul class=\"checks\"><li><b>Resolving warehouse management challenges:</b> analysing operational bottlenecks and delivering effective solutions.</li><li><b>Reducing warehouse operating costs:</b> identifying sources of waste and applying strategies that bring operating costs down.</li><li><b>Raising operational efficiency:</b> re-engineering procedures to increase productivity, reduce errors and shorten cycle times.</li><li><b>Warehouse layout and organisation:</b> the best arrangement for your warehouse to ensure optimal use of space and smooth flow.</li><li><b>Inventory counting consultancy:</b> complete plans and procedures for an accurate, successful count across all periodic and annual stocktakes.</li><li><b>Developing warehouse staff skills:</b> designing and delivering specialist training programmes that raise team capability.</li><li><b>Getting the most from your WMS:</b> maximising the value of your current warehouse management system, or helping you select a new one.</li><li><b>Equipment and tooling selection:</b> impartial technical advice on choosing and purchasing the right equipment at high efficiency and a sensible price.</li></ul>\n<h3>From advice to implementation oversight</h3>\n<p>Our services do not stop at the consultancy report. At the client's request, the United Integrated team can take direct charge of supervising the implementation of the recommendations, ensuring the solutions are applied correctly on the ground and deliver the intended results.</p>\n"
+    },
+    {
+      "slug": "inventory-count",
+      "icon": "count",
+      "title": "Inventory Counting and Fixed Asset Registration",
+      "nav": "Inventory & Asset Counting",
+      "short": "An independent, impartial third party for counting goods and inventory, with the accuracy to expose errors before they turn into financial losses.",
+      "seo_title": "Inventory Counting & Stocktaking Services Saudi Arabia",
+      "seo_desc": "Independent third-party stocktaking and fixed-asset counting: annual wall-to-wall, cycle counts and spot audits, with audit-ready discrepancy reports.",
+      "body_html": "\n<h2>Professional accuracy that makes your financial and operational data reliable</h2>\n<p>Inventory accuracy underpins the financial and operational performance of any business. Gaps between physical and book balances translate directly into financial losses, poor purchasing decisions and delays in fulfilling customer orders.</p>\n<p>United Integrated Logistics provides a complete professional service as an independent, impartial third party for counting goods and inventory. We deliver an accurate, structured and fast count that exposes operational errors before they turn into financial losses, protects you against waste and theft, and gives you reliable data to support your strategic decisions.</p>\n<blockquote><p>\"Don't let stock disappear between the numbers.\" With us, counting is not a burden — it is a strategic tool for your success.</p></blockquote>\n\n<h2>Our methodology for managing and executing counts</h2>\n<h3>1. Planning and preparation (before the count)</h3>\n<ul class=\"checks\"><li><b>Preparing the working environment:</b> clear operational guidance for setting up the warehouse and readying goods for a clean count.</li><li><b>Zoning:</b> dividing the warehouse into intelligent count zones based on the volume, nature and classification of items.</li><li><b>Mapping movement routes:</b> defining the counting method, assigning responsibilities and setting a strict movement plan that guarantees full coverage.</li></ul>\n<h3>2. Execution and on-site supervision (during the count)</h3>\n<ul class=\"checks\"><li><b>Direct oversight:</b> United Integrated supervisors monitor the counting teams on site in real time.</li><li><b>Tagging:</b> marking goods once counted to guarantee full coverage and prevent double counting.</li><li><b>Immediate resolution:</b> spotting, reporting and resolving any deviations or obstacles on the spot, without disrupting operations.</li></ul>\n<h3>3. Reporting and intelligent analysis (after the count)</h3>\n<ul class=\"checks\"><li><b>Final reconciliation:</b> detailed, classified final listings of every item counted.</li><li><b>Inventory Discrepancy Report:</b> a precise report setting out the gaps between physical and book balances.</li><li><b>Advisory recommendations:</b> recommendations and solutions to strengthen inventory controls and raise operational efficiency going forward.</li></ul>\n\n<h2>The types of count we cover</h2>\n<h3>Annual Wall-to-Wall Inventory</h3>\n<p>Our most requested service, timed with the financial year end and a mandatory step in closing the accounts, with a direct impact on the financial statements. It involves freezing stock movement (where possible) and counting every item \"wall to wall\" with exacting accuracy, with an immediate recount of any item showing a variance.</p>\n<h3>Cycle Counting</h3>\n<p>Keeps inventory data accurate throughout the year without halting your daily operations. We count selected items — at random or by ABC classification — on a daily, weekly or monthly cycle, concentrating on high-value or fast-moving goods.</p>\n<h3>Spot and Surprise Audits</h3>\n<p>A rigorous control tool carried out without prior notice to warehouse staff, verifying the balances of specific items and acting as a strong deterrent against theft, waste and internal manipulation.</p>\n<h3>Fixed asset counting and registration</h3>\n<p>Counting and tagging fixed assets, reconciling them against the accounting asset register, and issuing a report on variances and on any missing or unregistered assets.</p>\n\n<h2>What counting services with United Integrated deliver</h2>\n<ul class=\"checks\"><li><b>Verified inventory:</b> certainty that physical quantities match the book records.</li><li><b>Approved, reliable reports:</b> an impartial audit reference for internal and external auditors.</li><li><b>Early detection of operational errors:</b> identifying storage and recording errors and inconsistencies in goods received and issued.</li><li><b>Tighter control and integrity:</b> reducing the risk of malpractice, manipulation and internal theft.</li><li><b>Lower cost and effort:</b> freeing up your resources to focus on your core business by relying on our specialist team.</li><li><b>Stronger strategic decisions:</b> greater confidence in buying, selling and production planning.</li></ul>\n"
+    },
+    {
+      "slug": "operations-optimization",
+      "icon": "optimize",
+      "title": "Warehouse Operations Improvement and Development",
+      "nav": "Operations Improvement",
+      "short": "In-depth analysis that turns your warehouse from a cost centre into a core driver of business success, with cost reductions of up to 20%.",
+      "seo_title": "Warehouse Operations Optimisation & Cost Reduction",
+      "seo_desc": "Improve inbound, storage, picking and despatch with a four-stage methodology and warehouse KPIs that cut operating costs and raise productivity.",
+      "body_html": "\n<h2>From cost centre to growth engine</h2>\n<p>Every warehouse faces its own challenges, but the objective is the same: lower operating costs and higher operational efficiency. Picking errors, delays at goods-in and poor use of space all eat into your margin. At United Integrated we do not offer off-the-shelf fixes; we deliver a deep, comprehensive analysis that turns your warehouse into a core driver of business success.</p>\n\n<h2>Our four-stage methodology</h2>\n<ul class=\"checks\"><li><b>Assess:</b> a deep analysis of current operations, identifying weak points and sources of waste.</li><li><b>Design:</b> solutions and procedures built specifically for your business to raise efficiency and cut cost.</li><li><b>Implement:</b> working alongside you to apply the improvements and train your team on them.</li><li><b>Monitor:</b> using key performance indicators (KPIs) to ensure the results are sustained.</li></ul>\n\n<h2>The four elements of a successful warehouse operation</h2>\n<ul class=\"checks\"><li><b>The system (WMS):</b> how effectively your system supports day-to-day operations.</li><li><b>The workforce:</b> the capability, productivity and training of your staff.</li><li><b>Policies and procedures:</b> the clarity of the standard operating procedures (SOPs) in use.</li><li><b>Layout and planning:</b> how effective the internal layout of the warehouse is.</li></ul>\n\n<h2>A full analysis of every warehouse process</h2>\n<h3>1. Improving inbound operations</h3>\n<p>Correct receiving is the foundation of accurate inventory. We review and improve:</p>\n<ul class=\"checks\"><li>How documents (purchase order, invoice) are checked and matched.</li><li>The speed and accuracy of unloading and sorting goods.</li><li>Recording variances and mismatches and reporting them immediately.</li><li>Updating the WMS with received quantities in real time.</li><li>Moving goods and directing them to the correct storage locations.</li></ul>\n<h3>2. Improving storage and stock keeping</h3>\n<ul class=\"checks\"><li>Optimal use of space and reduction of wasted area.</li><li>Effective application of first in, first out (FIFO).</li><li>Storing goods safely and correctly, in line with handling instructions.</li><li>Easy access to goods at the pick face to speed up order preparation.</li></ul>\n<h3>3. Improving outbound and order preparation</h3>\n<ul class=\"checks\"><li>Sending the right goods, in the right quantity, to the right customer.</li><li>Reducing order cycle time from receipt through to despatch.</li><li>Retaining and properly archiving proofs of delivery (PODs).</li><li>A clear mechanism for handling and managing customer returns and rejections.</li></ul>\n\n<h2>Beyond process: performance and data</h2>\n<h3>Putting key performance indicators (KPIs) in place</h3>\n<p>You cannot improve what you cannot measure. We help you define and apply the right indicators for your warehouse, such as:</p>\n<ul class=\"checks\"><li>Inventory accuracy.</li><li>Operating cost per square metre.</li><li>Inventory turnover rate.</li><li>Average order preparation time.</li></ul>\n<h3>Staff performance and training</h3>\n<p>Your people are your most valuable asset. We assess performance on productivity, collaboration and commitment, and deliver on-the-job training that raises team capability and keeps the improvements in place after the project ends.</p>\n"
+    },
+    {
+      "slug": "warehouse-4pl",
+      "icon": "4pl",
+      "title": "Full Warehouse Operations and Management (4PL)",
+      "nav": "Operations & Management (4PL)",
+      "short": "We take complete charge of running your warehouses with our specialist team, freeing you from the obligations and risks of warehouse management.",
+      "seo_title": "4PL Warehouse Operations & Management Saudi Arabia",
+      "seo_desc": "Semi-4PL warehouse operations and management: full control of receiving, storage, despatch, distribution and labour against pre-agreed KPIs.",
+      "body_html": "\n<h2>Warehouse Operations and Management Services (4PL)</h2>\n<p>Is day-to-day warehouse management becoming a burden on your business? United Integrated Logistics offers Warehouse Operations and Management, an advanced logistics service (Semi 4PL) under which we take complete charge of running your warehouses with our own specialist team. The service frees the client entirely from the obligations and risks of warehouse management and secures a smooth operation aimed at raising efficiency and reducing cost.</p>\n\n<h2>How the service works</h2>\n<p>A qualified United Integrated team operates and manages every process in your warehouses, against clear objectives and key performance indicators (KPIs) agreed with you in advance.</p>\n<ul class=\"checks\"><li>Complete management of receiving, storage, despatch and distribution.</li><li>Applying best practice to raise efficiency across warehouse operations.</li><li>Full management of staff and labour, freeing you from human resources challenges.</li><li>Strict commitment to the core objectives: lower cost, better efficiency and higher productivity.</li></ul>\n\n<h2>What your business gains</h2>\n<p>When you hand warehouse management to United Integrated, you immediately shed the headache of daily administration. More importantly, you avoid the risk of adverse movements in inventory, because we carry the responsibility for stock accuracy and integrity.</p>\n<blockquote><p>The service is designed to turn your warehouse from a cost centre into a competitive advantage that contributes to the success of your business.</p></blockquote>\n"
+    },
+    {
+      "slug": "supervision",
+      "icon": "supervise",
+      "title": "Logistics Supervision and Warehouse Team Leadership",
+      "nav": "Logistics Supervision",
+      "short": "You keep your existing team; we lead it and take full supervision of operations to raise the standard of performance.",
+      "seo_title": "Logistics Supervision & Warehouse Team Leadership",
+      "seo_desc": "Logistics supervision from United Integrated: expert leadership for your existing warehouse team to hit agreed KPIs and reduce operating cost.",
+      "body_html": "\n<h2>Raising the performance of your existing team under expert leadership</h2>\n<p>Do you have a warehouse team but need expert leadership to lift its performance? The Logistics Supervision service is built for exactly that. United Integrated Logistics takes full charge of supervising every process in your warehouse, working with your company's existing warehouse staff. Our core task is to lead and direct your team to complete their work with absolute efficiency, against the objectives agreed with management.</p>\n\n<h2>Our approach to warehouse supervision</h2>\n<ul class=\"checks\"><li><b>Leading and directing staff:</b> we take responsibility for directing the client's team to perform every warehouse process to an exemplary, well-organised standard.</li><li><b>Meeting objectives and KPIs:</b> directing the team effectively to hit the objectives set out in the agreed key performance indicators (KPIs).</li><li><b>Securing efficiency and lower cost:</b> direct supervision of the workflow to ensure the highest efficiency at the lowest possible operating cost.</li></ul>\n\n<h2>Why choose supervision?</h2>\n<p>This service is the ideal answer for companies that want to keep their existing team but need specialist external expertise to guarantee best practice, improve productivity and control the quality of logistics operations.</p>\n"
+    },
+    {
+      "slug": "logistics-audit",
+      "icon": "audit",
+      "title": "Logistics Audit of Warehouse Operations",
+      "nav": "Logistics Audit",
+      "short": "An impartial technical report exposing weak areas, bottlenecks and sources of waste in your operating cycle.",
+      "seo_title": "Warehouse Logistics Audit | Independent Report",
+      "seo_desc": "In-depth logistics audit of warehouse operations: core processes, inventory control, reporting, safety and security, resource efficiency and SOPs.",
+      "body_html": "\n<h2>Logistics Audit for Warehouse Operations</h2>\n<p>United Integrated Logistics provides a professional logistics audit service, giving your management an in-depth technical report on the efficiency of operations in your warehouses. The core objective is to pinpoint weak areas, identify where you are exposed to risk, and capture every available opportunity for improvement.</p>\n\n<h2>What the logistics audit covers</h2>\n<ul class=\"checks\"><li><b>Core processes:</b> analysis of goods receiving, storage, despatch and distribution procedures.</li><li><b>Inventory control:</b> assessment of counting accuracy and of stock control and monitoring mechanisms.</li><li><b>Reporting and communication:</b> review of the reporting system (dead stock, slow movers, obsolescence) and of the channels used to communicate with other departments.</li><li><b>Safety and security:</b> review of the procedures protecting stock and people in the warehouse.</li><li><b>Resource efficiency:</b> measuring how well the available resources — space, equipment and staff — are being used.</li><li><b>Systems and SOPs:</b> auditing approved systems and regulations and the degree of compliance with them.</li></ul>\n\n<h2>The objective: pinpointing shortfalls and bottlenecks</h2>\n<p>By assessing the warehouse operation as a whole, we give you a clear, impartial report identifying shortfalls, bottlenecks and sources of waste in your operating cycle.</p>\n\n<h2>An important note on scope</h2>\n<blockquote><p>This service is purely diagnostic; the final report focuses on identifying and describing problems and shortfalls, without proposing solutions within its scope. If the client wants an action plan and implementation proposals, we move to the <a href=\"operations-optimization.html\">warehouse operations improvement and development</a> service, which is the next step on from this one.</p></blockquote>\n"
+    },
+    {
+      "slug": "location-labelling",
+      "icon": "label",
+      "title": "Storage Location Coding and Numbering",
+      "nav": "Storage Location Coding",
+      "short": "From designing the coding system through to printing and fixing the labels — the first step to a successful WMS.",
+      "seo_title": "Warehouse Location Coding & Barcode Labelling",
+      "seo_desc": "Warehouse location coding and numbering: coding system design, high-quality barcode label printing and precise on-site installation inside the warehouse.",
+      "body_html": "\n<h2>The foundation of an efficient warehouse: knowing where every item sits</h2>\n<p>United Integrated Logistics provides a complete service for coding and numbering storage locations, from design through to installation. We help you determine the best coding system for your warehouse, based on the nature of the materials stored and the type of storage in use — floor, shelving or racking.</p>\n\n<h2>Our approach to warehouse location coding</h2>\n<h3>1. Consultation and system design</h3>\n<p>Our expert team works with the client on the design and naming of storage locations, taking account of label size and material with a focus on durability, longevity and cost, so the solution lasts and suits the warehouse environment.</p>\n<h3>2. Label design and printing</h3>\n<p>Once the proposed design is approved, we design and print the location labels — barcode or numeric — to the highest quality.</p>\n<h3>3. Precise installation and fixing</h3>\n<p>Our technical team installs and fixes the printed labels in their correct positions inside the warehouse, so the system is applied in full.</p>\n\n<h2>The result: faster, more accurate access to goods</h2>\n<p>The service directly accelerates handling operations, increases location accuracy and makes it easier for staff to reach goods on demand. This level of organisation is the first step towards implementing any warehouse management system (WMS) successfully.</p>\n"
+    },
+    {
+      "slug": "warehouse-relocation",
+      "icon": "move",
+      "title": "Warehouse Organisation, Layout and Relocation",
+      "nav": "Organisation & Relocation",
+      "short": "We are not a furniture removals company — we are warehouse relocation specialists, working to a logistics methodology that protects your stock.",
+      "seo_title": "Warehouse Relocation & Reorganisation Saudi Arabia",
+      "seo_desc": "Warehouse organisation using ABC classification, plus complete site-to-site relocation that protects stock integrity and arranges it at the new location.",
+      "body_html": "\n<h2>Part one: warehouse organisation and layout (internal improvement)</h2>\n<p>Organising products well inside the warehouse directly raises operational efficiency: it shortens the time taken to pick or receive goods, lowers the error rate and improves accuracy across every process. When organising and arranging the warehouse, our team takes account of:</p>\n<ul class=\"checks\"><li><b>The nature of the products:</b> designing the storage system — floor, shelving or racking — around the materials being stored.</li><li><b>Aisle design and equipment:</b> setting the right aisle width for the handling equipment in use.</li><li><b>ABC analysis:</b> storing fast-moving goods in easily accessible locations.</li><li><b>Slow-moving and dead stock:</b> allocating upper or rear areas to slow-moving materials.</li><li><b>Securing assets:</b> keeping high-value goods in secure, locked locations accessible only to named personnel.</li></ul>\n\n<h2>Part two: warehouse relocation and transfer (a complete move)</h2>\n<p>Moving an entire warehouse from one site to another is a complex, sensitive logistics operation that demands more than simply \"moving\" — it demands the expertise to protect stock integrity and keep the business running.</p>\n<blockquote><p>We are not a furniture removals company. We are warehouse relocation specialists — and unlike removals firms, we understand the value of inventory and approach the move with a logistics methodology that ensures no goods are damaged or lost in transit.</p></blockquote>\n<ul class=\"checks\"><li><b>Stock integrity:</b> complete preservation of the quantity and quality of the goods moved.</li><li><b>Organisation at the new site:</b> goods arranged professionally and methodically at the new location from day one.</li><li><b>Strategic planning:</b> accounting for the nature of the goods, how often they are requested and their volume, so every item is easy to reach the moment operations restart.</li></ul>\n"
+    }
+  ],
+  "events": [
+    {
+      "slug": "saudi-transtec-dammam",
+      "n": 2,
+      "city": "Dammam",
+      "title": "Saudi TransTec Exhibition — Dammam",
+      "meta": "Dammam · Industry Exhibition",
+      "desc": "United Integrated Logistics at the Saudi TransTec Exhibition in Dammam, one of the Eastern Province's leading gatherings for the transport and logistics sector.",
+      "body": [
+        "United Integrated Logistics took part in the Saudi TransTec Exhibition in Dammam, one of the Kingdom's most important specialist events for the transport and logistics sector, bringing together solution providers, warehouse operators and supply-chain managers from across industries.",
+        "Our team used the stand to present the integrated service package that sets the company apart in the Saudi market, alongside short briefing sessions for visitors on the impact of inventory accuracy on the financial statements — and how a disciplined stocktaking programme can expose operational waste before it becomes a loss.",
+        "Meeting warehouse managers across the Eastern Province face to face gave us a clear view of the recurring challenges in the industrial sector — from space pressure to stock variances — which we later translated into well-defined scopes of work for a number of clients."
+      ],
+      "points": [
+        "Introducing our stocktaking, operations and logistics supervision services",
+        "Direct meetings with warehouse and supply-chain managers",
+        "Walking through our methodology, from diagnosis to follow-up"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Dammam — Eastern Province"
+        ],
+        [
+          "Activity type",
+          "Industry exhibition"
+        ],
+        [
+          "Sector",
+          "Transport and logistics"
+        ],
+        [
+          "Our participation",
+          "Exhibition stand + meetings"
+        ]
+      ],
+      "seo_title": "Saudi TransTec Dammam | United Integrated Logistics",
+      "seo_desc": "United Integrated at Saudi TransTec, Dammam: stocktaking and warehouse management services, plus meetings with Eastern Province supply-chain managers."
+    },
+    {
+      "slug": "supply-chain-conference",
+      "n": 5,
+      "city": "Saudi Arabia",
+      "title": "Supply Chain Conference",
+      "meta": "Conference · Sector Leaders",
+      "desc": "The United Integrated Logistics team attended and contributed to the Supply Chain Conference, meeting leading figures from the Kingdom's logistics sector.",
+      "body": [
+        "The United Integrated Logistics team attended the Supply Chain Conference, which brings together decision-makers across the logistics sector: supply-chain managers, operations directors and warehouse leads from major Saudi organisations.",
+        "Our contribution focused on a theme we consider central and yet often overlooked: most supply-chain problems do not begin in transport or procurement, but inside the warehouse itself — in receiving accuracy, storage-location discipline and the integrity of book balances.",
+        "The conference gave our team the chance to exchange experience on the most appropriate KPIs for measuring warehouse efficiency, best practice in cycle counting under ABC classification, and the role of standard operating procedures (SOPs) in sustaining improvement results."
+      ],
+      "points": [
+        "Discussion of the key performance indicators for warehouse efficiency",
+        "Sharing experience on cycle counting and ABC classification",
+        "Building a network among logistics sector leaders"
+      ],
+      "facts": [
+        [
+          "Activity type",
+          "Specialist conference"
+        ],
+        [
+          "Theme",
+          "Supply chains and warehousing"
+        ],
+        [
+          "Audience",
+          "Logistics sector leaders and managers"
+        ],
+        [
+          "Our participation",
+          "Attendance and panel discussion"
+        ]
+      ],
+      "seo_title": "Supply Chain Conference | United Integrated Logistics",
+      "seo_desc": "United Integrated at the Supply Chain Conference: warehouse KPIs, cycle counting and ABC classification, and the role of SOPs in sustaining improvement."
+    },
+    {
+      "slug": "automechanika-jeddah",
+      "n": 2,
+      "city": "Jeddah",
+      "title": "Automechanika — Jeddah",
+      "meta": "Jeddah · Spare Parts Exhibition",
+      "desc": "Our participation in Automechanika Jeddah, presenting stocktaking and warehouse management solutions for spare parts operations.",
+      "body": [
+        "United Integrated Logistics took part in Automechanika in Jeddah, the Western Region's leading event for the automotive and spare parts sector.",
+        "Spare parts warehouses are among the most demanding environments in logistics: thousands of near-identical items, closely similar part numbers, and uneven movement across fast, medium and slow-moving lines. That makes precise storage-location coding and ABC classification decisive for the speed and accuracy of order fulfilment.",
+        "At the exhibition we showed how our services address exactly these challenges: from coding and numbering storage locations, to warehouse layout redesign, through to cycle counting programmes that keep balances accurate without halting day-to-day operations."
+      ],
+      "points": [
+        "Location coding and numbering solutions for spare parts warehouses",
+        "ABC classification for fast and slow-moving items",
+        "Cycle counting programmes with no operational downtime"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Jeddah — Western Region"
+        ],
+        [
+          "Activity type",
+          "Industry exhibition"
+        ],
+        [
+          "Sector",
+          "Automotive and spare parts"
+        ],
+        [
+          "Focus",
+          "Location coding and inventory accuracy"
+        ]
+      ],
+      "seo_title": "Automechanika Jeddah | Spare Parts Warehouse Solutions",
+      "seo_desc": "United Integrated at Automechanika Jeddah: storage-location coding, ABC classification and cycle counting for automotive and spare parts warehouses."
+    },
+    {
+      "slug": "scl-jeddah",
+      "n": 4,
+      "city": "Jeddah",
+      "title": "Supply Chain Leaders Meetup — Jeddah",
+      "meta": "Jeddah · Leaders Meetup",
+      "desc": "The Supply Chain Leaders Meetup in Jeddah, discussing warehouse efficiency and inventory accuracy challenges across the Western Region.",
+      "body": [
+        "The United Integrated Logistics team joined the Supply Chain Leaders Meetup in Jeddah, part of a regular series bringing together the executives responsible for logistics operations across the Western Region.",
+        "Discussion centred on a practical question: why do inventory variances persist even where a warehouse management system (WMS) is in place? The conclusion we put forward was that a system does not correct a flawed practice — it documents it. The answer starts with re-engineering procedures and training the team, and only then extracting the full value of the system.",
+        "We also presented the results-based commercial model the company operates, which allows part of the fee to be linked to a share of the actual savings delivered to the client — a model that drew clear interest from those attending."
+      ],
+      "points": [
+        "Diagnosing the causes of recurring inventory variances",
+        "The role of SOPs before and after a WMS implementation",
+        "Presenting our savings-linked fee model"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Jeddah — Western Region"
+        ],
+        [
+          "Activity type",
+          "Executive meetup"
+        ],
+        [
+          "Audience",
+          "Supply-chain and operations managers"
+        ],
+        [
+          "Theme",
+          "Inventory accuracy and warehouse efficiency"
+        ]
+      ],
+      "seo_title": "Supply Chain Leaders Meetup Jeddah | United Integrated",
+      "seo_desc": "Supply Chain Leaders Meetup, Jeddah: the real causes of inventory variances, SOPs alongside WMS, and a fee model linked to savings delivered."
+    },
+    {
+      "slug": "scl-dammam",
+      "n": 4,
+      "city": "Dammam",
+      "title": "Supply Chain Leaders Meetup — Dammam",
+      "meta": "Dammam · Leaders Meetup",
+      "desc": "The Supply Chain Leaders Meetup in Dammam, sharing experience on developing logistics operations in the industrial sector.",
+      "body": [
+        "The United Integrated Logistics team met supply-chain leaders from across the Eastern Province at a specialist gathering in Dammam, attended by representatives of major industrial and commercial organisations.",
+        "The meetup addressed warehousing challenges specific to industrial environments: raw material and finished goods stores, controlling material consumption, and tying inventory accuracy to production planning — where any error in a stock balance turns into a production line stoppage or an unnecessary purchase.",
+        "We presented our four-stage methodology (assessment, design, implementation, monitoring and follow-up), and made the case that the final stage — on-site follow-up — is what separates a consultancy report that stays in a desk drawer from a solution that is implemented and measured."
+      ],
+      "points": [
+        "Challenges in raw material and finished goods warehouses",
+        "Linking inventory accuracy to production and purchasing plans",
+        "Why the monitoring and follow-up stage matters after implementation"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Dammam — Eastern Province"
+        ],
+        [
+          "Activity type",
+          "Executive meetup"
+        ],
+        [
+          "Sector",
+          "Industry and trade"
+        ],
+        [
+          "Theme",
+          "Developing logistics operations"
+        ]
+      ],
+      "seo_title": "Supply Chain Leaders Meetup Dammam | United Integrated",
+      "seo_desc": "Supply Chain Leaders Meetup, Dammam: raw material and finished goods warehousing, inventory accuracy in production planning, and our four-stage method."
+    }
+  ],
+  "achievements": [
+    {
+      "slug": "riyadh-1",
+      "n": 3,
+      "city": "Riyadh",
+      "title": "Full Warehouse Stocktake for a Client in Riyadh",
+      "meta": "Riyadh · Stocktaking Project",
+      "desc": "A comprehensive stocktake of a client's warehouses in Riyadh, delivered with a detailed variance report and recommendations to strengthen inventory controls.",
+      "body": [
+        "The United Integrated Logistics team delivered a comprehensive stocktaking project across a client's warehouses in Riyadh, acting as a neutral and independent third party — which gives the results audit-grade standing with both internal and external auditors.",
+        "The project opened with careful planning well before count day: preparing the working environment and arranging goods, dividing the warehouse into defined counting zones based on the nature and classification of the items, and setting a strict movement plan to ensure no storage location was missed.",
+        "During execution, our supervisors oversaw the counting teams on site in real time, applying tagging standards rigorously to prevent double counting, and resolving any deviation the moment it was identified without disrupting the rest of the operation.",
+        "The project closed with a detailed variance report setting out the gaps between physical and book balances line by line, together with practical recommendations to strengthen inventory controls and prevent the same sources of error recurring."
+      ],
+      "points": [
+        "Warehouse divided into defined counting zones",
+        "Real-time on-site supervision of the counting teams",
+        "Detailed variance report: physical against book balances",
+        "Recommendations to strengthen inventory controls"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Riyadh"
+        ],
+        [
+          "Service type",
+          "Comprehensive inventory stocktake"
+        ],
+        [
+          "Our role",
+          "Neutral, independent third party"
+        ],
+        [
+          "Deliverables",
+          "Variance report + recommendations"
+        ]
+      ],
+      "seo_title": "Warehouse Stocktaking Project in Riyadh | United Integrated",
+      "seo_desc": "A Riyadh warehouse stocktake by United Integrated as a neutral third party: zone planning, on-site supervision and a detailed variance report."
+    },
+    {
+      "slug": "riyadh-2",
+      "n": 3,
+      "city": "Riyadh",
+      "title": "A Second On-Site Stocktaking Project in Riyadh",
+      "meta": "Riyadh · Stocktaking Project",
+      "desc": "An on-site stocktake in Riyadh built on intelligent counting zones and a movement plan that guarantees complete coverage.",
+      "body": [
+        "A further stocktaking project in Riyadh, delivered to the same United Integrated Logistics methodology but in a different storage environment that called for an adapted counting plan and zone breakdown.",
+        "Here we worked from a spatial structure of zones based on the size and nature of the items, assigning a counting team to each zone and a movement route that prevents teams from overlapping — the detail that eliminates the two most common stocktaking errors: double counting, or missing a location altogether.",
+        "Preliminary results were reported to management as the count progressed, with an immediate recount of every item showing a variance before the final figures were signed off."
+      ],
+      "points": [
+        "Spatial zoning by item size and nature",
+        "Movement routes that prevent team overlap and double counting",
+        "Immediate recount of items showing variances"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Riyadh"
+        ],
+        [
+          "Service type",
+          "Inventory stocktake"
+        ],
+        [
+          "Methodology",
+          "Zoning + movement routes"
+        ],
+        [
+          "Deliverables",
+          "Signed-off results after recount"
+        ]
+      ],
+      "seo_title": "Second Warehouse Stocktake in Riyadh | United Integrated",
+      "seo_desc": "An on-site stocktake in Riyadh: spatial warehouse zoning, movement routes that prevent double counting, and immediate recounts of any variance."
+    },
+    {
+      "slug": "jeddah",
+      "n": 3,
+      "city": "Jeddah",
+      "title": "Warehouse Stocktake for a Client in Jeddah",
+      "meta": "Jeddah · Stocktaking Project",
+      "desc": "End-to-end management of the stocktaking cycle for a client's warehouses in Jeddah, from planning and preparation through to final reconciliation and reporting.",
+      "body": [
+        "United Integrated Logistics managed the full stocktaking cycle for a client's warehouses in Jeddah — not simply a count of items, but a project with defined stages, responsibilities and a clear timeline.",
+        "In the pre-count stage we gave the client operational guidance on preparing the warehouse: arranging goods, freezing receiving and issuing movements during the agreed window, and separating returned and damaged materials to keep them out of sellable stock.",
+        "In the post-count stage we delivered final classified item listings, an inventory discrepancy report, and advisory recommendations to raise the efficiency of inventory management in future cycles."
+      ],
+      "points": [
+        "Operational guidance for preparing the warehouse before the count",
+        "Returns and damaged stock separated from sellable inventory",
+        "Final classified listings + variance report",
+        "Advisory recommendations for future cycles"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Jeddah"
+        ],
+        [
+          "Service type",
+          "Full stocktaking cycle management"
+        ],
+        [
+          "Scope",
+          "Pre-count preparation → reporting"
+        ],
+        [
+          "Deliverables",
+          "Final listings + variance report"
+        ]
+      ],
+      "seo_title": "Warehouse Stocktaking Project in Jeddah | United Integrated",
+      "seo_desc": "End-to-end stocktaking in Jeddah: warehouse preparation, supervised counting, final classified listings and a variance report with recommendations."
+    },
+    {
+      "slug": "dammam",
+      "n": 4,
+      "city": "Dammam",
+      "title": "Warehouse Stocktake for a Client in Dammam",
+      "meta": "Dammam · Stocktaking Project",
+      "desc": "A warehouse stocktake in the Eastern Province delivered under direct on-site supervision and strict control of tagging and coding standards.",
+      "body": [
+        "A stocktaking project across a client's warehouses in Dammam, in an industrial storage environment demanding a high standard of safety discipline alongside counting accuracy.",
+        "United Integrated Logistics supervisors oversaw the counting teams on site throughout the project, with strict application of tagging standards for goods already counted — the simple control that prevents the most expensive errors in large stocktaking projects.",
+        "Operational obstacles were identified and resolved as they arose, keeping work inside the warehouse running and completing the project within the agreed time window."
+      ],
+      "points": [
+        "Direct on-site supervision throughout the project",
+        "Strict application of tagging and coding standards",
+        "Obstacles resolved immediately, with no disruption to operations",
+        "Delivered within the agreed time window"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Dammam"
+        ],
+        [
+          "Service type",
+          "Supervised inventory stocktake"
+        ],
+        [
+          "Sector",
+          "Industrial storage environment"
+        ],
+        [
+          "Deliverables",
+          "Signed-off results, delivered on schedule"
+        ]
+      ],
+      "seo_title": "Warehouse Stocktaking Project in Dammam | United Integrated",
+      "seo_desc": "A warehouse stocktake in Dammam: direct on-site supervision, strict tagging standards, and obstacles resolved without disrupting operations."
+    },
+    {
+      "slug": "qassim",
+      "n": 2,
+      "city": "Qassim",
+      "title": "Warehouse Stocktake for a Client in Qassim",
+      "meta": "Qassim · Stocktaking Project",
+      "desc": "A stocktake in Qassim delivered by a specialist team, with deviations identified and resolved on the spot and no disruption to daily operations.",
+      "body": [
+        "We extended our geographic coverage with a stocktaking project for a client's warehouses in the Qassim region, delivered by a specialist team that mobilised to site with a complete work plan ready before arrival.",
+        "One of the clearest advantages of using an external specialist team is speed of mobilisation: instead of pulling the client's own staff off their core duties for days, our team completes the work within a tight, precisely managed window — saving the business the cost of operational downtime, not merely the cost of counting.",
+        "The project delivered reliable inventory figures to support purchasing and sales decisions, along with a report identifying the sources of recurring variances so they can be addressed at the root."
+      ],
+      "points": [
+        "Specialist team mobilised to site with a plan already in place",
+        "Rapid mobilisation without tying up the client's own staff",
+        "Reliable inventory figures to support purchasing decisions",
+        "Sources of recurring variances identified"
+      ],
+      "facts": [
+        [
+          "Location",
+          "Qassim"
+        ],
+        [
+          "Service type",
+          "Inventory stocktake"
+        ],
+        [
+          "Advantage",
+          "Rapid mobilisation with a specialist team"
+        ],
+        [
+          "Deliverables",
+          "Reliable figures + variance source analysis"
+        ]
+      ],
+      "seo_title": "Warehouse Stocktaking Project in Qassim | United Integrated",
+      "seo_desc": "A warehouse stocktake in Qassim by a specialist team: rapid mobilisation, a tight window with no downtime, and reliable inventory figures."
+    },
+    {
+      "slug": "honoring",
+      "n": 4,
+      "city": "Saudi Arabia",
+      "title": "Recognising a Client's Warehouse Team After a Successful Stocktake",
+      "meta": "Recognition · Partnership on the Ground",
+      "desc": "Recognising the teams behind a successfully completed stocktaking project — a genuine partnership with our clients' people on the ground.",
+      "body": [
+        "After completing one of our stocktaking projects successfully, we made a point of joining the client in recognising the warehouse team involved — because we believe the success of any logistics project is not written in the final report, it is made on the warehouse floor by the people doing the work.",
+        "That philosophy is built into our methodology: we do not work \"on\" the client's team, we work \"with\" it. We transfer expertise, train while we deliver, and leave behind a team better equipped to hold on to the results once our engagement ends.",
+        "Sustained results are not achieved by a written procedure alone, but by a team that understands why the procedure exists and has a reason to follow it."
+      ],
+      "points": [
+        "Recognising the warehouse team after a successful project",
+        "Transferring expertise and training on the job",
+        "Sustaining results after the project ends"
+      ],
+      "facts": [
+        [
+          "Activity type",
+          "Team recognition"
+        ],
+        [
+          "Occasion",
+          "Completion of a successful stocktaking project"
+        ],
+        [
+          "Philosophy",
+          "Working with the client's team, not on it"
+        ],
+        [
+          "Impact",
+          "Results that hold after the project ends"
+        ]
+      ],
+      "seo_title": "Recognising Client Warehouse Teams | United Integrated",
+      "seo_desc": "Recognising a client's warehouse team after a successful stocktake — the United Integrated approach to transferring expertise so results last."
+    }
+  ],
+  "jobs": [
+    {
+      "title": "Logistics Services Manager",
+      "location": "Riyadh",
+      "type": "Full-time",
+      "desc": "Lead logistics service delivery for clients, set operational plans and track performance indicators."
+    },
+    {
+      "title": "Transport Manager",
+      "location": "Riyadh",
+      "type": "Full-time",
+      "desc": "Manage transport and distribution operations, plan routes and control transport costs."
+    },
+    {
+      "title": "Distribution Manager",
+      "location": "Jeddah",
+      "type": "Full-time",
+      "desc": "Oversee distribution centres and ensure orders are prepared accurately and quickly."
+    },
+    {
+      "title": "Stocktaking Supervisor",
+      "location": "Multiple locations",
+      "type": "Full-time / project-based",
+      "desc": "Supervise counting teams on site, enforce tagging and reconciliation standards, and prepare variance reports."
+    }
+  ],
+  "posts": [
+    {
+      "slug": "third-party-inventory-audit",
+      "title": "Why Your Stocktake Belongs in Independent Hands",
+      "date": "2026-07-27",
+      "author": "United Integrated Team",
+      "image": "cover-third-party.jpg",
+      "tags": [
+        "Inventory Counting",
+        "Governance"
+      ],
+      "excerpt": "When a warehouse team counts its own stock, it is auditing its own work. Here is why auditors insist on an independent party — and what actually changes in the numbers.",
+      "body": "<h2>The structural flaw in counting your own stock</h2><p>When a warehouse team counts its own inventory, a problem arises that has less to do with integrity than with how the work is structured: the team is reviewing the results of its own performance. And an eye accustomed to a place stops seeing the faults in it.</p><p>Layered on top of this is an unspoken pressure: the count result is read as an assessment of the team itself, which creates a tendency — conscious or otherwise — to explain variances away rather than record them.</p><h2>Three things an independent party changes</h2><h3>1. Neutrality in recording</h3><p>An independent team has no stake in the outcome of the count. It records what it sees, not what it is expected to see. That alone is enough to produce a tangible shift in the accuracy of the figures.</p><h3>2. Credibility with auditors</h3><p>A stocktaking report issued by an independent external party carries weight as audit evidence with internal and external reviewers alike, sparing the finance function a long argument at year-end close.</p><h3>3. Rapid mobilisation without disruption</h3><p>An in-house count means pulling your own staff off their core duties for days. An external team arrives with sufficient headcount and a ready plan, and executes within a tight window. The saving here is not in the cost of counting, but in the cost of downtime.</p><h2>And what about the cost difference?</h2><p>The sharper question is not \"what does an external stocktake cost?\" but \"what does it cost me not to know my true stock position?\" Once you account for unnecessary purchasing, dead stock and late orders, an independent count often moves from the expense column to the savings column.</p>",
+      "seo_title": "Third-Party Stocktaking: Why Auditors Require It",
+      "seo_desc": "Why inventory counting belongs with an independent third party: neutral recording, audit credibility and fast mobilisation without disrupting operations."
+    },
+    {
+      "slug": "abc-analysis-warehouse",
+      "title": "ABC Analysis: The Simplest Way to Re-Sequence Your Warehouse",
+      "date": "2026-07-24",
+      "author": "United Integrated Team",
+      "image": "cover-abc-analysis.jpg",
+      "tags": [
+        "Operations Optimisation",
+        "Warehouse Design"
+      ],
+      "excerpt": "Twenty per cent of your SKUs account for eighty per cent of your movement. ABC analysis is how that rule of thumb turns into concrete decisions about storage locations and counting schedules.",
+      "body": "<h2>From the Pareto principle to the warehouse floor</h2><p>In most warehouses, a small proportion of items accounts for the largest share of movement and value. ABC analysis translates that observation into three practical categories, each handled differently.</p><h2>How do you classify?</h2><p><b>Class A:</b> high-value or fast-moving items — few in number, large in impact.<br><b>Class B:</b> moderate in value and movement.<br><b>Class C:</b> low-value or slow-moving items — many in number, limited in impact.</p><p>Classification can be based on item value, on movement rate, or on a combination of the two. The choice is not a detail: value-based classification serves financial control, while movement-based classification serves operational efficiency.</p><h2>Three decisions the classification changes immediately</h2><h3>1. Storage locations</h3><p>Class A items go in the locations closest to the dispatch area and at easy-reach height (the golden zone). Class C items move to upper or rear zones. This change alone measurably reduces the daily walking distance of the picking team.</p><h3>2. Counting frequency</h3><p>There is no sense in counting every item at the same frequency. Class A is counted monthly, B quarterly, C annually. The result: higher accuracy for less effort.</p><h3>3. Reorder levels</h3><p>Class A items warrant close monitoring and carefully calculated safety stock. Class C items are managed with simpler levels, without burdening management with daily tracking of low-impact lines.</p><h2>A common mistake</h2><p>Classification is not a one-off exercise. Item movement shifts seasonally and year on year, and a Class A item this year may become a C next year. Review the classification at least twice a year.</p>",
+      "seo_title": "ABC Analysis in Warehouses: Layout and Counting",
+      "seo_desc": "A practical guide to ABC analysis: how to classify your items, and how it reshapes storage locations, cycle counting frequency and reorder levels."
+    },
+    {
+      "slug": "fifo-fefo-warehouse",
+      "title": "FIFO and FEFO: Why the Rule Is Clear but the Practice Fails",
+      "date": "2026-07-21",
+      "author": "United Integrated Team",
+      "image": "cover-fifo.jpg",
+      "tags": [
+        "Operations Optimisation",
+        "Inventory Management"
+      ],
+      "excerpt": "Every warehouse knows \"first in, first out\". Yet damaged and expired stock turns up in almost every count. The problem is not the rule — it is the design.",
+      "body": "<h2>The rule is well known; the practice is rare</h2><p>There is no warehouse that does not know the FIFO principle (first in, first out), and no pharmaceutical or food warehouse that does not know FEFO (first expired, first out). Yet damaged and expired stock appears in every count. Why?</p><h2>Reason one: the design works against the rule</h2><p>When new goods are stored in front of older ones in the same location, you are asking the operative to make an extra effort in order to follow the rule. And a rule that demands extra effort is not followed consistently.</p><p>The fix is a design fix, not a training one: storage locations that allow loading from one side and picking from the opposite side, or separate locations allocated to different batches.</p><h2>Reason two: no batch traceability</h2><p>If the system knows only the quantity, with no receipt date or batch number, there is no way to tell which units are older. Batch/lot tracking is not a luxury in shelf-life sectors — it is a basic requirement.</p><h2>Reason three: no measure</h2><p>What is not measured is not done. Measure the proportion of items picked in the correct sequence, and the ratio of damaged stock to total inventory, monthly. When the figure appears in a report that gets discussed, behaviour changes.</p><h2>When do you choose FEFO over FIFO?</h2><p>With shelf-life goods, the oldest receipt is not necessarily the nearest expiry. Pharmaceuticals, food and chemicals are always managed under FEFO — and confusing the two carries a direct cost in write-offs.</p>",
+      "seo_title": "FIFO and FEFO in Warehouses: Why They Fail",
+      "seo_desc": "Why FIFO and FEFO fail in practice despite clear rules: layouts that fight the rule, missing batch traceability and absent KPIs — plus how to fix each one."
+    },
+    {
+      "slug": "choosing-wms-system",
+      "title": "Before You Buy a WMS: Five Questions That Settle the Decision",
+      "date": "2026-07-18",
+      "author": "United Integrated Team",
+      "image": "cover-wms.jpg",
+      "tags": [
+        "WMS Systems",
+        "Operations Optimisation"
+      ],
+      "excerpt": "Many WMS projects fail not because the system is poor, but because the warehouse was not ready for it. These five questions expose your readiness before you sign the contract.",
+      "body": "<h2>A system does not fix what is broken</h2><p>The most common thing we see in warehouse management system implementations is a mistaken expectation: that the system will solve problems of operational discipline. In reality, a system documents existing practice more precisely — so if that practice is wrong, it documents the error faithfully.</p><h2>1. Are your storage locations coded and numbered?</h2><p>A system works on the logic of \"item in location\". Without clear, fixed location coding, there is nothing tying the system to reality. This is step zero — and ignoring it is the most common cause of stalled projects.</p><h2>2. Are your procedures documented (SOPs)?</h2><p>Implementing a system requires defining who does what and when. If procedures are not documented before the project, they will be written in haste during it — and they will reflect the disorder rather than remedy it.</p><h2>3. How accurate is your inventory today?</h2><p>Migrating inaccurate data into a new system produces an inaccurate system. Start with a wall-to-wall inventory that establishes the baseline, then migrate.</p><h2>4. Who will own the system once the project ends?</h2><p>Every system needs an internal owner who understands it and develops its use. Without that role, the system will only ever be used as far as staff were trained in the first week, and then it freezes.</p><h2>5. Do you genuinely need a new system?</h2><p>In more cases than you might think, the current system is capable of far more than is being used. Before buying a new one, examine whether the problem lies in the tool or in how it is used — the difference between the two is hundreds of thousands of riyals.</p>",
+      "seo_title": "Choosing a WMS: Five Questions Before You Buy",
+      "seo_desc": "Before buying a WMS: are your locations coded? Are your SOPs documented? How accurate is your inventory? Who owns the system? And do you really need it?"
+    },
+    {
+      "slug": "warehouse-sops",
+      "title": "SOPs: The Line Between a Warehouse That Runs and One That Depends on People",
+      "date": "2026-07-15",
+      "author": "United Integrated Team",
+      "image": "cover-sops.jpg",
+      "tags": [
+        "SOPs",
+        "Governance"
+      ],
+      "excerpt": "If one absent employee throws your warehouse into disarray, you do not have a system — you have people. Standard operating procedures are what turn individual experience into an institutional asset.",
+      "body": "<h2>A simple test</h2><p>Ask yourself: if your warehouse supervisor were away for a week, how much work would grind to a halt? If the answer is \"a great deal\", then the knowledge in your warehouse is stored in people's heads rather than in the way the operation works.</p><h2>What are standard operating procedures, really?</h2><p>They are not a file in a manager's drawer. They are a written, concise description of every recurring process: who performs it, through which steps, with which document, and what counts as completing it correctly.</p><h2>The minimum you must have</h2><ul><li>Receiving procedure: document matching, inspection, recording, and handling of variances.</li><li>Put-away procedure: rules for selecting a location and updating the system.</li><li>Picking and dispatch procedure: verification before shipping and documentation of handover.</li><li>Returns procedure: inspection, classification, and either return to stock or disposal.</li><li>Cycle counting procedure: scope, frequency, and the mechanism for handling variances.</li></ul><h2>Why do written procedures fail?</h2><p>For two recurring reasons: they are written in management language that the people carrying out the work do not read, and they are not tied to any follow-up. A procedure whose compliance is never reviewed becomes, within months, a historical document.</p><h2>Start small</h2><p>Do not try to document everything at once. Pick the process where errors recur most, document it on a single page, train people on it, and measure the effect for a month. Then move on to the next.</p>",
+      "seo_title": "Warehouse SOPs: A Practical Implementation Guide",
+      "seo_desc": "How to build effective warehouse SOPs: the minimum set you need, why written procedures fail, and how to start with one measurable step."
+    },
+    {
+      "slug": "inventory-shrinkage-control",
+      "title": "Warehouse Shrinkage: Where Your Stock Actually Leaks Away",
+      "date": "2026-07-11",
+      "author": "United Integrated Team",
+      "image": "cover-shrinkage.jpg",
+      "tags": [
+        "Inventory Control",
+        "Governance"
+      ],
+      "excerpt": "Shrinkage is usually filed under a single word: theft. Our field experience says the larger share is operational error — and simple controls close most of it.",
+      "body": "<h2>Shrinkage Is Not a Synonym for Theft</h2><p>When a stocktake throws up a negative variance, the mind jumps straight to theft. In most cases, however, shrinkage is a composite of several sources, and theft is only one of them — and usually not the largest.</p><h2>The Five Most Common Sources</h2><h3>1. Receiving Errors</h3><p>Accepting a smaller quantity than the one recorded on the invoice without a physical count. The difference surfaces later in the stocktake and is booked as shrinkage, when in fact it never entered the warehouse at all.</p><h3>2. Issuing Errors</h3><p>Issuing a similar item instead of the one requested, or issuing a larger quantity without recording it. Two items with near-identical part numbers are enough to produce two opposing variances in the count.</p><h3>3. Unrecorded Damage</h3><p>Units damaged during handling and disposed of without a documented write-off procedure.</p><h3>4. Recording and Transfer Errors</h3><p>Movements between locations or branches with no matching entry, or a duplicated entry.</p><h3>5. Internal Theft</h3><p>It exists, but it thrives precisely in environments that lack the controls above — because disorder hides the trail.</p><h2>The Controls That Close Most of the Leakage</h2><ul><li>A mandatory physical count on receipt and a three-way match (purchase order / invoice / goods receipt).</li><li>Clear location coding that prevents confusion between similar items.</li><li>A documented write-off procedure with management approval.</li><li>Periodic unannounced counts of high-value items — their deterrent effect outweighs their detective effect.</li><li>Segregation of duties: whoever receives does not issue, and whoever issues does not adjust the balance in the system.</li></ul><h2>Start by Measuring</h2><p>Establish shrinkage as a percentage of inventory value and track it monthly. The number that gets watched goes down — and the number nobody knows quietly grows.</p>",
+      "seo_title": "Warehouse Shrinkage: Real Sources and Controls",
+      "seo_desc": "Where does warehouse shrinkage really leak? Receiving and issuing errors, unrecorded damage, transfer errors — and the controls that close most of it."
+    },
+    {
+      "slug": "inventory-accuracy-cost",
+      "title": "Inventory Discrepancies: What They Really Cost You Each Year",
+      "date": "2026-07-20",
+      "author": "United Integrated Team",
+      "image": "cover-inventory-cost.jpg",
+      "tags": [
+        "Inventory Counting",
+        "Inventory Accuracy"
+      ],
+      "excerpt": "The gap between physical and book stock is not just a figure in a report — it is an unnecessary purchase, a late customer order and an inaccurate set of accounts. Here we work out the real cost.",
+      "body": "<h2>A Variance Is Not Just a Number in a Report</h2><p>When a stocktake report shows a 3% variance between physical and book stock, many managers are inclined to treat it as an acceptable figure. But in a warehouse holding SAR 10 million of inventory, that percentage means a gap of SAR 300,000 that nobody can account for.</p><h2>Three Hidden Costs That Never Appear in the Report</h2><h3>1. Unnecessary Purchasing</h3><p>When the system shows less stock than is actually held, a purchase order is raised for an item already sitting on the shelf. Capital is tied up, storage space is consumed, and the stock is exposed to obsolescence.</p><h3>2. The Late or Cancelled Order</h3><p>The reverse is more dangerous: the system says the item is available, so the customer is promised a delivery date — and then the shelf turns out to be empty. The cost here is not only financial; it is customer trust.</p><h3>3. Inaccurate Financial Statements</h3><p>Inventory is an asset line on the balance sheet. Any flaw in its valuation feeds straight through to the financial statements and to shareholder decisions — which puts the finance function in an awkward position in front of the auditors.</p><h2>Why Does a WMS Not Solve the Problem on Its Own?</h2><p>A system does not correct a faulty practice — it documents it more precisely. If goods are received without a proper match, or an issue is recorded hours after the stock has physically left, the system will record the error with complete fidelity.</p><h2>Where Do You Start?</h2><p>Start with an independent diagnostic count that establishes the size of the gap and its sources, then fix the procedures that produced it, and finally lock in the result with a cycle counting programme that stops variances building up again.</p>",
+      "seo_title": "The Real Cost of Inventory Discrepancies",
+      "seo_desc": "What do inventory discrepancies cost each year? Unnecessary purchasing, late orders, inaccurate accounts — and why a WMS alone won't fix accuracy."
+    },
+    {
+      "slug": "cycle-counting-vs-annual",
+      "title": "Annual Stocktake or Cycle Counting? When to Use Each",
+      "date": "2026-07-13",
+      "author": "United Integrated Team",
+      "image": "cover-cycle-counting.jpg",
+      "tags": [
+        "Inventory Counting",
+        "Best Practice"
+      ],
+      "excerpt": "A full annual stocktake is an accounting necessity, but on its own it will not keep inventory under control all year. Here is how to combine the two intelligently without halting your operation.",
+      "body": "<h2>Each Type Plays a Different Role</h2><p>Confusing the annual stocktake with cycle counting leads many companies to the wrong decision: settling for a single count a year, then discovering the size of the gap once it is too late.</p><h2>The Annual Wall-to-Wall Inventory</h2><p>Usually carried out at the end of the financial year, it is a mandatory step in closing the books. It covers counting every item \"wall to wall\", and generally requires goods movement to be halted.</p><p><b>When is it the right choice?</b> At financial year-end, ahead of a sale or acquisition, or when warehouse management changes.</p><h2>Periodic Cycle Counting</h2><p>Counting selected items at regular intervals without stopping work, usually following ABC analysis: high-value or fast-moving items are counted more often, slow movers less often.</p><p><b>When is it the right choice?</b> When your operation cannot afford downtime, or when you want to catch errors early rather than waiting for year-end.</p><h2>The Unannounced Control Count</h2><p>A third tool that nobody serious about control can do without: counting specific items with no prior notice. Its greatest effect is deterrent rather than detective.</p><h2>The Optimal Combination</h2><p>One annual wall-to-wall inventory + a monthly cycle counting programme for class A items + two unannounced counts a year. This combination delivers high accuracy throughout the year with the least possible disruption to operations.</p>",
+      "seo_title": "Annual Stocktake vs Cycle Counting: How to Choose",
+      "seo_desc": "Annual wall-to-wall inventory vs cycle counting vs unannounced counts: when to use each, and the ideal mix for year-round inventory accuracy."
+    },
+    {
+      "slug": "warehouse-layout-space",
+      "title": "Your Warehouse Isn't Too Small — You're Just Not Using It Well",
+      "date": "2026-07-06",
+      "author": "United Integrated Team",
+      "image": "cover-layout-space.jpg",
+      "tags": [
+        "Operations Optimisation",
+        "Warehouse Design"
+      ],
+      "excerpt": "Before you sign a lease on extra space, read this. In most of the warehouses we have audited, wasted space exceeded 20% — and reclaiming it was far cheaper than expanding.",
+      "body": "<h2>The Most Expensive Decision Is Usually Made Too Quickly</h2><p>When the warehouse fills up, the first solution that comes to mind is renting additional space. But renting adds monthly rent, more labour and movement between two sites — while the real problem usually lies in how the space is used, not in how much of it there is.</p><h2>Where Does the Space Usually Disappear?</h2><h3>Unused Height</h3><p>Many warehouses store at floor level or on low racking while the available height allows for additional levels. Cubic space is the right measure, not floor area.</p><h3>Aisles Wider Than Necessary</h3><p>Aisle width is dictated by the type of handling equipment. An aisle one metre wider than actually required, in a warehouse with ten aisles, means dozens of square metres wasted.</p><h3>Dead Stock in the Best Locations</h3><p>One of the most common things we see: items that have not moved in two years occupying the locations closest to the order preparation area, while the fast movers sit at the back.</p><h2>Start with ABC Analysis</h2><p>Classify your items by movement rate, then redistribute locations: class A in the nearest and most accessible locations, class C in high-level or back-of-house areas. This change alone reduces order preparation time appreciably, with no capital spend at all.</p>",
+      "seo_title": "Warehouse Layout Optimisation: Reclaim Wasted Space",
+      "seo_desc": "Before renting more space: where does your warehouse space go? Unused height, over-wide aisles and dead stock — and how ABC analysis resets priorities."
+    },
+    {
+      "slug": "warehouse-kpis",
+      "title": "Five Warehouse KPIs No Operation Should Be Without",
+      "date": "2026-06-29",
+      "author": "United Integrated Team",
+      "image": "cover-kpis.jpg",
+      "tags": [
+        "KPIs",
+        "Operations Optimisation"
+      ],
+      "excerpt": "You cannot improve what you do not measure. These five straightforward metrics can be started in any warehouse this week — and they reveal more than you would expect.",
+      "body": "<h2>Why Do Most Improvement Efforts Fail?</h2><p>Because they start with the solution before the measurement. Without a number before the intervention and a number after it, the discussion turns into impressions: \"the work is faster now\" or \"things have improved\" — with no evidence.</p><h2>1. Inventory Accuracy</h2><p>The percentage of items whose physical balance matches their book balance. It is the single most important indicator of all, and it is measured through periodic counting. Every other metric loses its meaning if this one is low.</p><h2>2. Order Accuracy</h2><p>The percentage of orders picked with the correct item and quantity, error-free. It measures output quality as your end customer sees it.</p><h2>3. Order Cycle Time</h2><p>The time from receipt of the order to despatch. It exposes bottlenecks in picking, packing and shipping.</p><h2>4. Operating Cost per Square Metre</h2><p>Total warehouse operating costs divided by floor area. It links operational performance directly to financial cost — and it is the metric senior management understands immediately.</p><h2>5. Inventory Turnover</h2><p>The number of times inventory is cleared over a given period. A decline is an early indicator of dead stock building up and capital being tied up.</p><h2>Start with Just Two</h2><p>Do not take on all five at once. Pick two, measure them weekly for a month, and discuss the results with the team. Discipline in measurement matters more than the number of metrics.</p>",
+      "seo_title": "Five Warehouse KPIs Every Operation Needs",
+      "seo_desc": "Key warehouse KPIs: inventory accuracy, order accuracy, order cycle time, operating cost per sq metre and inventory turnover — and how to start measuring."
+    }
+  ],
+  "clients": [
+    {
+      "file": "client-1.png",
+      "name": "CENTRO Hotels"
+    },
+    {
+      "file": "client-2.png",
+      "name": "CRA"
+    },
+    {
+      "file": "client-3.png",
+      "name": "Iron Mountain"
+    },
+    {
+      "file": "client-4.png",
+      "name": "عميل"
+    },
+    {
+      "file": "client-5.png",
+      "name": "Sami Rodeh"
+    },
+    {
+      "file": "client-6.png",
+      "name": "SLC الإنارة السعودية"
+    },
+    {
+      "file": "client-7.png",
+      "name": "Mariam Trading"
+    },
+    {
+      "file": "client-8.png",
+      "name": "أمانة جدة"
+    },
+    {
+      "file": "client-9.png",
+      "name": "الإلكترونية الحديثة"
+    },
+    {
+      "file": "client-10.png",
+      "name": "أمنوكو"
+    },
+    {
+      "file": "client-11.png",
+      "name": "تداول"
+    },
+    {
+      "file": "client-12.png",
+      "name": "روتانا"
+    },
+    {
+      "file": "client-13.png",
+      "name": "سمو"
+    },
+    {
+      "file": "client-14.png",
+      "name": "أنظمة الحاسب الآلي العربي"
+    },
+    {
+      "file": "client-15.png",
+      "name": "الحياة المتحدة"
+    },
+    {
+      "file": "client-16.png",
+      "name": "حرف السعودية"
+    },
+    {
+      "file": "client-17.png",
+      "name": "عباقر للصناعة والاستثمار"
+    },
+    {
+      "file": "client-18.png",
+      "name": "نظم المياه المتطورة"
+    },
+    {
+      "file": "client-19.png",
+      "name": "عميل"
+    },
+    {
+      "file": "client-20.png",
+      "name": "كدانة"
+    },
+    {
+      "file": "client-21.png",
+      "name": "مجموعة الفيصلية"
+    },
+    {
+      "file": "client-22.png",
+      "name": "مخازن العناية"
+    },
+    {
+      "file": "client-23.png",
+      "name": "نوبكو"
+    }
+  ]
+}

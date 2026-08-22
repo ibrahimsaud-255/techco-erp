@@ -1,0 +1,17 @@
+{
+  "name": "التكامل المتحدة للخدمات اللوجستية",
+  "short_name": "التكامل المتحدة",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e4d82",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

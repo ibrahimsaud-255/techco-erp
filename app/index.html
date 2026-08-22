@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>نظام إدارة الشركة التقنية</title>
+<title>نظام إدارة مِنوال</title>
 <meta name="theme-color" content="#0a0a0b">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="حروف ودروس">
 <link rel="apple-touch-icon" href="../logo.png">
-<link rel="manifest" href='data:application/manifest+json,{"name":"نظام إدارة الشركة التقنية","short_name":"الشركة التقنية","start_url":".","scope":".","display":"standalone","orientation":"portrait","background_color":"%230a0a0b","theme_color":"%230a0a0b","icons":[{"src":"../logo.png","sizes":"any","type":"image/png","purpose":"any"}]}'>
+<link rel="manifest" href='data:application/manifest+json,{"name":"نظام إدارة مِنوال","short_name":"مِنوال","start_url":".","scope":".","display":"standalone","orientation":"portrait","background_color":"%230a0a0b","theme_color":"%230a0a0b","icons":[{"src":"../logo.png","sizes":"any","type":"image/png","purpose":"any"}]}'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -157,6 +157,32 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
   .card h3{margin-top:0}
+
+  /* ===== النشر التلقائي (ورك فلو إعادة النشر) ===== */
+  .pub-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 18px}
+  .pub-tab{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit}
+  .pub-tab svg{width:16px;height:16px}
+  .pub-tab.on{background:rgba(245,166,35,.14);border-color:rgba(245,166,35,.45);color:var(--gold2)}
+  .pub-cnt{background:var(--bad);color:#fff;border-radius:10px;padding:1px 7px;font-size:11px}
+  .pub-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:9px;background:var(--panel2);border:1px solid var(--line);font-size:12px;font-weight:700;white-space:nowrap}
+  .pub-chip svg{width:13px;height:13px}
+  .pub-chip.pub-published{border-color:rgba(34,197,94,.5);color:#86efac}
+  .pub-chip.pub-failed{border-color:rgba(239,68,68,.5);color:#fca5a5}
+  .pub-chip.pub-manual{border-color:rgba(245,158,11,.55);color:#fcd34d;cursor:pointer}
+  .pub-chip.pub-pending{opacity:.7}
+  .pub-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .pub-arrow{width:15px;height:15px;color:var(--gold2);flex:none}
+  .pub-dsts{display:flex;gap:6px;flex-wrap:wrap}
+  .wf-card.off{opacity:.55}
+  .wf-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .wf-top b{font-size:15.5px}
+  .wf-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .pub-switch{position:relative;display:inline-block;width:38px;height:22px;flex:none}
+  .pub-switch input{display:none}
+  .pub-switch span{position:absolute;inset:0;border-radius:20px;background:var(--panel2);border:1px solid var(--line);transition:.2s;cursor:pointer}
+  .pub-switch span::after{content:"";position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:.2s}
+  .pub-switch input:checked+span{background:rgba(34,197,94,.25);border-color:rgba(34,197,94,.5)}
+  .pub-switch input:checked+span::after{background:#4ade80;transform:translateX(-15px)}
 
   /* ===== LAUNCHPAD (شبكة التطبيقات — أيقونات Liquid Glass) ===== */
   .lp-wrap{margin-bottom:28px}
@@ -464,7 +490,7 @@
 
 <div id="loginView" class="login-wrap">
   <div class="login-box">
-    <img src="../logo.png" alt="الشركة التقنية" style="max-width:210px;width:72%;display:block;margin:0 auto 12px;border-radius:12px" onerror="this.style.display='none'">
+    <img src="../logo.png" alt="مِنوال" style="max-width:210px;width:72%;display:block;margin:0 auto 12px;border-radius:12px" onerror="this.style.display='none'">
     <p>نظام إدارة الأعمال — دخول المالك</p>
     <div class="field"><label>البريد الإلكتروني</label><input type="email" id="em" placeholder="you@email.com" autocomplete="username" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
     <div class="field"><label>كلمة المرور</label><div class="pw-wrap"><input type="password" id="pw" placeholder="••••••••" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')doLogin()"><button type="button" class="pw-toggle" onclick="togglePw('pw',this)">إظهار</button></div></div>
@@ -478,7 +504,7 @@
 
 <div id="resetView" class="login-wrap hidden">
   <div class="login-box">
-    <img src="../logo.png" alt="الشركة التقنية" style="max-width:210px;width:72%;display:block;margin:0 auto 12px;border-radius:12px" onerror="this.style.display='none'">
+    <img src="../logo.png" alt="مِنوال" style="max-width:210px;width:72%;display:block;margin:0 auto 12px;border-radius:12px" onerror="this.style.display='none'">
     <p>تعيين كلمة مرور جديدة</p>
     <div class="field"><label>كلمة المرور الجديدة</label><div class="pw-wrap"><input type="password" id="np1" placeholder="8 أحرف على الأقل" autocomplete="new-password" autocapitalize="none" autocorrect="off" spellcheck="false" oninput="pwStrength()"><button type="button" class="pw-toggle" onclick="togglePw('np1',this)">إظهار</button></div><div class="pw-meter"><i id="pwBar"></i></div><div class="pw-hint" id="pwHint">استخدم 8 أحرف على الأقل مع أرقام ورموز.</div></div>
     <div class="field"><label>تأكيد كلمة المرور</label><div class="pw-wrap"><input type="password" id="np2" placeholder="أعد كتابتها" autocomplete="new-password" autocapitalize="none" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')doSetNewPassword()"><button type="button" class="pw-toggle" onclick="togglePw('np2',this)">إظهار</button></div></div>
@@ -491,7 +517,7 @@
 <div id="appShell" class="hidden">
   <div class="shell">
     <aside class="sidebar" id="sidebar">
-      <div class="logo-area" style="text-align:center"><img src="../logo.png" alt="الشركة التقنية" style="max-width:155px;width:86%;display:block;margin:0 auto 6px;border-radius:10px" onerror="this.style.display='none'"><div class="tagline">نظام إدارة الأعمال</div></div>
+      <div class="logo-area" style="text-align:center"><img src="../logo.png" alt="مِنوال" style="max-width:155px;width:86%;display:block;margin:0 auto 6px;border-radius:10px" onerror="this.style.display='none'"><div class="tagline">نظام إدارة الأعمال</div></div>
       <nav class="nav" id="nav"></nav>
       <div class="nav-foot">
         <a onclick="go('settings')"><span class="nic"><i data-lucide="settings"></i></span> الإعدادات</a>
@@ -520,13 +546,14 @@ const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
 let STATE_ID=null, USER=null, saveTimer=null;
 let TENANTS=[], CURRENT_TENANT=null, ENABLED_APPS=null;
 let CURRENT_ROLE=null, CAN_EDIT=true, IS_TADMIN=false, IS_PLATFORM=false;
+let IS_DEMO=false;
 
 /* ===== STATE ===== */
 const KEY='techco_erp_v1';
 const def={
-  settings:{brand:'الشركة التقنية',owner:'إبراهيم سعود',email:'ibrahimsaud25@gmail.com',phone:'966504895213',
+  settings:{brand:'مِنوال',owner:'إبراهيم سعود',email:'ibrahimsaud25@gmail.com',phone:'966504895213',
     currency:'ر.س',password:'admin',logo:'',invPrefix:'INV-',salePrefix:'S',salesperson:'إبراهيم سعود',terms:'شكراً لتعاملكم. تُسدَّد الفاتورة خلال 14 يوماً.',bankName:'',iban:'',
-    vat:{enabled:false,rate:15,number:'',sellerName:'الشركة التقنية',address:'الرياض، السعودية',cr:''},
+    vat:{enabled:false,rate:15,number:'',sellerName:'مِنوال',address:'الرياض، السعودية',cr:''},
     wallpaper:{type:'url',key:'tahoe-dark',url:'./wallpapers/tahoe-dark.jpg'},wallpapers:[]},
   products:[
     {id:'p_pod',name:'إنتاج حلقة بودكاست',price:2000,unit:'حلقة',desc:'تصوير + مونتاج + ١٠ مقاطع قصيرة + تصاميم'},
@@ -556,7 +583,8 @@ const def={
   projectStages:[{key:'s1',label:'نفهم منتجك'},{key:'s2',label:'نكتب القصة'},{key:'s3',label:'نصوّر وننتج'},{key:'s4',label:'نسلّم ونطلق'},{key:'done',label:'منجز'}],
   counters:{sale:1000,invoice:1000,credit:1000},
   focus:{goalMin:180,breakEveryMin:50,breakLenMin:10,soundOn:true,log:{}},
-  prayer:{city:'الرياض',country:'Saudi Arabia',method:4}
+  prayer:{city:'الرياض',country:'Saudi Arabia',method:4},
+  publishing:{connections:[],workflows:[],queue:[]}
 };
 let S=load();
 function load(){let s;try{const r=localStorage.getItem(KEY);s=r?deepMerge(JSON.parse(JSON.stringify(def)),JSON.parse(r)):JSON.parse(JSON.stringify(def))}catch(e){s=JSON.parse(JSON.stringify(def))}
@@ -566,7 +594,7 @@ function load(){let s;try{const r=localStorage.getItem(KEY);s=r?deepMerge(JSON.p
   (s.projects||[]).forEach(p=>{if(!p.stageKey){const m=s.projectStages.find(x=>x.label===p.stage);p.stageKey=p.status==='done'?'done':(m?m.key:s.projectStages[0].key)}});
   return s;}
 function deepMerge(a,b){for(const k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k])){a[k]=deepMerge(a[k]||{},b[k])}else a[k]=b[k]}return a}
-function save(){localStorage.setItem(KEY,JSON.stringify(S));scheduleCloudSave()}
+function save(){if(IS_DEMO)return;localStorage.setItem(KEY,JSON.stringify(S));scheduleCloudSave()}
 function scheduleCloudSave(){if(!USER)return;clearTimeout(saveTimer);saveTimer=setTimeout(saveCloud,800)}
 async function saveCloud(){if(!USER||!STATE_ID||!CAN_EDIT)return;try{const{freelancers,...rest}=S;await sb.from('app_state').update({data:rest,updated_at:new Date().toISOString()}).eq('id',STATE_ID);const d=document.getElementById('syncDot');if(d){d.style.color='var(--good)';d.title='تمت المزامنة';}}catch(e){const d=document.getElementById('syncDot');if(d){d.style.color='var(--bad)';d.title='تعذّرت المزامنة'}}}
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
@@ -749,8 +777,9 @@ const FULL_APPS=[
   {id:'appointments',name:'المواعيد',icon:'calendar-clock'},
   {id:'calendar',name:'التقويم',icon:'calendar-days'},
   {id:'projects',name:'المشروع',icon:'clapperboard'},
+  {id:'publish',name:'النشر التلقائي',icon:'send'},
 ];
-const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers,leads:renderLeads,reports:renderReports};
+const RENDER={home:renderHome,desktop:renderDesktop,antar:renderAntar,dashboards:renderDashboards,sales:renderSales,crm:renderCRM,contacts:renderContacts,products:renderProducts,subs:renderSubscriptions,appointments:renderAppointments,calendar:renderCalendar,projects:renderProjects,publish:renderPublish,blog:renderBlog,invoicing:renderInvoicing,guests:renderGuests,team:renderTeam,settings:renderSettings,users:renderUsers,leads:renderLeads,reports:renderReports};
 const FULL_NAV=[{id:'home',name:'الرئيسية',icon:'home'},{id:'desktop',name:'المكتب',icon:'layout-grid'},{id:'antar',name:'عنتر',icon:'sparkles'},...FULL_APPS,{id:'reports',name:'التقارير والتصدير',icon:'bar-chart-3'},{id:'team',name:'الفريق',icon:'users'},{id:'users',name:'المستخدمون',icon:'user-cog'},{id:'leads',name:'العملاء المحتملون',icon:'inbox'}];
 
 /* ===== LAUNCHPAD (شبكة التطبيقات + خلفية لكل أيقونة) ===== */
@@ -766,6 +795,7 @@ const FULL_LAUNCH=[
   {id:'appointments',name:'المواعيد',icon:'calendar-clock',c:'#a855f7,#7c3aed'},
   {id:'calendar',name:'التقويم',icon:'calendar-days',c:'#ef4444,#dc2626'},
   {id:'projects',name:'المشروع',icon:'clapperboard',c:'#f43f5e,#e11d48'},
+  {id:'publish',name:'النشر التلقائي',icon:'send',c:'#f97316,#c2410c'},
   {id:'reports',name:'التقارير والتصدير',icon:'bar-chart-3',c:'#0ea5e9,#0369a1'},
   {id:'team',name:'الفريق',icon:'users',c:'#64748b,#475569'},
   {id:'users',name:'المستخدمون',icon:'user-cog',c:'#475569,#334155'},
@@ -1153,8 +1183,8 @@ function clientItems(contactId){if(!contactId)return {appts:[],invoices:[],proje
 function migrateData(){
   // ترحيل لمرّة واحدة: تحديث الاسم القديم إلى اسم المؤسسة المسجّل (قابل للتغيير من الإعدادات لاحقاً)
   if(S.settings && !S.settings.brandMigrated){
-    if((S.settings.brand||'')==='إبراهيم سعود')S.settings.brand='الشركة التقنية';
-    if(S.settings.vat && (S.settings.vat.sellerName||'')==='إبراهيم سعود')S.settings.vat.sellerName='الشركة التقنية';
+    if((S.settings.brand||'')==='إبراهيم سعود')S.settings.brand='مِنوال';
+    if(S.settings.vat && (S.settings.vat.sellerName||'')==='إبراهيم سعود')S.settings.vat.sellerName='مِنوال';
     S.settings.brandMigrated=true;
   }
   (S.projects||[]).forEach(p=>{
@@ -1710,6 +1740,230 @@ function subModal(id){
   ()=>{const g=i=>document.getElementById(i).value;s.name=g('su_name');s.usd=Number(g('su_usd')||0);s.sar=Number(g('su_sar')||0);s.cycle=g('su_cycle');s.date=g('su_date');s.remaining=Number(g('su_rem')||0);s.url=g('su_url');s.note=g('su_note');if(!s.name.trim()){alert('أدخل الاسم');return}if(!S.subscriptions)S.subscriptions=[];if(id){const i=S.subscriptions.findIndex(x=>x.id===id);S.subscriptions[i]=s}else{s.id=uid();s.active=true;S.subscriptions.push(s)}save();closeModal();renderSubscriptions()},id?()=>delItem('subscriptions',id,renderSubscriptions):null);
 }
 
+/* ===== PUBLISHING (النشر التلقائي — ورك فلو إعادة النشر بين المنصات، نمط Repurpose) ===== */
+const PUB_PLATFORMS={
+  rss:{name:'بودكاست RSS',icon:'rss',src:true,dst:false},
+  youtube:{name:'يوتيوب',icon:'youtube',src:true,dst:true},
+  shorts:{name:'يوتيوب شورتس',icon:'youtube',src:false,dst:true},
+  tiktok:{name:'تيك توك',icon:'music-2',src:true,dst:true},
+  instagram:{name:'إنستقرام ريلز',icon:'instagram',src:true,dst:true},
+  facebook:{name:'فيسبوك',icon:'facebook',src:false,dst:true},
+  x:{name:'إكس (تويتر)',icon:'twitter',src:false,dst:true},
+  linkedin:{name:'لينكدإن',icon:'linkedin',src:false,dst:true},
+  snapchat:{name:'سناب شات',icon:'ghost',src:false,dst:true},
+  drive:{name:'قوقل درايف / ملفات',icon:'hard-drive',src:true,dst:false},
+};
+const PUB_ST={review:'بانتظار المراجعة',scheduled:'مجدول',publishing:'جارٍ الإرسال',published:'منشور',failed:'فشل النشر',partial:'منشور جزئياً',pending:'بالانتظار',manual:'نشر يدوي',manual_done:'نُشر يدوياً'};
+const PUB_CLS={review:'unpaid',scheduled:'scheduled',publishing:'sent',published:'paid',failed:'cancel',partial:'partial'};
+function pubS(){const p=S.publishing=S.publishing||{};p.connections=p.connections||[];p.workflows=p.workflows||[];p.queue=p.queue||[];return p}
+const pubConn=id=>pubS().connections.find(c=>c.id===id);
+const pubWf=id=>pubS().workflows.find(w=>w.id===id);
+const pubPlat=k=>PUB_PLATFORMS[k]||{name:k||'—',icon:'globe'};
+function pubPill(s){return `<span class="pill ${PUB_CLS[s]||'draft'}">${PUB_ST[s]||s}</span>`}
+function pubChip(c,st,click){const p=pubPlat(c&&c.platform);
+  return `<span class="pub-chip${st?' pub-'+(st==='manual_done'?'published':st==='sent'?'published':st):''}"${click?` onclick="${click}"`:''} title="${esc((c&&c.handle)||'')}${st?' — '+(PUB_ST[st]||st):''}"><i data-lucide="${p.icon}"></i>${esc(p.name)}</span>`}
+function pubCaption(q){
+  const wf=pubWf(q.workflowId);
+  const tpl=q.caption||(wf&&wf.caption)||'{{title}}\n{{link}}\n{{hashtags}}';
+  return tpl.replaceAll('{{title}}',q.title||'').replaceAll('{{link}}',q.link||'').replaceAll('{{hashtags}}',(wf&&wf.hashtags)||'').trim();
+}
+function pubRecalc(q){
+  const st=(q.dests||[]).map(d=>d.status);
+  if(!st.length){q.status='failed';return}
+  if(st.every(s=>s==='published'||s==='manual_done'))q.status='published';
+  else if(st.every(s=>s==='failed'))q.status='failed';
+  else if(st.some(s=>s!=='pending'))q.status='partial';
+}
+function renderPublish(){
+  const P=pubS();const tab=uiPref('pubTab','wf');
+  const review=P.queue.filter(q=>q.status==='review').length;
+  const due=P.queue.filter(q=>q.status==='scheduled'&&(!q.when||new Date(q.when)<=new Date()));
+  const stats=`<div class="stats">
+    <div class="stat"><span class="ic"><i data-lucide="workflow"></i></span><div class="v">${P.workflows.filter(w=>w.active!==false).length}</div><div class="l">ورك فلو نشط</div></div>
+    <div class="stat"><span class="ic"><i data-lucide="plug-zap"></i></span><div class="v">${P.connections.length}</div><div class="l">حساب متصل</div></div>
+    <div class="stat"><span class="ic"><i data-lucide="eye"></i></span><div class="v">${review}</div><div class="l">بانتظار المراجعة</div></div>
+    <div class="stat"><span class="ic"><i data-lucide="send"></i></span><div class="v">${P.queue.filter(q=>q.status==='published').length}</div><div class="l">منشور</div></div>
+  </div>`;
+  const tabs=[['wf','الورك فلو','workflow'],['queue','طابور المحتوى','list-video'],['conns','الحسابات المتصلة','plug-zap']];
+  const tabsHtml=`<div class="pub-tabs">${tabs.map(t=>`<button class="pub-tab${tab===t[0]?' on':''}" onclick="setView('pubTab','${t[0]}')"><i data-lucide="${t[2]}"></i>${t[1]}${t[0]==='queue'&&review?` <span class="pub-cnt">${review}</span>`:''}</button>`).join('')}</div>`;
+  let head='',body='';
+  if(tab==='wf'){
+    head=`<button class="btn btn-gold" onclick="pubWfModal()">+ ورك فلو</button>`;
+    body=!P.workflows.length?emptyBox('workflow','لا يوجد ورك فلو بعد.<br>الورك فلو = مصدر (بودكاست/يوتيوب…) → وجهات (تيك توك/ريلز/شورتس…). كل محتوى جديد يمرّ عبره وينشر تلقائياً أو بعد مراجعتك.'):
+    `<div class="grid">${P.workflows.map(w=>{
+      const src=pubConn(w.sourceId);
+      const done=P.queue.filter(q=>q.workflowId===w.id&&q.status==='published').length;
+      return `<div class="card wf-card${w.active===false?' off':''}">
+        <div class="wf-top"><b>${esc(w.name)}</b><label class="pub-switch" title="تشغيل/إيقاف الورك فلو"><input type="checkbox" ${w.active!==false?'checked':''} onchange="pubToggleWf('${w.id}',this.checked)"><span></span></label></div>
+        <div class="pub-flow">${pubChip(src)}<i data-lucide="arrow-left" class="pub-arrow"></i><span class="pub-dsts">${(w.destIds||[]).map(id=>pubChip(pubConn(id))).join('')||'<span style="color:var(--muted);font-size:12px">بلا وجهات</span>'}</span></div>
+        <div class="wf-meta">${w.mode==='auto'?'<span class="pill paid">نشر تلقائي</span>':'<span class="pill unpaid">مراجعة أولاً</span>'}<span class="pill draft">${done} منشور</span></div>
+        <div class="prod-actions"><button onclick="pubItemModal(null,'${w.id}')">+ محتوى</button>${src&&src.platform==='rss'?`<button onclick="pubCheckRss('${w.id}')">فحص RSS</button>`:''}<button onclick="pubWfModal('${w.id}')">تعديل</button><button class="del" onclick="pubDelWf('${w.id}')">حذف</button></div>
+      </div>`}).join('')}</div>`;
+  }else if(tab==='queue'){
+    head=`<button class="btn btn-gold" onclick="pubItemModal()">+ محتوى</button>`;
+    const rows=P.queue.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||''));
+    body=`${due.length?`<div class="badge-note" style="border-color:rgba(245,158,11,.5)"><i data-lucide="alarm-clock"></i><div><b>${due.length}</b> محتوى حان وقت نشره — <button class="link-btn" style="padding:0" onclick="pubPublishDue()">نشر كل المستحق الآن</button></div></div>`:''}
+    ${!rows.length?emptyBox('list-video','الطابور فارغ — أضف محتوى يدوياً أو افحص RSS من الورك فلو.'):
+    `<table><thead><tr><th>المحتوى</th><th>الورك فلو</th><th>الوجهات</th><th>الموعد</th><th>الحالة</th><th></th></tr></thead><tbody>
+    ${rows.map(q=>{const wf=pubWf(q.workflowId);
+      return `<tr><td style="max-width:260px"><b>${esc(q.title)}</b>${q.link?` <a href="${esc(q.link)}" target="_blank" rel="noopener" style="color:var(--gold2)">↗</a>`:''}</td>
+      <td>${esc(wf?wf.name:'—')}</td>
+      <td><span class="pub-dsts">${(q.dests||[]).map(d=>pubChip(pubConn(d.connId),d.status,d.status==='manual'?`pubMarkManual('${q.id}','${d.connId}')`:'')).join('')}</span></td>
+      <td style="white-space:nowrap;font-size:13px">${q.when?esc(q.when).replace('T',' '):'—'}</td>
+      <td>${pubPill(q.status)}</td>
+      <td style="white-space:nowrap">
+        ${q.status==='review'?`<button class="link-btn" onclick="pubApprove('${q.id}')">اعتماد</button>`:''}
+        ${['scheduled','failed','partial'].includes(q.status)?`<button class="link-btn" onclick="pubPublishNow('${q.id}')">نشر الآن</button>`:''}
+        <button class="link-btn" onclick="pubCopyCaption('${q.id}')">نسخ الكابشن</button>
+        <button class="link-btn" onclick="pubItemModal('${q.id}')">تعديل</button>
+        <button class="link-btn del" onclick="pubDelItem('${q.id}')">حذف</button></td></tr>`}).join('')}
+    </tbody></table>`}`;
+  }else{
+    head=`<button class="btn btn-gold" onclick="pubConnModal()">+ حساب</button>`;
+    body=`<div class="badge-note"><i data-lucide="info"></i><div>النشر الفعلي يتم عبر <b>Webhook</b>: اربط الحساب بسيناريو <b>Make</b> أو <b>Zapier</b> أو <b>n8n</b> ينشر على المنصة، والصق رابط الـ Webhook هنا. عند «نشر الآن» يُرسل النظام العنوان والرابط والكابشن للسيناريو تلقائياً. الحسابات «اليدوية» تظهر لك بزر «نسخ الكابشن» وتعلّمها منشورة بنقرة.</div></div>
+    ${!P.connections.length?emptyBox('plug-zap','لا حسابات متصلة بعد — أضف مصادرك (بودكاست RSS، يوتيوب) ووجهاتك (تيك توك، ريلز، شورتس…).'):
+    `<table><thead><tr><th>المنصة</th><th>الحساب</th><th>الدور</th><th>طريقة النشر</th><th></th></tr></thead><tbody>
+    ${P.connections.map(c=>{const p=pubPlat(c.platform);
+      return `<tr><td>${pubChip(c)}</td><td><b>${esc(c.handle||'—')}</b>${c.url?` <a href="${esc(c.url)}" target="_blank" rel="noopener" style="color:var(--gold2)">↗</a>`:''}${c.note?`<div style="font-size:12px;color:var(--muted)">${esc(c.note)}</div>`:''}</td>
+      <td style="font-size:13px;color:var(--muted)">${p.src&&p.dst?'مصدر + وجهة':p.src?'مصدر':'وجهة'}</td>
+      <td>${c.method==='webhook'?`<span class="pill paid">Webhook${c.webhook?'':' <b style=\"color:var(--bad)\">بلا رابط!</b>'}</span>`:'<span class="pill draft">يدوي</span>'}</td>
+      <td style="white-space:nowrap"><button class="link-btn" onclick="pubConnModal('${c.id}')">تعديل</button><button class="link-btn del" onclick="pubDelConn('${c.id}')">حذف</button></td></tr>`}).join('')}
+    </tbody></table>`}`;
+  }
+  document.getElementById('main').innerHTML=`
+    <div class="page-head"><h1>النشر التلقائي</h1><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">${head}</div></div>
+    ${stats}${tabsHtml}${body}`;
+  refreshIcons();
+}
+/* — الحسابات — */
+function pubConnModal(id){
+  let c=id?{...pubConn(id)}:{id:'',platform:'tiktok',handle:'',method:'webhook',webhook:'',url:'',note:''};
+  openModal(id?'تعديل حساب':'ربط حساب جديد',`
+    <div class="row2"><div class="field"><label>المنصة</label><select id="pc_plat">${Object.entries(PUB_PLATFORMS).map(([k,p])=>`<option value="${k}" ${c.platform===k?'selected':''}>${p.name} (${p.src&&p.dst?'مصدر/وجهة':p.src?'مصدر':'وجهة'})</option>`).join('')}</select></div>
+    <div class="field"><label>اسم الحساب / المعرّف</label><input id="pc_handle" value="${esc(c.handle)}" placeholder="@minwal"></div></div>
+    <div class="field"><label>طريقة النشر</label><select id="pc_method"><option value="webhook" ${c.method!=='manual'?'selected':''}>Webhook (تلقائي عبر Make / Zapier / n8n)</option><option value="manual" ${c.method==='manual'?'selected':''}>يدوي (أنشر بنفسي مع نسخ الكابشن)</option></select></div>
+    <div class="field"><label>رابط الـ Webhook (للطريقة التلقائية)</label><input id="pc_webhook" value="${esc(c.webhook)}" placeholder="https://hook.eu2.make.com/…" dir="ltr"></div>
+    <div class="field"><label>رابط المصدر (RSS للبودكاست / رابط القناة — اختياري)</label><input id="pc_url" value="${esc(c.url)}" placeholder="https://feeds.example.com/podcast.rss" dir="ltr"></div>
+    <div class="field"><label>ملاحظات</label><textarea id="pc_note" rows="2">${esc(c.note)}</textarea></div>`,
+  ()=>{const g=i=>document.getElementById(i).value;c.platform=g('pc_plat');c.handle=g('pc_handle');c.method=g('pc_method');c.webhook=g('pc_webhook').trim();c.url=g('pc_url').trim();c.note=g('pc_note');
+    if(!c.handle.trim()&&!c.url){alert('أدخل اسم الحساب أو رابط المصدر');return}
+    const P=pubS();if(id){P.connections[P.connections.findIndex(x=>x.id===id)]=c}else{c.id=uid();P.connections.push(c)}
+    save();closeModal();renderPublish()},
+  id?()=>pubDelConn(id):null);
+}
+function pubDelConn(id){
+  const used=pubS().workflows.some(w=>w.sourceId===id||(w.destIds||[]).includes(id));
+  if(!confirm(used?'هذا الحساب مستخدم في ورك فلو! حذفه سيكسر الورك فلو المرتبط. متابعة؟':'حذف هذا الحساب؟'))return;
+  pubS().connections=pubS().connections.filter(c=>c.id!==id);save();closeModal();renderPublish();
+}
+/* — الورك فلو — */
+function pubWfModal(id){
+  const P=pubS();
+  const srcs=P.connections.filter(c=>pubPlat(c.platform).src);
+  const dsts=P.connections.filter(c=>pubPlat(c.platform).dst);
+  if(!P.connections.length){alert('اربط حساباتك أولاً من تبويب «الحسابات المتصلة»');S.settings.ui.pubTab='conns';save();renderPublish();return}
+  let w=id?{...pubWf(id)}:{id:'',name:'',sourceId:srcs[0]?srcs[0].id:'',destIds:[],mode:'review',caption:'{{title}}\n{{link}}\n{{hashtags}}',hashtags:'',active:true};
+  openModal(id?'تعديل ورك فلو':'ورك فلو جديد',`
+    <div class="field"><label>اسم الورك فلو</label><input id="pw_name" value="${esc(w.name)}" placeholder="حلقات سَعي → مقاطع قصيرة"></div>
+    <div class="field"><label>المصدر (من أين يأتي المحتوى)</label><select id="pw_src">${srcs.map(c=>`<option value="${c.id}" ${w.sourceId===c.id?'selected':''}>${pubPlat(c.platform).name} — ${esc(c.handle||c.url||'')}</option>`).join('')||'<option value="">— لا يوجد مصدر، أضف حساب مصدر أولاً —</option>'}</select></div>
+    <div class="field"><label>الوجهات (أين يُنشر)</label><div style="display:flex;flex-direction:column;gap:7px;max-height:180px;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:10px">
+      ${dsts.map(c=>`<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px"><input type="checkbox" class="pw_dst" value="${c.id}" ${(w.destIds||[]).includes(c.id)?'checked':''}> ${pubPlat(c.platform).name} — ${esc(c.handle||'')}</label>`).join('')||'<span style="color:var(--muted)">لا وجهات — أضف حسابات وجهة أولاً</span>'}</div></div>
+    <div class="row2"><div class="field"><label>وضع النشر</label><select id="pw_mode"><option value="review" ${w.mode!=='auto'?'selected':''}>مراجعة أولاً (يدخل الطابور وأعتمده)</option><option value="auto" ${w.mode==='auto'?'selected':''}>تلقائي (يُنشر فور دخوله)</option></select></div>
+    <div class="field"><label>هاشتاقات ثابتة</label><input id="pw_tags" value="${esc(w.hashtags)}" placeholder="#بودكاست_سعي #السعودية"></div></div>
+    <div class="field"><label>قالب الكابشن — المتغيرات: <code dir="ltr">{{title}}</code> العنوان · <code dir="ltr">{{link}}</code> الرابط · <code dir="ltr">{{hashtags}}</code> الهاشتاقات</label><textarea id="pw_cap" rows="3" dir="auto">${esc(w.caption)}</textarea></div>`,
+  ()=>{const g=i=>document.getElementById(i).value;
+    w.name=g('pw_name');w.sourceId=g('pw_src');w.mode=g('pw_mode');w.hashtags=g('pw_tags');w.caption=g('pw_cap');
+    w.destIds=[...document.querySelectorAll('.pw_dst:checked')].map(x=>x.value);
+    if(!w.name.trim()){alert('أدخل اسم الورك فلو');return}
+    if(!w.destIds.length){alert('اختر وجهة واحدة على الأقل');return}
+    if(id){P.workflows[P.workflows.findIndex(x=>x.id===id)]=w}else{w.id=uid();w.active=true;P.workflows.push(w)}
+    save();closeModal();renderPublish()},
+  id?()=>pubDelWf(id):null);
+}
+function pubToggleWf(id,on){const w=pubWf(id);if(w){w.active=on;save();renderPublish()}}
+function pubDelWf(id){if(!confirm('حذف الورك فلو؟ (محتوى الطابور المرتبط يبقى محفوظاً)'))return;pubS().workflows=pubS().workflows.filter(w=>w.id!==id);save();closeModal();renderPublish()}
+/* — طابور المحتوى — */
+function pubItemModal(id,wfId){
+  const P=pubS();
+  if(!P.workflows.length){alert('أنشئ ورك فلو أولاً');return}
+  let q=id?{...P.queue.find(x=>x.id===id)}:{id:'',title:'',link:'',workflowId:wfId||P.workflows[0].id,when:'',caption:'',status:'',dests:null,created:''};
+  openModal(id?'تعديل محتوى':'محتوى جديد',`
+    <div class="field"><label>عنوان المحتوى</label><input id="pq_title" value="${esc(q.title)}" placeholder="مقطع: أقوى لحظة من حلقة فلان"></div>
+    <div class="field"><label>رابط الفيديو / الملف</label><input id="pq_link" value="${esc(q.link)}" placeholder="https://…" dir="ltr"></div>
+    <div class="row2"><div class="field"><label>الورك فلو</label><select id="pq_wf">${P.workflows.map(w=>`<option value="${w.id}" ${q.workflowId===w.id?'selected':''}>${esc(w.name)}</option>`).join('')}</select></div>
+    <div class="field"><label>موعد النشر (اتركه فارغاً = فوراً)</label><input type="datetime-local" id="pq_when" value="${esc(q.when)}"></div></div>
+    <div class="field"><label>كابشن مخصص (اختياري — يتجاوز قالب الورك فلو)</label><textarea id="pq_cap" rows="2" dir="auto">${esc(q.caption)}</textarea></div>`,
+  ()=>{const g=i=>document.getElementById(i).value;
+    q.title=g('pq_title');q.link=g('pq_link').trim();q.workflowId=g('pq_wf');q.when=g('pq_when');q.caption=g('pq_cap');
+    if(!q.title.trim()){alert('أدخل العنوان');return}
+    const wf=pubWf(q.workflowId);
+    if(!q.dests||!id)q.dests=(wf.destIds||[]).map(x=>({connId:x,status:'pending'}));
+    if(id){P.queue[P.queue.findIndex(x=>x.id===id)]=q}
+    else{q.id=uid();q.created=new Date().toISOString();q.status=wf.mode==='auto'?'scheduled':'review';P.queue.push(q)}
+    save();closeModal();S.settings.ui.pubTab='queue';
+    if(!id&&wf.mode==='auto'&&(!q.when||new Date(q.when)<=new Date()))pubPublishNow(q.id);else renderPublish()},
+  id?()=>pubDelItem(id):null);
+}
+function pubDelItem(id){if(!confirm('حذف هذا المحتوى من الطابور؟'))return;pubS().queue=pubS().queue.filter(q=>q.id!==id);save();closeModal();renderPublish()}
+function pubApprove(id){const q=pubS().queue.find(x=>x.id===id);if(!q)return;
+  if(q.when&&new Date(q.when)>new Date()){q.status='scheduled';save();renderPublish()}else pubPublishNow(id)}
+function pubMarkManual(itemId,connId){const q=pubS().queue.find(x=>x.id===itemId);if(!q)return;
+  const d=(q.dests||[]).find(x=>x.connId===connId);if(!d)return;
+  d.status='manual_done';d.at=new Date().toISOString();pubRecalc(q);save();renderPublish()}
+function pubCopyCaption(id){const q=pubS().queue.find(x=>x.id===id);if(!q)return;
+  const txt=pubCaption(q);
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('نُسخ الكابشن ✓')).catch(()=>prompt('انسخ الكابشن:',txt))}
+async function pubPublishNow(id){
+  const q=pubS().queue.find(x=>x.id===id);if(!q)return;
+  const wf=pubWf(q.workflowId);
+  q.status='publishing';save();renderPublish();
+  const caption=pubCaption(q);
+  for(const d of (q.dests||[])){
+    if(d.status==='published'||d.status==='manual_done')continue;
+    const c=pubConn(d.connId);
+    if(!c){d.status='failed';continue}
+    if(c.method!=='manual'&&c.webhook){
+      const payload={item_id:q.id,title:q.title,link:q.link,caption,platform:c.platform,handle:c.handle,workflow:wf?wf.name:'',when:q.when||''};
+      try{
+        const r=await fetch(c.webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+        if(r.ok){d.status='published';d.at=new Date().toISOString()}else d.status='failed';
+      }catch(e){
+        /* CORS يمنع القراءة غالباً — نرسل بوضع no-cors (يصل الطلب لكن لا نقدر نتحقق من الرد) */
+        try{await fetch(c.webhook,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});d.status='published';d.at=new Date().toISOString()}
+        catch(e2){d.status='failed'}
+      }
+    }else d.status='manual';
+  }
+  pubRecalc(q);save();renderPublish();
+}
+async function pubPublishDue(){
+  const due=pubS().queue.filter(q=>q.status==='scheduled'&&(!q.when||new Date(q.when)<=new Date()));
+  for(const q of due)await pubPublishNow(q.id);
+}
+/* — استيراد من RSS — */
+async function pubCheckRss(wfId){
+  const wf=pubWf(wfId);const src=wf&&pubConn(wf.sourceId);
+  if(!src||!src.url){alert('أضف رابط الـ RSS في بيانات حساب المصدر أولاً (تعديل الحساب → رابط المصدر)');return}
+  let xml;
+  try{const r=await fetch(src.url);if(!r.ok)throw 0;xml=await r.text()}
+  catch(e){alert('تعذّر جلب الـ RSS من المتصفح (بعض المواقع تمنع ذلك). أضف الحلقة يدوياً بزر «+ محتوى».');return}
+  const doc=new DOMParser().parseFromString(xml,'text/xml');
+  const items=[...doc.querySelectorAll('item')].slice(0,15);
+  const P=pubS();let added=0;
+  items.forEach(it=>{
+    const pick=t=>{const n=it.querySelector(t);return n?n.textContent.trim():''};
+    const guid=pick('guid')||pick('link');if(!guid||P.queue.some(q=>q.guid===guid))return;
+    const enc=it.querySelector('enclosure');
+    P.queue.push({id:uid(),guid,title:pick('title')||'بدون عنوان',link:pick('link')||(enc?enc.getAttribute('url'):'')||'',
+      workflowId:wfId,when:'',caption:'',created:new Date().toISOString(),
+      status:wf.mode==='auto'?'scheduled':'review',
+      dests:(wf.destIds||[]).map(x=>({connId:x,status:'pending'}))});
+    added++;
+  });
+  save();S.settings.ui.pubTab='queue';renderPublish();
+  alert(added?`أُضيف ${added} محتوى جديد من الـ RSS إلى الطابور ✓`:'لا جديد — كل عناصر الـ RSS موجودة مسبقاً');
+}
+
 /* ===== SALES & INVOICING ===== */
 function renderSales(){renderDocs('sale')}
 function renderInvoicing(){renderDocs('invoice')}
@@ -1791,7 +2045,7 @@ function printDoc(type,id){
   const inner=`
    <div style="font-family:Tajawal,Arial,sans-serif;direction:rtl;color:#0a0a0a;max-width:760px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f5a623;padding-bottom:14px;margin-bottom:20px">
-      <div>${s.logo?`<img src="${s.logo}" style="height:50px;margin-bottom:6px"><br>`:''}<div style="font-size:26px;font-weight:900;color:#0a0a0a">${esc(s.brand||'الشركة التقنية')}</div>
+      <div>${s.logo?`<img src="${s.logo}" style="height:50px;margin-bottom:6px"><br>`:''}<div style="font-size:26px;font-weight:900;color:#0a0a0a">${esc(s.brand||'مِنوال')}</div>
       ${s.owner?`<div style="color:#475569;font-size:13px">${esc(s.owner)}</div>`:''}
       <div style="color:#475569;font-size:13px">${esc(s.email)}${s.phone?' | '+esc(s.phone):''}</div>
       ${(isInv||isCredit)&&s.vat.number?`<div style="color:#475569;font-size:13px">الرقم الضريبي: ${esc(s.vat.number)}</div>`:''}
@@ -1820,7 +2074,7 @@ function printDoc(type,id){
     ${d.notes?`<div style="margin-top:18px;color:#475569"><b>ملاحظات:</b> ${esc(d.notes)}</div>`:''}
     ${(isInv&&(s.bankName||s.iban))?`<div style="margin-top:12px;color:#475569;font-size:13px"><b>بيانات التحويل:</b> ${esc(s.bankName)} ${esc(s.iban)}</div>`:''}
     ${(isInv&&s.terms)?`<div style="margin-top:8px;color:#64748b;font-size:12px">${esc(s.terms)}</div>`:''}
-    <div style="margin-top:30px;text-align:center;color:#94a3b8;font-size:12px">شكراً لتعاملكم — ${esc(s.brand||'الشركة التقنية')}</div>
+    <div style="margin-top:30px;text-align:center;color:#94a3b8;font-size:12px">شكراً لتعاملكم — ${esc(s.brand||'مِنوال')}</div>
    </div>`;
   const html=`<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
@@ -2343,10 +2597,40 @@ sb.auth.onAuthStateChange((event,session)=>{
   if(event==='PASSWORD_RECOVERY'){RECOVERY_MODE=true;showReset();return}
   if(event==='SIGNED_OUT'){USER=null;STATE_ID=null}
 });
+/* ===== وضع التجربة بدون تسجيل (?demo=1) — نسخة حيّة ببيانات جاهزة، لا تُحفظ ولا تلمس السحابة ===== */
+const DEMO_SEED = {"settings": {"brand": "شركة الواحة للتجارة", "owner": "مدير التجربة", "salesperson": "مدير التجربة", "vat": {"enabled": true, "rate": 15, "sellerName": "شركة الواحة للتجارة", "number": "", "address": "الرياض، السعودية", "cr": ""}}, "products": [{"id": "p1", "name": "باقة تأسيس متجر إلكتروني", "price": 4500, "unit": "باقة", "desc": "متجر متكامل + ربط دفع + تدريب"}, {"id": "p2", "name": "تصميم هوية بصرية", "price": 2500, "unit": "", "desc": "شعار + دليل هوية + قوالب"}, {"id": "p3", "name": "إدارة حسابات التواصل (شهري)", "price": 1800, "unit": "شهر", "desc": ""}, {"id": "p4", "name": "استشارة تقنية", "price": 350, "unit": "ساعة", "desc": ""}, {"id": "p5", "name": "صيانة ودعم سنوي", "price": 1200, "unit": "سنة", "desc": ""}], "contacts": [{"id": "c1", "name": "نورة العتيبي", "type": "عميل", "phone": "0551234567", "email": "noura@diya.sa", "company": "مؤسسة ضياء", "vat": "", "address": "", "city": "الرياض", "website": "", "logo": "", "notes": ""}, {"id": "c2", "name": "خالد الزهراني", "type": "عميل", "phone": "0537654321", "email": "khalid@rfof.sa", "company": "متجر رفوف", "vat": "", "address": "", "city": "جدة", "website": "", "logo": "", "notes": ""}, {"id": "c3", "name": "سارة القحطاني", "type": "عميل", "phone": "0569988776", "email": "sara@lamsa.sa", "company": "عيادة لمسة", "vat": "", "address": "", "city": "الدمام", "website": "", "logo": "", "notes": ""}, {"id": "c4", "name": "عبدالله الشمري", "type": "عميل", "phone": "0501122334", "email": "a@nakha.sa", "company": "مطعم نكهة", "vat": "", "address": "", "city": "الرياض", "website": "", "logo": "", "notes": ""}, {"id": "c5", "name": "شركة بناء الحديثة", "type": "عميل", "phone": "0590011223", "email": "info@bina.sa", "company": "بناء الحديثة", "vat": "", "address": "", "city": "الرياض", "website": "", "logo": "", "notes": ""}], "crm": [{"id": "k1", "title": "متابعة عرض سعر متجر ضياء", "priority": "high", "due": "2026-07-03", "stageKey": "doing", "notes": "", "clientName": "مؤسسة ضياء", "value": 4500, "contactId": "c1", "date": "2026-06-28"}, {"id": "k2", "title": "تجهيز هوية متجر رفوف", "priority": "med", "due": "", "stageKey": "todo", "notes": "", "clientName": "متجر رفوف", "value": 2500, "contactId": "c2", "date": "2026-06-27"}, {"id": "k3", "title": "تسليم لوحة تحكم عيادة لمسة", "priority": "none", "due": "", "stageKey": "done", "notes": "", "clientName": "عيادة لمسة", "value": 0, "contactId": "c3", "date": "2026-06-20"}, {"id": "k4", "title": "مكالمة تعريفية مع مطعم نكهة", "priority": "low", "due": "2026-07-01", "stageKey": "todo", "notes": "", "clientName": "مطعم نكهة", "value": 0, "contactId": "c4", "date": "2026-06-29"}], "projects": [{"id": "pr1", "title": "متجر إلكتروني — ضياء", "contactId": "c1", "client": "مؤسسة ضياء", "podcast": "", "stageKey": "s2", "emoji": "shopping-bag", "tasks": [{"id": "t1", "title": "تحليل المتطلبات", "stageKey": "done", "done": true, "assignee": "", "blocks": []}, {"id": "t2", "title": "تصميم الواجهات", "stageKey": "doing", "done": false, "assignee": "", "blocks": []}, {"id": "t3", "title": "الربط والدفع", "stageKey": "todo", "done": false, "assignee": "", "blocks": []}], "taskStages": [{"key": "todo", "label": "قيد الانتظار"}, {"key": "doing", "label": "قيد التنفيذ"}, {"key": "review", "label": "مراجعة"}, {"key": "done", "label": "منجز"}]}, {"id": "pr2", "title": "هوية بصرية — رفوف", "contactId": "c2", "client": "متجر رفوف", "podcast": "", "stageKey": "s3", "emoji": "palette", "tasks": [{"id": "t4", "title": "تصميم الشعار", "stageKey": "review", "done": false, "assignee": "", "blocks": []}, {"id": "t5", "title": "دليل الهوية", "stageKey": "todo", "done": false, "assignee": "", "blocks": []}], "taskStages": [{"key": "todo", "label": "قيد الانتظار"}, {"key": "doing", "label": "قيد التنفيذ"}, {"key": "review", "label": "مراجعة"}, {"key": "done", "label": "منجز"}]}], "invoices": [{"id": "i1", "number": 1001, "client": "مؤسسة ضياء", "contactId": "c1", "clientVat": "", "date": "2026-06-10", "items": [{"desc": "باقة تأسيس متجر إلكتروني", "qty": 1, "price": 4500, "discount": 0}], "discType": "none", "discVal": 0, "notes": "", "status": "paid", "vat": true, "vatRate": 15, "paidDate": "2026-06-12"}, {"id": "i2", "number": 1002, "client": "عيادة لمسة", "contactId": "c3", "clientVat": "", "date": "2026-06-18", "items": [{"desc": "تصميم هوية بصرية", "qty": 1, "price": 2500, "discount": 10}], "discType": "none", "discVal": 0, "notes": "", "status": "paid", "vat": true, "vatRate": 15, "paidDate": "2026-06-20"}, {"id": "i3", "number": 1003, "client": "متجر رفوف", "contactId": "c2", "clientVat": "", "date": "2026-06-22", "items": [{"desc": "إدارة حسابات التواصل (شهري)", "qty": 3, "price": 1800, "discount": 0}], "discType": "none", "discVal": 0, "notes": "", "status": "unpaid", "vat": true, "vatRate": 15, "paidDate": ""}, {"id": "i4", "number": 1004, "client": "مطعم نكهة", "contactId": "c4", "clientVat": "", "date": "2026-06-25", "items": [{"desc": "استشارة تقنية", "qty": 2, "price": 350, "discount": 0}, {"desc": "صيانة ودعم سنوي", "qty": 1, "price": 1200, "discount": 0}], "discType": "none", "discVal": 0, "notes": "", "status": "unpaid", "vat": true, "vatRate": 15, "paidDate": ""}], "sales": [{"id": "s1", "number": 1001, "client": "مطعم نكهة", "contactId": "c4", "clientVat": "", "date": "2026-06-26", "items": [{"desc": "باقة تأسيس متجر إلكتروني", "qty": 1, "price": 4500, "discount": 5}], "discType": "none", "discVal": 0, "notes": "عرض سعر مبدئي", "status": "unpaid"}], "appointments": [{"id": "a1", "title": "اجتماع تسليم متجر ضياء", "contact": "مؤسسة ضياء", "contactId": "c1", "datetime": "2026-07-05T11:00", "duration": 60, "status": "scheduled", "notes": ""}, {"id": "a2", "title": "مكالمة مع متجر رفوف", "contact": "متجر رفوف", "contactId": "c2", "datetime": "2026-07-02T14:00", "duration": 30, "status": "scheduled", "notes": ""}, {"id": "a3", "title": "ورشة هوية بصرية", "contact": "عيادة لمسة", "contactId": "c3", "datetime": "2026-07-08T10:00", "duration": 90, "status": "scheduled", "notes": ""}], "subscriptions": [{"id": "e1", "name": "استضافة وخوادم", "usd": 0, "sar": 300, "cycle": "monthly", "date": "", "url": "", "note": "استضافة المتاجر والأنظمة", "active": true}, {"id": "e2", "name": "أدوات تصميم", "usd": 0, "sar": 120, "cycle": "monthly", "date": "", "url": "", "note": "", "active": true}, {"id": "e3", "name": "بريد احترافي", "usd": 0, "sar": 45, "cycle": "monthly", "date": "", "url": "", "note": "", "active": true}], "counters": {"sale": 1001, "invoice": 1004, "credit": 1000}};
+function enterDemo(){
+  IS_DEMO=true; USER=null; STATE_ID=null;
+  ENABLED_APPS=null;                 // اعرض كل التطبيقات
+  CURRENT_ROLE="owner"; CAN_EDIT=true; IS_TADMIN=true; IS_PLATFORM=false;
+  applyTenantApps();
+  S=deepMerge(JSON.parse(JSON.stringify(def)),JSON.parse(JSON.stringify(DEMO_SEED)));
+  if(!S.crmStages||!S.crmStages.length)S.crmStages=JSON.parse(JSON.stringify(def.crmStages));
+  if(!S.projectStages||!S.projectStages.length)S.projectStages=JSON.parse(JSON.stringify(def.projectStages));
+  (S.crm||[]).forEach(o=>{if(!o.stageKey)o.stageKey=o.stage||S.crmStages[0].key});
+  (S.projects||[]).forEach(p=>{if(!p.stageKey)p.stageKey=S.projectStages[0].key});
+  migrateData();
+  document.getElementById("loginView").classList.add("hidden");
+  document.getElementById("appShell").classList.remove("hidden");
+  renderNav();initSidebarShell();applyBranding();
+  const dt=document.getElementById("ctDate");if(dt)dt.textContent=new Date().toLocaleDateString("ar",{weekday:"long",day:"numeric",month:"long"});
+  demoBanner();
+  const h=(location.hash||"").replace("#","");
+  go(h&&(RENDER[h]||["home","desktop"].includes(h))?h:"home");
+}
+function demoBanner(){
+  if(document.getElementById("demoBar"))return;
+  const b=document.createElement("div");b.id="demoBar";
+  b.style.cssText="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:100000;display:flex;align-items:center;gap:12px;background:rgba(20,20,26,.92);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:9px 9px 9px 16px;font-size:13px;font-weight:600;backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.5);max-width:calc(100vw - 24px)";
+  b.innerHTML='<span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:#facc15;box-shadow:0 0 8px #facc15"></span> وضع التجربة — بيانات تجريبية، جرّب بحرية (لن تُحفظ)</span><a href="../try/" style="background:linear-gradient(120deg,#5b8cff,#9b6bff);color:#fff;text-decoration:none;border-radius:10px;padding:7px 14px;font-weight:700">ابدأ نسختك</a><a href="../" title="خروج" style="color:#c9cdd6;text-decoration:none;font-size:18px;line-height:1;padding:0 4px">&times;</a>';
+  document.body.appendChild(b);
+}
+
 async function bootstrap(){
   const params=new URLSearchParams(location.search);
   const ft=params.get('ft');
   if(ft){return renderFreelancer(ft)}
+  if(params.get('demo')==='1'){return enterDemo()}
   if(RECOVERY_MODE||/[#?&]type=recovery/.test(location.hash)||/[?&]type=recovery/.test(location.search)){RECOVERY_MODE=true;showReset();return}
   try{const {data}=await sb.auth.getSession();if(data&&data.session&&!RECOVERY_MODE){await enterApp(data.session.user);return}}catch(e){}
   const em=document.getElementById('em');if(em)em.focus();

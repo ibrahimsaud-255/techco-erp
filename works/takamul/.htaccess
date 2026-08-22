@@ -1,0 +1,110 @@
+# ==========================================================
+#  التكامل المتحدة للخدمات اللوجستية
+#  إعدادات الاستضافة + تحويل روابط الموقع القديم (301)
+#  ملاحظة: هذا الملف لخوادم Apache (أغلب الاستضافات المشتركة / cPanel)
+# ==========================================================
+
+# ---------- الترميز ----------
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .json .xml
+
+# ---------- الصفحة الافتراضية وصفحة الخطأ ----------
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---------- فرض HTTPS ----------
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # ---------- توحيد النطاق على www (احذف الكتلة إن كنت تفضّل بدون www) ----------
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+  # ======================================================
+  #  تحويلات 301 من روابط الموقع القديم إلى الجديد
+  #  الغرض: عدم فقدان أرشفة جوجل ولا الروابط المنشورة سابقاً
+  # ======================================================
+
+  # الصفحة الرئيسية العربية
+  RewriteRule ^ar/?$                                    /                              [R=301,L]
+
+  # صفحات الشركة
+  RewriteRule ^ar/about_us/?$                           /about.html                    [R=301,L]
+  RewriteRule ^ar/company/?$                            /about.html                    [R=301,L]
+  RewriteRule ^ar/Strength/?$                           /strength.html                 [R=301,L,NC]
+  RewriteRule ^ar/methodology/?$                        /methodology.html              [R=301,L]
+  RewriteRule ^ar/TheExpectedOutcomes/?$                /results.html                  [R=301,L,NC]
+  RewriteRule ^ar/who_can_be_interested/?$              /who-needs-us.html             [R=301,L]
+  RewriteRule ^ar/Who(%20|\s|\+)we(%20|\s|\+)serve/?$   /sectors.html                  [R=301,L,NC]
+
+  # صفحات الخدمات
+  RewriteRule ^ar/warehouse_setup_consultancy_services/?$  /consulting.html            [R=301,L]
+  RewriteRule ^ar/inventory_count/?$                       /inventory-count.html      [R=301,L]
+  RewriteRule ^ar/operations_optimization/?$               /operations-optimization.html [R=301,L]
+  RewriteRule ^ar/4PLbyintegratedlogistics/?$              /warehouse-4pl.html        [R=301,L,NC]
+  RewriteRule ^ar/SupervisionbyIntegratedLogistics/?$      /supervision.html          [R=301,L,NC]
+  RewriteRule ^ar/logistics_audit/?$                       /logistics-audit.html      [R=301,L]
+  RewriteRule ^ar/StorageBinLocationsLabelling/?$          /location-labelling.html   [R=301,L,NC]
+  RewriteRule ^ar/warehouse_management_system_wms/?$       /warehouse-relocation.html [R=301,L]
+
+  # أقسام أخرى
+  RewriteRule ^ar/news/?$                               /news.html                     [R=301,L]
+  RewriteRule ^ar/achievements/?$                       /achievements.html             [R=301,L]
+  RewriteRule ^ar/career/?$                             /careers.html                  [R=301,L]
+  RewriteRule ^ar/contact_us/?$                         /contact.html                  [R=301,L]
+
+  # أي رابط عربي قديم غير مذكور أعلاه → الرئيسية
+  RewriteRule ^ar/.*$                                   /                              [R=301,L]
+
+  # النسخة الإنجليزية القديمة → الرئيسية (حتى إطلاق النسخة الإنجليزية الجديدة)
+  RewriteRule ^en/.*$                                   /                              [R=301,L]
+
+  # روابط المحتوى القديمة (صور ومرفقات النظام السابق)
+  RewriteRule ^contents/.*$                             /                              [R=301,L]
+
+  # ---------- إخفاء امتداد .html (اختياري) ----------
+  # يسمح بفتح /inventory-count بدل /inventory-count.html
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+# ---------- ضغط الملفات ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ---------- التخزين المؤقت للمتصفح ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg              "access plus 6 months"
+  ExpiresByType image/png               "access plus 6 months"
+  ExpiresByType image/webp              "access plus 6 months"
+  ExpiresByType image/svg+xml           "access plus 6 months"
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType text/css                "access plus 1 month"
+  ExpiresByType application/javascript  "access plus 1 month"
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+# ---------- رؤوس الأمان ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ---------- حماية الملفات الحسّاسة ----------
+<FilesMatch "^(content\.json|build\.py|admin\.py|serve\.py|\.htaccess)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+  RewriteRule ^_backups/ - [F,L]
+</IfModule>

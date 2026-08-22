@@ -1,4 +1,4 @@
-# النشر — GitHub Pages + sa3ypodcast.com
+# النشر — GitHub Pages + minwal.tech
 
 المشروع static بالكامل (HTML + JS + Supabase) — لا يحتاج خطوة build.
 المستودع: <https://github.com/ibrahimsaud-255/techco-erp> (عام) — الفرع `main`.
@@ -14,10 +14,10 @@ git push -u origin main
 في صفحة المستودع: **Settings → Pages**
 - Source: **Deploy from a branch**
 - Branch: **main** / **/ (root)** → Save
-- بعد لحظات سيلتقط الدومين المخصص تلقائياً من ملف `CNAME` (= `sa3ypodcast.com`).
+- بعد لحظات سيلتقط الدومين المخصص تلقائياً من ملف `CNAME` (= `minwal.tech`).
 - فعّل **Enforce HTTPS** بعد نجاح فحص الـ DNS.
 
-## 3) ضبط DNS لـ sa3ypodcast.com (عند مسجّل الدومين)
+## 3) ضبط DNS لـ minwal.tech (عند مسجّل الدومين)
 **سجلّات A للنطاق الأساسي (الاسم `@`):**
 ```
 185.199.108.153
@@ -30,7 +30,7 @@ git push -u origin main
 (اختياري IPv6 — سجلّات AAAA للاسم `@`):
 `2606:50c0:8000::153`، `2606:50c0:8001::153`، `2606:50c0:8002::153`، `2606:50c0:8003::153`
 
-> الانتشار يأخذ من دقائق حتى ساعة غالباً. بعدها: `https://sa3ypodcast.com` يفتح النظام (يحوّل تلقائياً إلى `/app/`).
+> الانتشار يأخذ من دقائق حتى ساعة غالباً. بعدها: `https://minwal.tech` يفتح النظام (يحوّل تلقائياً إلى `/app/`).
 
 ## 4) قاعدة البيانات
 `SUPA_URL` و `SUPA_KEY` في `app/index.html` يشيران لمشروع Supabase `techco-erp` (مضبوطة).

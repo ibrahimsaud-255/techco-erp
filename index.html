@@ -7,7 +7,7 @@
      تغيير الهوية لاحقاً: عدّل const BRAND أسفل الصفحة + سطر <title>
      واستبدل logo.png — كل شيء آخر يتحدّث تلقائياً.
      ═══════════════════════════════════════════════════════════ -->
-<title>الشركة التقنية — أنظمة إدارة أعمال مخصّصة</title>
+<title>مِنوال — واجهاتٌ تُبهر وأنظمةٌ تُدير أعمالك</title>
 <meta name="description" content="نبني أنظمة إدارة أعمال (ERP) عربية مخصّصة للشركات والجهات والأفراد — أساس واحد متكامل، تطبيقات تُفعّل حسب الحاجة، وهوية خاصة لكل عميل.">
 <link rel="icon" href="./logo.png">
 <style>
@@ -96,6 +96,12 @@
   .ic svg{width:24px;height:24px;stroke:#cdd7ff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .card h3{margin:0 0 6px;font-size:16.5px;font-weight:700}
   .card p{margin:0;font-size:13.5px;color:var(--muted)}
+  .work-card{text-decoration:none;display:block;position:relative;overflow:hidden}
+  .work-card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 140px at 20% 0%,rgba(91,140,255,.12),transparent 60%);pointer-events:none;opacity:0;transition:.25s}
+  .work-card:hover::before{opacity:1}
+  .work-card h3{font-family:"Thmanyah Serif","Thmanyah Sans",serif;font-weight:900;font-size:19px;margin:2px 0 8px}
+  .work-badge{display:inline-block;font-size:11px;padding:4px 11px;border-radius:999px;border:1px solid rgba(91,140,255,.45);background:var(--glass2);color:#cdd7ff;margin-bottom:12px}
+  .work-badge.tool{color:#a7f3d0;border-color:rgba(52,211,153,.4)}
 
   /* المنتجات */
   .products{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
@@ -112,17 +118,25 @@
   .feat li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
   .feat svg{width:17px;height:17px;stroke:var(--ok);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
 
-  /* شبكة التطبيقات — بنفس شكل Launchpad داخل النظام */
-  .apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px}
-  .app{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--bd);
-    border-radius:18px;padding:18px 10px 14px;transition:.22s;text-align:center}
-  .app:hover{background:var(--glass2);transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
-  .app .lp-ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
-    border:1px solid rgba(255,255,255,.18);box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25)}
-  .app .lp-ic svg{width:27px;height:27px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-  .app .nm{font-size:12.5px;font-weight:500;line-height:1.45}
+  /* شبكة التطبيقات — نفس شكل وحركة Launchpad داخل النظام (بلا مربّع خلفي) */
+  .apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:22px 12px}
+  .app{display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;
+    padding:4px 2px;text-align:center;cursor:pointer;color:inherit;text-decoration:none}
+  .app .lp-ic{position:relative;overflow:hidden;width:62px;height:62px;border-radius:22px;display:grid;place-items:center;
+    box-shadow:0 12px 26px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.18);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s}
+  .app .lp-ic::before{content:"";position:absolute;inset:0;border-radius:inherit;
+    box-shadow:inset 0 1.5px 1px rgba(255,255,255,.55),inset 0 -12px 22px rgba(0,0,0,.28);pointer-events:none}
+  .app .lp-ic::after{content:"";position:absolute;inset:0;border-radius:inherit;
+    background:linear-gradient(155deg,rgba(255,255,255,.5),rgba(255,255,255,.08) 36%,transparent 58%);pointer-events:none}
+  .app .lp-ic svg{position:relative;z-index:1;width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2.1;
+    stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+  .app:hover .lp-ic{transform:translateY(-5px) scale(1.06);box-shadow:0 18px 34px rgba(0,0,0,.58)}
+  .app:active .lp-ic{transform:translateY(-1px) scale(1.0)}
+  .app .nm{font-size:12.5px;font-weight:600;line-height:1.35}
   .app.content .nm{color:#c8f5e3}
-  .apps-note{margin-top:20px;text-align:center;color:var(--muted);font-size:13.5px}
+  .apps-note{margin-top:26px;text-align:center;color:var(--muted);font-size:13.5px}
+  .apps-cta{display:flex;justify-content:center;margin-top:20px}
 
   /* كيف نعمل */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:step}
@@ -159,10 +173,11 @@
 
   <nav>
     <div class="nav-in">
-      <a class="nav-logo" href="#"><img src="./logo.png" alt="الشعار" onerror="this.style.display='none'"><span class="brand">الشركة التقنية</span></a>
+      <a class="nav-logo" href="#"><img src="./logo.png" alt="الشعار" onerror="this.style.display='none'"><span class="brand">مِنوال</span></a>
       <button class="burger" aria-label="القائمة" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
       <div class="nav-links">
         <a href="#products">المنتجات</a>
+        <a href="./works/">الأعمال</a>
         <a href="#apps">التطبيقات</a>
         <a href="#how">كيف نعمل</a>
         <a href="#services">خدماتنا</a>
@@ -177,9 +192,9 @@
   <main>
     <!-- البطل -->
     <header class="hero wrap">
-      <span class="pill"><span class="dot"></span> نستقبل عملاء جدد الآن</span>
-      <h1>نظام إدارة أعمالك،<br>مفصّل عليك بالضبط</h1>
-      <p class="sub">نبني <b>أنظمة إدارة أعمال (ERP) عربية</b> للشركات والجهات والأفراد — أساس واحد متكامل، نفعّل لك التطبيقات التي تحتاجها فقط، ونصنع لك تطبيقات جديدة عند الطلب، بهويتك واسمك.</p>
+      <span class="pill"><span class="dot"></span> <span id="cfgPill">نستقبل عملاء جدد الآن</span></span>
+      <h1 id="cfgTitle">نظام إدارة أعمالك،<br>مفصّل عليك بالضبط</h1>
+      <p class="sub" id="cfgSub">نبني <b>أنظمة إدارة أعمال (ERP) عربية</b> للشركات والجهات والأفراد — أساس واحد متكامل، نفعّل لك التطبيقات التي تحتاجها فقط، ونصنع لك تطبيقات جديدة عند الطلب، بهويتك واسمك.</p>
       <div class="ctas">
         <a class="cta primary" href="./try/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
@@ -236,9 +251,45 @@
     <!-- التطبيقات -->
     <section id="apps" class="wrap">
       <h2 class="sec-title">التطبيقات الجاهزة</h2>
-      <p class="sec-sub">كل ميزة عندنا «تطبيق» مستقل — نفعّل لك ما يخدم عملك فقط، فتبقى واجهتك نظيفة وسهلة. وأي تطبيق جديد نبنيه لعميل، ينضم للكتالوج.</p>
+      <p class="sec-sub">كل ميزة عندنا «تطبيق» مستقل — نفعّل لك ما يخدم عملك فقط. <b style="color:var(--tx)">اضغط أي تطبيق وجرّبه فوراً بنفسك</b>، بدون تسجيل ولا انتظار.</p>
       <div class="apps" id="appsGrid"></div>
-      <p class="apps-note">تحتاج تطبيقاً غير موجود؟ <a href="#contact" style="color:#9db4ff;text-decoration:none">نبنيه لك</a> — ويصبح جزءاً من نظامك.</p>
+      <div class="apps-cta"><a class="cta primary" href="./app/?demo=1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
+        جرّب النظام كاملاً الآن
+      </a></div>
+      <p class="apps-note">نسخة تجريبية حيّة ببيانات جاهزة — تدخلها بضغطة، بلا تسجيل. تحتاج تطبيقاً غير موجود؟ <a href="#contact" style="color:#9db4ff;text-decoration:none">نبنيه لك</a>.</p>
+    </section>
+
+    <!-- الأعمال -->
+    <section id="works" class="wrap">
+      <h2 class="sec-title">أعمالنا</h2>
+      <p class="sec-sub">واجهاتٌ نصمّمها، وأنظمةٌ نبنيها خلفها. نماذج حقيقية سُلّمت لأصحابها — في العرض الحيّ، بضغطةٍ تختفي الواجهة لتنكشف لوحة التحكم التي تُدير كل شيء.</p>
+      <div class="cards">
+        <a class="card work-card" href="./works/">
+          <span class="work-badge">واجهة + لوحة</span>
+          <h3>التكامل المتحدة</h3>
+          <p>موقع تعريفي كامل لشركة خدمات لوجستية — ولوحة تحكم يُدير بها الفريق كل المحتوى.</p>
+        </a>
+        <a class="card work-card" href="./works/">
+          <span class="work-badge">واجهة + لوحة</span>
+          <h3>منابر</h3>
+          <p>منصّة تنظيم الأنشطة الدعوية في المساجد — من بوابة الدخول إلى لوحة معلومات كاملة.</p>
+        </a>
+        <a class="card work-card" href="./works/">
+          <span class="work-badge">نظام أعمال</span>
+          <h3>النظام الداخلي</h3>
+          <p>نظام إدارة أعمال (ERP) متكامل: مبيعات، فوترة، عملاء، مشاريع، وتقارير.</p>
+        </a>
+        <a class="card work-card" href="./works/">
+          <span class="work-badge tool">أداة تفاعلية</span>
+          <h3>مسارك</h3>
+          <p>أداة تفاعلية تدلّ الطالب على تخصصه الجامعي من درجاته وشخصيته.</p>
+        </a>
+      </div>
+      <div class="apps-cta"><a class="cta primary" href="./works/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+        شاهد العرض الحيّ للأعمال
+      </a></div>
     </section>
 
     <!-- كيف نعمل -->
@@ -319,11 +370,11 @@
         <h2>جاهز تنظّم عملك؟</h2>
         <p>كلّمنا وأخبرنا عن نشاطك، وسنقترح عليك التطبيقات المناسبة ونجهّز لك عرضاً واضحاً — أو جرّب النظام بنفسك الآن.</p>
         <div class="ctas">
-          <a class="cta primary" href="mailto:ibrahimsaud25@gmail.com?subject=طلب%20نظام%20إدارة%20أعمال">
+          <a class="cta primary" id="cfgEmail" href="mailto:ibrahimsaud25@gmail.com?subject=طلب%20نظام%20إدارة%20أعمال">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
             راسلنا بالبريد
           </a>
-          <a class="cta" href="https://wa.me/966504895213" target="_blank" rel="noopener">
+          <a class="cta" id="cfgWa" href="https://wa.me/966504895213" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.6 8.6 0 0 1-3.9-.9L3 20l1-5.4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 11.5 2.3 8.4 8.4 0 0 1 21 11.5Z"/></svg>
             واتساب
           </a>
@@ -336,7 +387,7 @@
   <footer>
     <div class="foot-in">
       <div>
-        <b class="brand" style="color:var(--tx)">الشركة التقنية</b> — نبني أنظمة الأعمال.
+        <b class="brand" style="color:var(--tx)">مِنوال</b> — نبني أنظمة الأعمال.
         <div class="legal">مشروع تقني تابع لمؤسسة حروف و دروس · سجل تجاري رقم 7054189027 · المملكة العربية السعودية</div>
       </div>
       <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
@@ -352,40 +403,41 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>
     // ═══ الهوية: غيّر الاسم هنا فقط عند اعتماد اسم الشركة ═══
-    const BRAND = 'الشركة التقنية';
+    const BRAND = 'مِنوال';   /* ← بدّل الاسم من هنا فقط */
 
     // ═══ شبكة التطبيقات — نفس أيقونات وألوان Launchpad داخل النظام ═══
     const SITE_APPS = [
-      {name:'الرئيسية',            icon:'home',             c:'#5b8cff,#2f56d6'},
-      {name:'المكتب',              icon:'layout-grid',      c:'#94a3b8,#64748b'},
-      {name:'عنتر — مساعد ذكي',    icon:'sparkles',         c:'#8b5cf6,#6366f1'},
-      {name:'لوحات البيانات',      icon:'layout-dashboard', c:'#3b82f6,#2563eb'},
-      {name:'المبيعات',            icon:'trending-up',      c:'#22c55e,#16a34a'},
-      {name:'الفوترة',             icon:'receipt-text',     c:'#f5a623,#d97706'},
-      {name:'المنتجات',            icon:'package',          c:'#14b8a6,#0d9488'},
-      {name:'الاشتراكات',          icon:'credit-card',      c:'#ec4899,#db2777'},
-      {name:'المهام — CRM',        icon:'list-checks',      c:'#f59e0b,#b45309'},
-      {name:'العملاء',             icon:'contact',          c:'#0ea5e9,#0284c7'},
-      {name:'المواعيد',            icon:'calendar-clock',   c:'#a855f7,#7c3aed'},
-      {name:'التقويم',             icon:'calendar-days',    c:'#ef4444,#dc2626'},
-      {name:'المشروع والإنتاج',    icon:'clapperboard',     c:'#f43f5e,#e11d48'},
-      {name:'التقارير والتصدير',   icon:'bar-chart-3',      c:'#0ea5e9,#0369a1'},
-      {name:'الفريق',              icon:'users',            c:'#64748b,#475569'},
-      {name:'الإعدادات',           icon:'settings',         c:'#475569,#334155'},
-      {name:'رادار المحتوى',       icon:'radar',            c:'#10b981,#059669', content:true},
-      {name:'المدونة',             icon:'pen-line',         c:'#84cc16,#4d7c0f', content:true},
-      {name:'ضيوف البودكاست',      icon:'mic',              c:'#34d399,#0f766e', content:true},
-      {name:'مكتبة البرومتات',     icon:'book-open',        c:'#2dd4bf,#0d9488', content:true},
-      {name:'الهوية البصرية',      icon:'palette',          c:'#4ade80,#15803d', content:true},
+      {id:'home',        name:'الرئيسية',            icon:'home',             c:'#5b8cff,#2f56d6'},
+      {id:'desktop',     name:'المكتب',              icon:'layout-grid',      c:'#94a3b8,#64748b'},
+      {id:'antar',       name:'عنتر — مساعد ذكي',    icon:'sparkles',         c:'#8b5cf6,#6366f1'},
+      {id:'dashboards',  name:'لوحات البيانات',      icon:'layout-dashboard', c:'#3b82f6,#2563eb'},
+      {id:'sales',       name:'المبيعات',            icon:'trending-up',      c:'#22c55e,#16a34a'},
+      {id:'invoicing',   name:'الفوترة',             icon:'receipt-text',     c:'#f5a623,#d97706'},
+      {id:'products',    name:'المنتجات',            icon:'package',          c:'#14b8a6,#0d9488'},
+      {id:'subs',        name:'الاشتراكات',          icon:'credit-card',      c:'#ec4899,#db2777'},
+      {id:'crm',         name:'المهام — CRM',        icon:'list-checks',      c:'#f59e0b,#b45309'},
+      {id:'contacts',    name:'العملاء',             icon:'contact',          c:'#0ea5e9,#0284c7'},
+      {id:'appointments',name:'المواعيد',            icon:'calendar-clock',   c:'#a855f7,#7c3aed'},
+      {id:'calendar',    name:'التقويم',             icon:'calendar-days',    c:'#ef4444,#dc2626'},
+      {id:'projects',    name:'المشروع والإنتاج',    icon:'clapperboard',     c:'#f43f5e,#e11d48'},
+      {id:'reports',     name:'التقارير والتصدير',   icon:'bar-chart-3',      c:'#0ea5e9,#0369a1'},
+      {id:'team',        name:'الفريق',              icon:'users',            c:'#64748b,#475569'},
+      {id:'settings',    name:'الإعدادات',           icon:'settings',         c:'#475569,#334155'},
+      {id:'blog',        name:'المدونة',             icon:'pen-line',         c:'#84cc16,#4d7c0f', content:true},
+      {id:'guests',      name:'ضيوف البودكاست',      icon:'mic',              c:'#34d399,#0f766e', content:true},
+      {id:'home',        name:'رادار المحتوى',       icon:'radar',            c:'#10b981,#059669', content:true},
+      {id:'home',        name:'مكتبة البرومتات',     icon:'book-open',        c:'#2dd4bf,#0d9488', content:true},
+      {id:'settings',    name:'الهوية البصرية',      icon:'palette',          c:'#4ade80,#15803d', content:true},
     ];
     function hexA(h,al){h=h.trim().replace('#','');const n=parseInt(h,16);
       return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${al})`}
     document.getElementById('appsGrid').innerHTML = SITE_APPS.map(a=>{
       const g=a.c.split(',').map(x=>hexA(x,.85)).join(',');
-      return `<div class="app${a.content?' content':''}">
+      const href=`./app/?demo=1#${a.id||'home'}`;
+      return `<a class="app${a.content?' content':''}" href="${href}" aria-label="جرّب ${a.name}">
         <span class="lp-ic" style="background:linear-gradient(140deg,${g})"><i data-lucide="${a.icon}"></i></span>
         <span class="nm">${a.name}</span>
-      </div>`;
+      </a>`;
     }).join('');
     if (window.lucide) lucide.createIcons();
     document.querySelectorAll('.brand').forEach(e => e.textContent = BRAND);
@@ -394,5 +446,7 @@
     document.querySelectorAll('.nav-links a').forEach(a =>
       a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open')));
   </script>
+  <!-- ربط اللوحة: قياس الزيارات + المحتوى القابل للتعديل -->
+  <script src="./link.js" defer></script>
 </body>
 </html>
