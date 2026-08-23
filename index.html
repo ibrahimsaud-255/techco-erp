@@ -149,6 +149,7 @@
   .card{position:relative;padding:clamp(28px,3vw,40px) clamp(22px,2.2vw,32px);display:flex;flex-direction:column;
     border-block-start:1px solid var(--line);border-inline-end:1px solid var(--line);transition:background .4s var(--ease)}
   .grid>.card:nth-child(3n){border-inline-end:0}
+  .grid>.card:last-child{border-inline-end:0}
   .card::after{content:"";position:absolute;inset-block-start:-1px;inset-inline-end:0;width:0;height:2px;
     background:linear-gradient(90deg,var(--brand-600),var(--accent));transition:width .5s var(--ease)}
   .card:hover{background:var(--brand-025)}
@@ -339,11 +340,6 @@
           <span class="card__ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg></span>
           <h3>أنظمة إدارة أعمال</h3>
           <p>أنظمة عربية مخصّصة: مبيعات، فوترة، عملاء، ومشاريع — تُدير شركتك من مكان واحد.</p>
-        </article>
-        <article class="card">
-          <span class="card__ico"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
-          <h3>تطبيقات ومتاجر</h3>
-          <p>تطبيقات جوال ومتاجر إلكترونية مربوطة بالدفع والشحن — جاهزة للنشر والنمو.</p>
         </article>
         <article class="card">
           <span class="card__ico"><svg viewBox="0 0 24 24"><path d="M12 19l7-7a5 5 0 0 0-7-7l-7 7v4h4Z"/><path d="M9 9l6 6"/></svg></span>
