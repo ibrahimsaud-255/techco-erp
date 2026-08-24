@@ -299,7 +299,7 @@
 
   <!-- ═══ الهيرو ═══ -->
   <section class="hero">
-    <video class="hero__vid" autoplay muted loop playsinline preload="none" poster="assets/hero-poster.jpg">
+    <video class="hero__vid" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
     <div class="hero__mesh" aria-hidden="true"></div>
@@ -549,6 +549,10 @@
   document.querySelectorAll('.js-wa').forEach(a => { a.href = waHref; if(a.target!=='_self') a.target = "_blank"; a.rel = "noopener"; });
   document.querySelectorAll('.brand').forEach(e => e.textContent = BRAND);
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* دفع تشغيل فيديو الهيرو (لبعض المتصفّحات/الجوال) */
+  const heroVid = document.querySelector('.hero__vid');
+  if (heroVid) { heroVid.muted = true; const pr = heroVid.play(); if (pr && pr.catch) pr.catch(()=>{}); }
 
   /* شريط علوي يتغيّر عند التمرير */
   const nav = document.getElementById('nav');
