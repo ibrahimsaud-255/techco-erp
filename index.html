@@ -173,10 +173,12 @@
   .work{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff;
     box-shadow:var(--sh-sm);transition:transform .35s var(--ease),box-shadow .35s var(--ease);min-height:210px;display:flex;flex-direction:column}
   .work:hover{transform:translateY(-6px);box-shadow:var(--sh)}
-  .work__top{height:112px;position:relative;overflow:hidden;background:linear-gradient(140deg,var(--brand-800),var(--brand-700))}
-  .work.w2 .work__top{background:linear-gradient(140deg,#0d7d6e,#12cdbd)}
-  .work.w3 .work__top{background:linear-gradient(140deg,#3b1d8a,#8663f4)}
-  .work.w4 .work__top{background:linear-gradient(140deg,#123a6b,#3b82f6)}
+  .work__top{height:120px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#0d2440,#1e4d82)}
+  .work.w2 .work__top{background:linear-gradient(140deg,#0b6b5e,#12cdbd)}
+  .work.w3 .work__top{background:linear-gradient(140deg,#3b1d8a,#6d43ee)}
+  .work.w4 .work__top{background:linear-gradient(140deg,#b32b63,#e14c89)}
+  .work__logo{position:relative;z-index:1;background:#fff;border-radius:12px;padding:9px 18px;box-shadow:0 10px 24px rgba(0,0,0,.22);max-width:72%;display:flex;align-items:center;justify-content:center}
+  .work__logo img{max-height:30px;max-width:150px;width:auto;height:auto;object-fit:contain;display:block}
   .work__top::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);background-size:26px 26px;opacity:.5;mask-image:radial-gradient(80% 80% at 70% 20%,#000,transparent)}
   .work__tag{position:absolute;inset-block-start:12px;inset-inline-start:12px;z-index:1;font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:4px 11px;backdrop-filter:blur(4px)}
   .work__body{padding:16px 18px 18px}
@@ -379,20 +381,24 @@
       </div>
       <div class="works-grid">
         <a class="work w1" href="./works/">
-          <div class="work__top"><span class="work__tag">موقع + لوحة</span></div>
+          <div class="work__top"><span class="work__tag">موقع + لوحة</span>
+            <span class="work__logo"><img src="./works/takamul/assets/img/logo-navy.png" alt="التكامل المتحدة" loading="lazy"></span></div>
           <div class="work__body"><h3>التكامل المتحدة</h3><p>موقع لوجستي كامل + لوحة تحكم بالمحتوى.</p></div>
         </a>
         <a class="work w2" href="./works/">
-          <div class="work__top"><span class="work__tag">منصّة + لوحة</span></div>
+          <div class="work__top"><span class="work__tag">منصّة + لوحة</span>
+            <span class="work__logo"><img src="./works/manabir/assets/logo-org.png" alt="منابر" loading="lazy"></span></div>
           <div class="work__body"><h3>منابر</h3><p>منصّة أنشطة المساجد ولوحة معلومات كاملة.</p></div>
         </a>
         <a class="work w3" href="./works/">
-          <div class="work__top"><span class="work__tag">نظام أعمال</span></div>
+          <div class="work__top"><span class="work__tag">نظام أعمال</span>
+            <span class="work__logo"><img src="./assets/logo-black.png" alt="نظام إدارة الأعمال" loading="lazy"></span></div>
           <div class="work__body"><h3>نظام إدارة أعمال</h3><p>مبيعات وفوترة وعملاء ومشاريع وتقارير.</p></div>
         </a>
         <a class="work w4" href="./works/">
-          <div class="work__top"><span class="work__tag">أداة تفاعلية</span></div>
-          <div class="work__body"><h3>مسارك</h3><p>أداة تدلّ الطالب على تخصصه الجامعي.</p></div>
+          <div class="work__top"><span class="work__tag">منصّة زواج</span>
+            <span class="work__logo"><img src="./works/afaf/assets/logo.svg" alt="العفاف نت" loading="lazy"></span></div>
+          <div class="work__body"><h3>العفاف نت</h3><p>منصّة زواج بالضوابط الشرعية بواجهة موثوقة.</p></div>
         </a>
       </div>
     </div>
