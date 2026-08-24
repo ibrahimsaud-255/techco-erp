@@ -10,7 +10,7 @@
 <title>مِنوال — نبني لك موقعاً ونظاماً يجيب لك عملاء</title>
 <meta name="description" content="مِنوال شركة تقنية سعودية متكاملة: تصميم مواقع وواجهات، أنظمة إدارة أعمال، تطبيقات، وهوية بصرية — نبني الواجهة والنظام معاً، بهويتك ونطاقك.">
 <meta name="theme-color" content="#0f0a24">
-<link rel="icon" href="./assets/logo.svg">
+<link rel="icon" href="./assets/logo-black.png">
 <meta property="og:title" content="مِنوال — شركة تقنية متكاملة">
 <meta property="og:description" content="مواقع وأنظمة وتطبيقات تُبنى لتبيع عنك.">
 <meta property="og:type" content="website">
@@ -80,7 +80,10 @@
   header.nav.scrolled{background:rgba(255,255,255,.86);backdrop-filter:blur(16px);box-shadow:var(--sh-sm)}
   .nav-in{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);display:flex;align-items:center;gap:18px}
   .brand-logo{display:inline-flex;align-items:center;gap:11px;font-family:"Thmanyah Display",serif;font-weight:900;font-size:22px;color:var(--ink)}
-  .brand-logo svg{width:38px;height:38px}
+  .brand-logo img{width:44px;height:44px;display:block}
+  .brand-logo .logo-black{display:none}
+  header.nav.scrolled .brand-logo .logo-white{display:none}
+  header.nav.scrolled .brand-logo .logo-black{display:block}
   .nav-links{display:flex;gap:4px;margin-inline-start:auto;align-items:center}
   .nav-links a{color:var(--ink);opacity:.82;font-size:14.5px;font-weight:500;padding:9px 13px;border-radius:10px;transition:.2s var(--ease)}
   .nav-links a:hover{opacity:1;background:var(--brand-025);color:var(--brand-700)}
@@ -262,8 +265,8 @@
 <header class="nav" id="nav">
   <div class="nav-in">
     <a class="brand-logo" href="#top" aria-label="مِنوال">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6d43ee"/><stop offset="1" stop-color="#12cdbd"/></linearGradient></defs><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lg)"/><path d="M12 34.5 V16 L24 27 L36 16 V34.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 22.5 H35.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".38"/></svg>
-      <span class="brand">مِنوال</span>
+      <img class="logo-white" src="./assets/logo-white.png" alt="مِنوال" width="44" height="44">
+      <img class="logo-black" src="./assets/logo-black.png" alt="مِنوال" width="44" height="44">
     </a>
     <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -476,8 +479,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand-logo" href="#top" aria-label="مِنوال">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lg)"/><path d="M12 34.5 V16 L24 27 L36 16 V34.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 22.5 H35.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".38"/></svg>
-          <span class="brand">مِنوال</span>
+          <img src="./assets/logo-white.png" alt="مِنوال" width="46" height="46">
         </a>
         <p>شركة تقنية سعودية متكاملة — نبني المواقع والأنظمة والتطبيقات، بهوية كل عميل.</p>
         <a class="foot-wa js-wa" href="#">
