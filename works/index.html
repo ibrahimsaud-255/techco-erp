@@ -4,37 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>الأعمال — مِنوال</title>
-<meta name="description" content="نماذج حيّة من أعمال مِنوال: واجهات أنيقة ولوحات تحكّم محكمة خلفها. اكشف ما وراء كل واجهة بضغطة.">
+<meta name="description" content="نماذج حيّة من أعمال مِنوال — تصفّح كل عمل كاملًا: واجهات أنيقة ولوحات تحكّم محكمة خلفها.">
 <link rel="icon" href="../assets/logo-black.png">
 <style>
-  @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Light.woff2") format("woff2");font-weight:300;font-display:swap}
   @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
   @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
   @font-face{font-family:"Thmanyah Sans";src:url("/fonts/thmanyah/thmanyahsans-Black.woff2") format("woff2");font-weight:900;font-display:swap}
   @font-face{font-family:"Thmanyah Display";src:url("/fonts/thmanyah/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
   @font-face{font-family:"Thmanyah Display";src:url("/fonts/thmanyah/thmanyahserifdisplay-Black.woff2") format("woff2");font-weight:900;font-display:swap}
-
   :root{
-    --brand-900:#140a2e; --brand-800:#221056; --brand-700:#5b2fe0; --brand-600:#6d43ee;
-    --brand-500:#8663f4; --brand-050:#f1ecfe; --brand-025:#f8f6ff;
-    --accent:#12cdbd; --ink:#14121f; --body:#4c5160; --muted:#858b99; --line:#e8e6f2; --white:#fff; --wa:#25d366;
-    --max:1200px; --pad:clamp(20px,5vw,40px); --header-h:74px;
-    --r:18px; --sh-sm:0 2px 12px rgba(20,10,46,.06); --sh:0 16px 40px rgba(20,10,46,.10); --sh-lg:0 30px 80px rgba(20,10,46,.16);
-    --ease:cubic-bezier(.22,.9,.3,1);
+    --brand-700:#5b2fe0;--brand-600:#6d43ee;--brand-050:#f1ecfe;--brand-025:#f8f6ff;
+    --accent:#12cdbd;--ink:#14121f;--body:#4c5160;--muted:#858b99;--line:#e8e6f2;--wa:#25d366;
+    --max:1160px;--pad:clamp(20px,5vw,40px);--ease:cubic-bezier(.22,.9,.3,1);
+    --sh-sm:0 2px 12px rgba(20,10,46,.06);--sh:0 18px 44px rgba(20,10,46,.12);
   }
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth;overflow-x:hidden}
-  body{margin:0;background:var(--white);color:var(--body);font-family:"Thmanyah Sans",system-ui,sans-serif;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  svg,video,img{display:block;max-width:100%}
-  a{color:var(--brand-700);text-decoration:none;transition:.2s var(--ease)}
+  body{margin:0;background:#fff;color:var(--body);font-family:"Thmanyah Sans",system-ui,sans-serif;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  a{color:var(--brand-700);text-decoration:none}
   h1,h2,h3{margin:0;color:var(--ink);font-weight:700;line-height:1.3}
-  h1{font-family:"Thmanyah Display",serif;line-height:1.2}
+  h1,h2{font-family:"Thmanyah Display",serif;line-height:1.2}
   ::selection{background:var(--brand-700);color:#fff}
   :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:5px}
   .wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:700 15px/1 inherit;padding:13px 24px;border-radius:100px;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s,color .28s,border-color .28s}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:700 15px/1 inherit;padding:14px 24px;border-radius:100px;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s}
   .btn svg{width:17px;height:17px;flex:none}
   .btn:hover{transform:translateY(-2px)}
   .btn--primary{background:var(--brand-700);color:#fff;box-shadow:0 12px 28px rgba(91,47,224,.3)}
@@ -42,129 +38,134 @@
   .btn--wa{background:var(--wa);color:#06371b;box-shadow:0 12px 28px rgba(37,211,102,.32)}
   .btn--ghost{background:#fff;color:var(--brand-700);border-color:var(--line)}
   .btn--ghost:hover{border-color:var(--brand-700);background:var(--brand-025)}
-  .btn--sm{padding:10px 18px;font-size:14px}
 
-  /* شريط علوي */
-  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
   .nav-in{max-width:var(--max);margin-inline:auto;padding:11px var(--pad);display:flex;align-items:center;gap:16px}
-  .brand-logo{display:inline-flex;align-items:center;gap:10px;font-family:"Thmanyah Display",serif;font-weight:900;font-size:21px;color:var(--ink)}
-  .brand-logo img{width:42px;height:42px;display:block}
+  .brand-logo{display:inline-flex;align-items:center}
+  .brand-logo img{width:42px;height:42px}
   .nav-sp{margin-inline-start:auto}
-  .nav-back{display:inline-flex;align-items:center;gap:7px;color:var(--ink);opacity:.8;font-size:14px;font-weight:600;padding:9px 15px;border-radius:100px;border:1px solid var(--line);transition:.2s var(--ease)}
+  .nav-back{display:inline-flex;align-items:center;gap:7px;color:var(--ink);opacity:.82;font-size:14px;font-weight:600;padding:9px 15px;border-radius:100px;border:1px solid var(--line)}
   .nav-back:hover{opacity:1;border-color:var(--brand-700);color:var(--brand-700)}
   .nav-back svg{width:15px;height:15px}
 
-  /* بطل الصفحة */
-  .head{padding-block:clamp(46px,7vw,84px) clamp(20px,3vw,34px);text-align:center}
-  .eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:15px;font-size:13.5px;font-weight:700;color:var(--brand-600)}
+  .head{padding-block:clamp(40px,6vw,72px) clamp(20px,3vw,30px);text-align:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:14px;font-size:13.5px;font-weight:700;color:var(--brand-600)}
   .eyebrow::before,.eyebrow::after{content:"";width:24px;height:2px;background:var(--accent);border-radius:2px}
-  .head h1{font-size:clamp(1.9rem,4.6vw,3.1rem);max-width:20ch;margin:0 auto 16px;letter-spacing:-.02em}
+  .head h1{font-size:clamp(1.9rem,4.6vw,3rem);max-width:20ch;margin:0 auto 14px}
   .head h1 em{font-style:normal;background:linear-gradient(100deg,#5b2fe0,#12cdbd);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .head p{font-size:clamp(1rem,2vw,1.15rem);max-width:56ch;margin:0 auto;color:var(--body)}
-  .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .legend .lg{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--body);border:1px solid var(--line);background:#fff;padding:8px 15px;border-radius:100px;box-shadow:var(--sh-sm)}
-  .legend .lg b{color:var(--ink)}
-  .legend .sw{width:20px;height:13px;border-radius:4px}
-  .legend .sw.f{background:linear-gradient(120deg,#221056,#5b2fe0)}
-  .legend .sw.d{background:linear-gradient(120deg,#0d7d6e,#12cdbd)}
+  .head p{font-size:clamp(1rem,2vw,1.12rem);max-width:56ch;margin:0 auto;color:var(--body)}
 
-  /* كتلة مشروع */
-  .proj{padding-block:clamp(48px,6vw,74px);border-top:1px solid var(--line)}
-  .proj-head{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:24px}
-  .proj-idx{font-family:"Thmanyah Display",serif;font-weight:900;font-size:44px;line-height:.8;color:var(--brand-050)}
-  .proj-t{flex:1;min-width:230px}
-  .proj-cat{display:inline-block;font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:100px;border:1px solid var(--line);background:var(--brand-025);color:var(--brand-700);margin-bottom:10px}
-  .proj-cat.tool{color:var(--accent);border-color:rgba(18,205,189,.4);background:rgba(18,205,189,.07)}
-  .proj-h{font-family:"Thmanyah Display",serif;font-weight:900;font-size:clamp(1.5rem,3vw,2rem);margin-bottom:6px}
-  .proj-d{color:var(--body);font-size:15px;margin:0;max-width:62ch}
-  .proj-side{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-  .tags{display:flex;gap:7px;flex-wrap:wrap}
-  .tag{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:#fff;padding:5px 11px;border-radius:8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-block:14px clamp(40px,6vw,64px)}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;gap:18px}}
+  .wc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--sh-sm);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .wc:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+  .wc__bar{height:5px;width:100%;flex:none}
+  .wc.c1 .wc__bar{background:linear-gradient(90deg,#0d2440,#2f6db0)}
+  .wc.c2 .wc__bar{background:linear-gradient(90deg,#0b6b5e,#12cdbd)}
+  .wc.c3 .wc__bar{background:linear-gradient(90deg,#3b1d8a,#8663f4)}
+  .wc.c4 .wc__bar{background:linear-gradient(90deg,#b32b63,#fe5e9e)}
+  .wc__logo{display:flex;align-items:center;justify-content:center;min-height:120px;padding:34px 24px 12px}
+  .wc__logo img{height:56px;max-height:56px;max-width:78%;width:auto;object-fit:contain}
+  .wc__body{padding:6px 26px 26px;display:flex;flex-direction:column;flex:1;text-align:center}
+  .wc__cat{font-size:11.5px;font-weight:700;margin-bottom:8px}
+  .wc.c1 .wc__cat{color:#1e4d82}.wc.c2 .wc__cat{color:#0b8f7e}.wc.c3 .wc__cat{color:#6d43ee}.wc.c4 .wc__cat{color:#d23a76}
+  .wc__body h3{font-size:1.24rem;margin-bottom:9px}
+  .wc__body p{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.75}
+  .wc__tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:20px}
+  .wc__tags span{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:var(--brand-025);padding:5px 11px;border-radius:8px}
+  .wc__cta{margin-top:auto}
+  .wc__cta .btn{width:100%}
+  .wc__hint{margin-top:9px;font-size:12px;color:var(--muted)}
 
-  /* إطار المتصفّح */
-  .frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--sh-lg);position:relative}
-  .chrome{height:44px;display:flex;align-items:center;gap:10px;padding:0 15px;background:linear-gradient(#faf9ff,#f3f1fb);border-bottom:1px solid var(--line)}
-  .dots{display:flex;gap:7px}
-  .dots i{width:11px;height:11px;border-radius:50%}
-  .dots i:nth-child(1){background:#ff5f57}.dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
-  .url{flex:1;height:26px;border-radius:8px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 12px;font-size:12px;color:var(--muted);max-width:460px;margin:0 auto;overflow:hidden;white-space:nowrap;direction:ltr}
-  .url svg{width:12px;height:12px;flex:none;color:var(--accent)}
-  .chrome-badge{font-size:11px;font-weight:700;color:var(--brand-700);border:1px solid var(--line);background:var(--brand-025);border-radius:100px;padding:3px 11px;white-space:nowrap;transition:.3s}
-  .frame.on .chrome-badge{color:var(--accent);border-color:rgba(18,205,189,.4);background:rgba(18,205,189,.08)}
-
-  .viewport{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#0b0b12}
-  @media(max-width:760px){.viewport{aspect-ratio:3/4}}
-  .stage{position:absolute;inset:0}
-  .layer{position:absolute;inset:0;transition:opacity .75s cubic-bezier(.5,0,.15,1),transform .8s cubic-bezier(.5,0,.15,1),filter .75s ease}
-  .layer .scaler{position:absolute;top:0;left:0;width:1280px;height:800px}
-  .layer iframe{width:1280px;height:800px;border:0;display:block;background:#0b0b12}
-  .layer.back{z-index:1;opacity:0}
-  .layer.front{z-index:2}
-  .stage.on .front{opacity:0;transform:translateY(-20px) scale(1.04);filter:blur(6px) brightness(1.2);pointer-events:none}
-  .stage.on .back{opacity:1}
-  .sweep{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:linear-gradient(180deg,transparent,rgba(91,47,224,.18) 48%,rgba(18,205,189,.22) 50%,rgba(91,47,224,.18) 52%,transparent);transform:translateY(-100%)}
-  .stage.sweeping .sweep{animation:sweep 800ms ease}
-  @keyframes sweep{0%{opacity:0;transform:translateY(-100%)}20%{opacity:1}100%{opacity:0;transform:translateY(100%)}}
-  .tap-guard{position:absolute;inset:0;z-index:4;cursor:pointer;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,rgba(91,47,224,.12),transparent 60%),#0b0b12;transition:opacity .5s}
-  .tap-guard .tap-in{display:inline-flex;align-items:center;gap:9px;color:#fff;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);padding:11px 20px;border-radius:100px;backdrop-filter:blur(6px)}
-  .tap-guard .tap-in svg{width:17px;height:17px}
-  .stage.loaded .tap-guard{opacity:0;visibility:hidden;pointer-events:none}
-
-  .controls{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-  .reveal-btn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:2px solid transparent;background:var(--brand-700);color:#fff;font:700 15px/1 inherit;padding:13px 26px;border-radius:100px;box-shadow:0 12px 28px rgba(91,47,224,.3);transition:.28s var(--ease)}
-  .reveal-btn:hover{background:var(--brand-600);transform:translateY(-2px)}
-  .reveal-btn .ic{display:inline-flex;transition:transform .5s}
-  .reveal-btn .ic svg{width:18px;height:18px}
-  .reveal-btn.on{background:#fff;color:var(--brand-700);border-color:var(--line);box-shadow:none}
-  .reveal-btn.on .ic{transform:rotate(180deg)}
-  .visit{display:inline-flex;align-items:center;gap:8px;color:var(--brand-700);font-weight:700;font-size:14px;border:1px solid var(--line);background:#fff;padding:12px 22px;border-radius:100px;transition:.2s var(--ease)}
-  .visit:hover{border-color:var(--brand-700);background:var(--brand-025);transform:translateY(-2px)}
-  .visit svg{width:15px;height:15px}
-  .hint{font-size:12.5px;color:var(--muted)}
-
-  /* حث ختامي */
-  .cta-sec{padding-block:clamp(52px,7vw,88px)}
-  .cta{position:relative;overflow:hidden;border-radius:26px;padding:clamp(40px,6vw,66px) var(--pad);text-align:center;background:linear-gradient(150deg,#221056,#0d0722);color:#fff;box-shadow:var(--sh-lg)}
+  .cta-sec{padding-block:clamp(20px,4vw,40px) clamp(52px,7vw,88px)}
+  .cta{position:relative;overflow:hidden;border-radius:26px;padding:clamp(38px,6vw,64px) var(--pad);text-align:center;background:linear-gradient(150deg,#221056,#0d0722);color:#fff;box-shadow:var(--sh)}
   .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 80% 12%,rgba(18,205,189,.4),transparent 60%),radial-gradient(50% 60% at 14% 92%,rgba(140,99,244,.5),transparent 60%)}
   .cta>*{position:relative;z-index:1}
-  .cta h2{color:#fff;font-family:"Thmanyah Display",serif;font-size:clamp(1.6rem,3.6vw,2.5rem);max-width:22ch;margin:0 auto 14px}
-  .cta p{color:rgba(255,255,255,.82);max-width:50ch;margin:0 auto 30px}
+  .cta .eyebrow{justify-content:center;color:var(--accent)}
+  .cta h2{color:#fff;font-family:"Thmanyah Display",serif;font-size:clamp(1.6rem,3.6vw,2.4rem);max-width:22ch;margin:0 auto 12px}
+  .cta p{color:rgba(255,255,255,.82);max-width:52ch;margin:0 auto 28px}
   .cta__actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta .btn--ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.4)}
 
-  footer{border-top:1px solid var(--line);padding-block:34px;text-align:center;color:var(--muted);font-size:13.5px}
-  footer .brand{color:var(--ink);font-weight:700}
-  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  footer{border-top:1px solid var(--line);padding-block:30px;text-align:center;color:var(--muted);font-size:13.5px}
+  footer b{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-in">
-      <a class="brand-logo" href="../" aria-label="مِنوال">
-        <img src="../assets/logo-black.png" alt="مِنوال" width="42" height="42">
-      </a>
-      <span class="nav-sp"></span>
-      <a class="nav-back" href="../">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        الرئيسية
-      </a>
-    </div>
-  </header>
+  <header class="nav"><div class="nav-in">
+    <a class="brand-logo" href="../" aria-label="مِنوال"><img src="../assets/logo-black.png" alt="مِنوال"></a>
+    <span class="nav-sp"></span>
+    <a class="nav-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg> الرئيسية</a>
+  </div></header>
 
   <main>
     <header class="head wrap">
       <span class="eyebrow">أعمالنا</span>
       <h1>واجهةٌ تُبهر، ونظامٌ <em>محكم خلفها</em></h1>
-      <p>أعمالٌ حقيقية شغّالة. تصفّح الواجهة كما يراها الزائر، ثم اضغط «اكشف لوحة التحكم» لتختفي الواجهة وتظهر لوحة القيادة التي تُدير كل شيء من خلفها.</p>
-      <div class="legend">
-        <span class="lg"><span class="sw f"></span> <b>الواجهة</b> — ما يراه عميلك</span>
-        <span class="lg"><span class="sw d"></span> <b>لوحة التحكم</b> — ما يُدير به أعماله</span>
-      </div>
+      <p>نماذج حقيقية سُلّمت لأصحابها. اضغط «شاهد المعاينة» لتتصفّح كل عمل كاملًا داخل مِنوال — وبضغطة تنتقل بين الواجهة ولوحة التحكم.</p>
     </header>
 
-    <div class="wrap" id="projects"></div>
+    <div class="wrap"><div class="grid">
+
+      <article class="wc c1">
+        <span class="wc__bar"></span>
+        <div class="wc__logo"><img src="takamul/assets/img/logo-navy.png" alt="التكامل المتحدة" loading="lazy"></div>
+        <div class="wc__body">
+          <span class="wc__cat">موقع تعريفي + لوحة تحكم</span>
+          <h3>التكامل المتحدة</h3>
+          <p>شركة سعودية للخدمات اللوجستية — موقع تعريفي كامل ولوحة تحكم يُدير بها الفريق كل المحتوى.</p>
+          <div class="wc__tags"><span>موقع تعريفي</span><span>مدوّنة</span><span>لوحة محتوى</span><span>RTL</span></div>
+          <div class="wc__cta"><a class="btn btn--primary" href="takamul/index.html">شاهد المعاينة الحيّة
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+            <div class="wc__hint">تنقّل بين الواجهة ولوحة التحكم من الشريط السفلي</div></div>
+        </div>
+      </article>
+
+      <article class="wc c2">
+        <span class="wc__bar"></span>
+        <div class="wc__logo"><img src="manabir/assets/logo-org.png" alt="منابر" loading="lazy"></div>
+        <div class="wc__body">
+          <span class="wc__cat">منصّة + لوحة إدارة</span>
+          <h3>منابر</h3>
+          <p>منصّة تنظيم الأنشطة الدعوية في المساجد — من بوابة الدخول إلى لوحة معلومات كاملة بإحصاءات وطلبات.</p>
+          <div class="wc__tags"><span>منصّة أدوار</span><span>لوحة معلومات</span><span>سير عمل</span><span>تقارير</span></div>
+          <div class="wc__cta"><a class="btn btn--primary" href="manabir/index.html?login=1">شاهد المعاينة الحيّة
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+            <div class="wc__hint">تنقّل بين الواجهة ولوحة التحكم من الشريط السفلي</div></div>
+        </div>
+      </article>
+
+      <article class="wc c3">
+        <span class="wc__bar"></span>
+        <div class="wc__logo"><img src="../assets/logo-black.png" alt="نظام إدارة الأعمال" loading="lazy"></div>
+        <div class="wc__body">
+          <span class="wc__cat">نظام إدارة أعمال (ERP)</span>
+          <h3>نظام إدارة الأعمال</h3>
+          <p>لوحة قيادة عربية كاملة: مبيعات، فوترة، عملاء، مشاريع، وتقارير — أساسٌ واحد نُخصّصه بهويّة كل عميل.</p>
+          <div class="wc__tags"><span>ERP</span><span>فوترة</span><span>CRM</span><span>تقارير</span><span>سحابي</span></div>
+          <div class="wc__cta"><a class="btn btn--primary" href="system.html">شاهد لوحة النظام
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="wc c4">
+        <span class="wc__bar"></span>
+        <div class="wc__logo"><img src="afaf/assets/logo.svg" alt="العفاف نت" loading="lazy"></div>
+        <div class="wc__body">
+          <span class="wc__cat">منصّة زواج</span>
+          <h3>العفاف نت</h3>
+          <p>منصّة زواج بالضوابط الشرعية — أعدنا بناء الواجهة بهوية دافئة موثوقة وتجربة تصفّح آمنة وسهلة.</p>
+          <div class="wc__tags"><span>منصّة</span><span>واجهة دافئة</span><span>موثوقية</span><span>RTL</span></div>
+          <div class="wc__cta"><a class="btn btn--primary" href="afaf/index.html">شاهد المعاينة الحيّة
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a></div>
+        </div>
+      </article>
+
+    </div></div>
 
     <section class="cta-sec"><div class="wrap"><div class="cta">
-      <span class="eyebrow" style="justify-content:center;color:var(--accent)">جاهزون للبدء</span>
+      <span class="eyebrow">جاهزون للبدء</span>
       <h2>أعجبك ما رأيت؟ نبني لك مثله وأفضل</h2>
       <p>أرسل لنا فكرتك على واتساب — نسمعك، ونرجع لك بعرضٍ واضح خلال وقت قصير.</p>
       <div class="cta__actions">
@@ -172,174 +173,18 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.2-4.9-4.4-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3.1.2.1.9-.1 1.4Z"/></svg>
           ابدأ مشروعك معنا
         </a>
-        <a class="btn btn--ghost" href="../#services" style="background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.4)">تعرّف على خدماتنا</a>
+        <a class="btn btn--ghost" href="../#services">تعرّف على خدماتنا</a>
       </div>
     </div></div></section>
   </main>
 
-  <footer><div class="wrap">© <span id="yr"></span> <span class="brand">مِنوال</span> — كل النماذج أعمالٌ حقيقية سُلّمت لأصحابها · من مؤسسة حروف ودروس</div></footer>
+  <footer><div class="wrap">© <span id="yr"></span> <b>مِنوال</b> — كل النماذج أعمالٌ حقيقية سُلّمت لأصحابها · من مؤسسة حروف ودروس</div></footer>
 
 <script>
-const BRAND = "مِنوال";
-const WA = "https://wa.me/966504895213?text=" + encodeURIComponent("السلام عليكم، شفت أعمال مِنوال وأبغى أستشيركم في مشروع");
-
-const iconLink = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>';
-const iconLayers = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>';
-const iconPlay = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m10 9 5 3-5 3V9Z"/></svg>';
-const iconLock = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
-
-const PROJECTS = [
-  { name:"التكامل المتحدة", cat:"موقع تعريفي + لوحة تحكم",
-    desc:"شركة سعودية للخدمات اللوجستية وجرد المستودعات. موقع تعريفي كامل — ولوحة تحكم يُدير بها الفريق كل محتوى الموقع دون لمس الكود.",
-    tags:["موقع تعريفي","مدوّنة","لوحة محتوى","RTL"],
-    front:"takamul/index.html", back:"takamul/dashboard/index.html", urlFront:"aliltizam.sa", urlBack:"لوحة القيادة", visit:"takamul/index.html" },
-  { name:"منابر", cat:"منصّة داخلية + لوحة إدارة",
-    desc:"منصّة لتنظيم الأنشطة الدعوية في المساجد واعتمادها من الجهات. من بوابة الدخول إلى لوحة معلومات كاملة: إحصاءات، مسار طلبات، وتقويم أنشطة.",
-    tags:["منصّة أدوار","لوحة معلومات","سير عمل","تقارير"],
-    front:"manabir/index.html?login=1", back:"manabir/index.html?dash=1", urlFront:"manabir.sa", urlBack:"لوحة المعلومات", visit:"manabir/index.html?login=1" }
-];
-
-/* نماذج تُعرض كصورة ثابتة (لا نسخة حيّة) */
-const IMAGE_WORKS = [
-  { name:"نظام إدارة الأعمال", cat:"نظام إدارة أعمال (ERP)",
-    desc:"نظام أعمال متكامل نبنيه ونشغّله: مبيعات، فوترة، عملاء، مشاريع، وتقارير — أساسٌ واحد نُخصّصه بهويّة كل عميل، بلوحة قيادة عربية كاملة.",
-    tags:["ERP","فوترة","CRM","تقارير","سحابي"],
-    img:"assets/erp-demo.png", label:"لوحة الأعمال — عرض تجريبي" }
-];
-
-/* واجهة فقط (بلا لوحة تحكم منفصلة) */
-const FRONT_ONLY = [
-  { name:"العفاف نت", cat:"منصّة زواج",
-    desc:"أقدم منصّة زواج بالضوابط الشرعية في السعودية. أعدنا بناء الواجهة بهوية دافئة وموثوقة وتجربة تصفّح آمنة وسهلة.",
-    tags:["منصّة","واجهة دافئة","موثوقية","RTL"],
-    front:"afaf/index.html", urlFront:"alafaf.net", visit:"afaf/index.html" }
-];
-
-function projectHTML(p, i){
-  return `
-  <div class="proj" data-proj>
-    <div class="proj-head">
-      <div class="proj-idx">${String(i+1).padStart(2,'0')}</div>
-      <div class="proj-t"><span class="proj-cat">${p.cat}</span><h2 class="proj-h">${p.name}</h2><p class="proj-d">${p.desc}</p></div>
-      <div class="proj-side"><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <a class="visit" href="${p.visit}" target="_blank" rel="noopener">${iconLink} زيارة حيّة</a></div>
-    </div>
-    <div class="frame" data-frame>
-      <div class="chrome"><span class="dots"><i></i><i></i><i></i></span>
-        <span class="url">${iconLock}<span class="u-front">${p.urlFront}</span><span class="u-back" style="display:none">${p.urlBack}</span></span>
-        <span class="chrome-badge" data-badge>الواجهة الأمامية</span></div>
-      <div class="viewport"><div class="stage" data-stage>
-        <div class="layer front"><div class="scaler"><iframe data-src="${p.front}" title="${p.name} — الواجهة" loading="lazy" scrolling="no"></iframe></div></div>
-        <div class="layer back"><div class="scaler"><iframe data-back="${p.back}" title="${p.name} — لوحة التحكم" scrolling="no"></iframe></div></div>
-        <div class="sweep"></div>
-        <div class="tap-guard" data-guard><span class="tap-in">${iconPlay} شغّل المعاينة الحيّة</span></div>
-      </div></div>
-    </div>
-    <div class="controls">
-      <button class="reveal-btn" data-reveal type="button"><span class="ic">${iconLayers}</span><span class="lbl">اكشف لوحة التحكم</span></button>
-      <span class="hint" data-hint>ما يراه العميل الآن — الواجهة الأمامية</span>
-    </div>
-  </div>`;
-}
-function frontHTML(p, i){
-  return `
-  <div class="proj" data-proj>
-    <div class="proj-head">
-      <div class="proj-idx">${String(i+1).padStart(2,'0')}</div>
-      <div class="proj-t"><span class="proj-cat tool">${p.cat}</span><h2 class="proj-h">${p.name}</h2><p class="proj-d">${p.desc}</p></div>
-      <div class="proj-side"><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <a class="visit" href="${p.visit}" target="_blank" rel="noopener">${iconLink} زيارة حيّة</a></div>
-    </div>
-    <div class="frame" data-frame>
-      <div class="chrome"><span class="dots"><i></i><i></i><i></i></span>
-        <span class="url">${iconLock}<span class="u-front">${p.urlFront}</span></span>
-        <span class="chrome-badge">الواجهة الأمامية</span></div>
-      <div class="viewport"><div class="stage" data-stage>
-        <div class="layer front"><div class="scaler"><iframe data-src="${p.front}" title="${p.name}" loading="lazy" scrolling="no"></iframe></div></div>
-        <div class="tap-guard" data-guard><span class="tap-in">${iconPlay} شغّل المعاينة الحيّة</span></div>
-      </div></div>
-    </div>
-  </div>`;
-}
-
-function imageHTML(p, i){
-  return `
-  <div class="proj">
-    <div class="proj-head">
-      <div class="proj-idx">${String(i+1).padStart(2,'0')}</div>
-      <div class="proj-t"><span class="proj-cat">${p.cat}</span><h2 class="proj-h">${p.name}</h2><p class="proj-d">${p.desc}</p></div>
-      <div class="proj-side"><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>
-    </div>
-    <div class="frame">
-      <div class="chrome"><span class="dots"><i></i><i></i><i></i></span>
-        <span class="url">${iconLock}<span>لوحة التحكم</span></span>
-        <span class="chrome-badge" style="color:var(--accent);border-color:rgba(18,205,189,.4);background:rgba(18,205,189,.08)">${p.label}</span></div>
-      <div class="viewport"><img src="${p.img}" alt="${p.name} — لوحة التحكم" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top right"></div>
-    </div>
-  </div>`;
-}
-
-const root = document.getElementById('projects');
-root.innerHTML = PROJECTS.map(projectHTML).join('')
-  + IMAGE_WORKS.map((p,i)=>imageHTML(p, PROJECTS.length+i)).join('')
-  + FRONT_ONLY.map((p,i)=>frontHTML(p, PROJECTS.length+IMAGE_WORKS.length+i)).join('');
-document.getElementById('yr').textContent = new Date().getFullYear();
-document.querySelectorAll('.js-wa').forEach(a=>{a.href=WA;a.target="_blank";a.rel="noopener"});
-
-/* ── محرّك المعاينة: تحجيم بـ zoom + إطار حيّ واحد فقط ── */
-/* عرض منطقي متجاوب: على الجوال نعرض تخطيط الجوال للموقع (مقروء) بدل تصغير سطح المكتب */
-function fit(sc){
-  const vp=sc.closest('.viewport'); if(!vp)return;
-  const w=vp.clientWidth, h=vp.clientHeight; if(w<40)return;
-  const base = innerWidth<820 ? 430 : 1280;
-  const baseH = Math.round(base*h/w);
-  const ifr=sc.querySelector('iframe');
-  sc.style.width=base+'px'; sc.style.height=baseH+'px';
-  if(ifr){ ifr.style.width=base+'px'; ifr.style.height=baseH+'px'; }
-  sc.style.zoom = w/base;
-}
-function fitAll(){document.querySelectorAll('.scaler').forEach(fit);}
-addEventListener('resize', fitAll);
-let _t=0;const _p=setInterval(()=>{fitAll();if(++_t>20)clearInterval(_p);},250);
-
-const CTRL = [...document.querySelectorAll('[data-proj]')].filter(p=>p.querySelector('[data-frame]')).map(el=>({
-  el, frame:el.querySelector('[data-frame]'), stage:el.querySelector('[data-stage]'),
-  front:el.querySelector('iframe[data-src]'), back:el.querySelector('iframe[data-back]'),
-  btn:el.querySelector('[data-reveal]'), badge:el.querySelector('[data-badge]'), hint:el.querySelector('[data-hint]'),
-  uFront:el.querySelector('.u-front'), uBack:el.querySelector('.u-back'), lbl:el.querySelector('[data-reveal] .lbl'),
-  on:false, backLoaded:false
-}));
-function loadFront(p){if(!p.front.src)p.front.src=p.front.getAttribute('data-src');p.stage.classList.add('loaded');requestAnimationFrame(fitAll);}
-function unload(p){setReveal(p,false);if(p.back&&p.back.src){p.back.removeAttribute('src');p.back.src='about:blank';p.backLoaded=false;}if(p.front.src){p.front.removeAttribute('src');p.front.src='about:blank';}p.stage.classList.remove('loaded');}
-function setReveal(p,on){
-  if(!p.btn)return;
-  p.on=on;
-  if(on&&!p.backLoaded){p.back.src=p.back.getAttribute('data-back');p.backLoaded=true;}
-  p.stage.classList.add('loaded');
-  p.stage.classList.toggle('on',on);p.frame.classList.toggle('on',on);p.btn.classList.toggle('on',on);
-  p.stage.classList.remove('sweeping');void p.stage.offsetWidth;p.stage.classList.add('sweeping');
-  if(p.lbl)p.lbl.textContent=on?'ارجع للواجهة':'اكشف لوحة التحكم';
-  if(p.badge)p.badge.textContent=on?'لوحة التحكم':'الواجهة الأمامية';
-  if(p.hint)p.hint.textContent=on?'ما يُدير به أعماله — لوحة التحكم خلف الواجهة':'ما يراه العميل الآن — الواجهة الأمامية';
-  if(p.uFront)p.uFront.style.display=on?'none':'inline';
-  if(p.uBack)p.uBack.style.display=on?'inline':'none';
-  requestAnimationFrame(fitAll);
-}
-let active=null;
-function selectActive(){
-  let best=null,bestR=0;
-  CTRL.forEach(p=>{const r=p.frame.getBoundingClientRect();const vis=Math.max(0,Math.min(r.bottom,innerHeight)-Math.max(r.top,0));const ratio=vis/Math.min(r.height||1,innerHeight);if(ratio>bestR){bestR=ratio;best=p;}});
-  if(bestR<0.25||best===active)return;
-  if(active)unload(active);
-  active=best;loadFront(active);
-}
-let _s=0;addEventListener('scroll',()=>{clearTimeout(_s);_s=setTimeout(selectActive,140);},{passive:true});
-setTimeout(selectActive,500);
-document.querySelectorAll('[data-guard]').forEach(g=>g.addEventListener('click',()=>{const p=CTRL.find(x=>x.stage===g.closest('.stage'));if(p)loadFront(p);}));
-document.querySelectorAll('.layer iframe').forEach(fr=>fr.addEventListener('load',()=>{const sc=fr.closest('.scaler');if(sc)fit(sc);}));
-CTRL.forEach(p=>{if(p.btn)p.btn.addEventListener('click',()=>{loadFront(p);setReveal(p,!p.on);});});
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var WA="https://wa.me/966504895213?text="+encodeURIComponent("السلام عليكم، شفت أعمال مِنوال وأبغى أستشيركم في مشروع");
+  document.querySelectorAll('.js-wa').forEach(function(a){a.href=WA;a.target="_blank";a.rel="noopener";});
 </script>
-<!-- ربط اللوحة: قياس زيارات صفحة الأعمال -->
 <script src="../link.js" defer></script>
 </body>
 </html>
